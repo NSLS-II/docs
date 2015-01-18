@@ -122,15 +122,16 @@ For example a trigger of a scaler and a CCD frame would be::
     event_trigger_descriptor_a : {
         "uid" : <uid>,
         "keys" : {
-            "sclr" : {"dest" : "PV:XF:23ID1-ES{Sclr:1}.CNT", "value" : 1 } 
-            "ccd" : {"dest" : "PV:XF:23ID1-ES{Dif-Cam:PIMTE}cam1:Acquire",
+            "sclr" : {"source" : "PV:XF:23ID1-ES{Sclr:1}.CNT", "value" : 1 } 
+            "ccd" : {"source" : "PV:XF:23ID1-ES{Dif-Cam:PIMTE}cam1:Acquire",
                      "value", 1 }
         }
         "run" : <uid>,
         "time" : <time>
     }
 
-Where as before ``run`` is a pointer to the start run event. 
+Where as before ``run`` is a pointer to the start run event. These are
+syntaxtically identical to :ref:measure_events. 
 
 .. _measure_events:
 
