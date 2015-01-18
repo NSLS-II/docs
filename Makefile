@@ -191,6 +191,7 @@ gh-pages:
 		make html && \
 		cp -rv build/html/* . && \
 		rm -rf $(GH_PAGES_SOURCES) build && \
+		touch .nojekyll && \
 		git add -A  && \
 		git commit -m "Generated gh-pages `git log master -1 --pretty=short --abbrev-commit`" && \
 		git push origin gh-pages 
