@@ -17,11 +17,11 @@ determination of what a time *quantum* is left to the details of the
 experiment. Time however, can be horrendously messy. Throughout this
 section we use two terms, *timestamp* and *time*. These mean:
 
--   *time* : The date/time as found at the client side when an ``event`` is
+- *time* : The date/time as found at the client side when an ``event`` is
   created. This could be a date-time format as determined by the underlying
   storage method (for example a database)
 
--   *timestamp* : A (usually float) representation of the hardware time when a
+- *timestamp* : A (usually float) representation of the hardware time when a
   certain value was obtained. Wherever possible this should be read from
   hardware. For example, this could be the *EPICS* timestamp from when the
   record processed which provides the value. 
@@ -30,36 +30,18 @@ In order to allow the *event* concept to be applied to many different events,
 events have a type. These types indicate what happened at that time. These
 event types are:
 
--   *measure* : A measurement of data from external sources. For example,
+- *measure* : A measurement of data from external sources. For example,
   reading a scaler or taking a CCD image. 
--   *trigger* : An event which occurred because data sources were triggered.
+- *trigger* : An event which occurred because data sources were triggered.
   For example, starting a scaler or CCD acquisition
-
-Event Descriptors
------------------
-
-Event descriptors describe the ``events``. For the example above the ``event``
-is decribed by the following ``event_decriptor``::
-
-    event_desc_a : {
-        "uid" : <id>,
-        "type" : <type>,
-        "data_keys": : {
-            "chan1" : {"source" : "PV:XF:23ID1-ES{Sclr:1}.S1"},
-            "chan2" : {"source" : "PV:XF:23ID1-ES{Sclr:1}.S2"},
-            "chan3" : {"source" : "PV:XF:23ID1-ES{Sclr:1}.S3"},
-            "chan4" : {"source" : "PV:XF:23ID1-ES{Sclr:1}.S4"},
-            "chan5" : {"source" : "PV:XF:23ID1-ES{Sclr:1}.S5"},
-            "chan6" : {"source" : "PV:XF:23ID1-ES{Sclr:1}.S6"},
-            "chan7" : {"source" : "PV:XF:23ID1-ES{Sclr:1}.S7"},
-            "chan8" : {"source" : "PV:XF:23ID1-ES{Sclr:1}.S8"}, 
-            "pimte: : {"source" : "FILESTORE:<...>"}
-        }
-        "time" : <value>
-    }
+- *start_run* : An event which is created when a data collection run starts.
+- *end_run* : An event which is created when a data collection run ends. 
 
 Events
-------
+======
+
+Measure Events
+--------------
 
 Events are the smallest quantum of data stored in the metadatastore. They group
 values which are associated with temporally identical data. The definition of
@@ -75,6 +57,7 @@ a scaler along with a ccd trigger which is hardware synced would be::
         "uid" : <id>,
         "seqno" : <value>,
         "ev_desc" : <id>,
+        "type" : "measure",
         "data" : {
             "chan1" : {"value" : <value>, "timestamp" : <ts>},
             "chan2" : {"value" : <value>, "timestamp" : <ts>},
@@ -89,8 +72,54 @@ a scaler along with a ccd trigger which is hardware synced would be::
         "time" : <value>
     }
 
+The following fields are essential:
+
+- **uid** : Unique ID guaranteed to be unique.
+- **ev_desk** : Reference to event descriptor.
+- **type** : Event Type.
+- **time** : Client side time of event creation. 
+- **data** : Data from this event.
+
+The field **seqno** can be used by step-wise data collection to determine the
+order of the events in a run.
+
+Start Run Events
+----------------
+
+The beginning of a data collection run is an event which would be described as ::
+
+    event_b : {
+        "uid" : <id>,
+        "scan_id" : <non-unique-id>,
+        "
+
+
 The keys ``uid``, ``ev_desc`` and ``timestamp`` refer to the unique id, a link
 to the event descriptor and the EPICS timestamp respectively.
 
+
+Event Descriptors
+-----------------
+
+Event descriptors can be used to describe multiple ``events``, for example in a
+scan. These can be thought of as arrays of events. There is no requirement to
+have an event descriptor to define an event.
+is decribed by the following ``event_decriptor``::
+
+    event_desc_a : {
+        "uid" : <id>,
+        "data_keys": : {
+            "chan1" : {"source" : "PV:XF:23ID1-ES{Sclr:1}.S1"},
+            "chan2" : {"source" : "PV:XF:23ID1-ES{Sclr:1}.S2"},
+            "chan3" : {"source" : "PV:XF:23ID1-ES{Sclr:1}.S3"},
+            "chan4" : {"source" : "PV:XF:23ID1-ES{Sclr:1}.S4"},
+            "chan5" : {"source" : "PV:XF:23ID1-ES{Sclr:1}.S5"},
+            "chan6" : {"source" : "PV:XF:23ID1-ES{Sclr:1}.S6"},
+            "chan7" : {"source" : "PV:XF:23ID1-ES{Sclr:1}.S7"},
+            "chan8" : {"source" : "PV:XF:23ID1-ES{Sclr:1}.S8"}, 
+            "pimte: : {"source" : "FILESTORE:<...>"}
+        }
+        "time" : <value>
+    }
 
 
