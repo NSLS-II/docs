@@ -32,7 +32,8 @@ event types are:
 
 -   *measure* : A measurement of data from external sources. For example,
   reading a scaler or taking a CCD image. 
--   *trigger* : An event which occurred because a 
+-   *trigger* : An event which occurred because data sources were triggered.
+  For example, starting a scaler or CCD acquisition
 
 Event Descriptors
 -----------------
