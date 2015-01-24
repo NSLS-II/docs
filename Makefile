@@ -9,8 +9,8 @@ BUILDDIR      = build
 
 # For auto gh-pages
 GH_PAGES_SOURCES = Makefile source 
-GH_PAGES_DIR := $(shell mktemp -d -t gh-pages)
-GH_PAGES_BRANCH = cli_refactor
+GH_DIR := $(shell mktemp -d)
+GH_URL = https://github.com/NSLS-II/NSLS-II.github.io.git
 
 # User-friendly check for sphinx-build
 ifeq ($(shell which $(SPHINXBUILD) >/dev/null 2>&1; echo $$?), 1)
@@ -181,18 +181,15 @@ pseudoxml:
 	@echo
 	@echo "Build finished. The pseudo-XML files are in $(BUILDDIR)/pseudoxml."
 
-gh-pages:
-	@echo "Working Directory $(GH_PAGES_DIR)"
-	git clone `git config --get remote.origin.url` $(GH_PAGES_DIR)
-	cd $(GH_PAGES_DIR) && \
-		git checkout gh-pages && \
-		git checkout master $(GH_PAGES_SOURCES) && \
-		git reset HEAD && \
-		make html && \
-		cp -rv build/html/* . && \
-		rm -rf $(GH_PAGES_SOURCES) build && \
+github:
+	@echo "Working Directory $(GH_DIR)"
+	ID=$(shell git log master -1 --pretty=short --abbrev-commit`)
+	git clone $(GH_URL) $(GH_DIR)
+	cp -rv build/html/* $(GH_DIR)
+	cd $(GH_DIR) && \
+		git checkout master
 		touch .nojekyll && \
 		git add -A  && \
-		git commit -m "Generated gh-pages `git log master -1 --pretty=short --abbrev-commit`" && \
-		git push origin gh-pages 
-	rm -rf $(GH_PAGES_DIR)
+		git commit -m "Generated gh-pages $ID"
+		git push origin master
+	rm -rf $(GH_DIR)
