@@ -81,11 +81,11 @@ event also serves as a searchable entity which links all data associated by an
 event. For example::
 
     {
-        "uid" : <uid>,
+        "uid" : <unique_id>,
         "scan_id" : <non-unique-id>,
         "beamline_id: : <string>,
         "sample" : {
-            "uid" : <uid>
+            "uid" : <unique_id>
             "id" : <number>,
             "description" : <string>
         }
@@ -114,7 +114,7 @@ With the corresponding end run event as::
         "run_hdr" : <id>,
         "reason" : <string>,
         "time" : <time>,
-        "start_id" : <uid>
+        "start_id" : <unique_id>
     }
 
 The field ``reason`` can be used to describe why a run ended e.g. was it aborted or
@@ -130,9 +130,9 @@ Measure events contain the data measured at a certain instance in time or
 explicit point in a sequence. For example ::
 
     {
-        "uid" : <uid>,
+        "uid" : <unique_id>,
         "seq_num" : <integer>,
-        "ev_desc" : <uid>,
+        "ev_desc" : <unique_id>,
         "data" : {
             "chan1" : {"value" : <value>, "timestamp" : <ts>},
             "chan2" : {"value" : <value>, "timestamp" : <ts>},
@@ -142,15 +142,17 @@ explicit point in a sequence. For example ::
             "chan6" : {"value" : <value>, "timestamp" : <ts>},
             "chan7" : {"value" : <value>, "timestamp" : <ts>},
             "chan8" : {"value" : <value>, "timestamp" : <ts>},
-            "pimte" : {"value" : <uid>, "timestamp" : <ts>}
+            "pimte" : {"value" : <unique_id>, "timestamp" : <ts>}
         }
         "time" : <time>
     }
 
-Where the keys ``uid``, ``ev_desc``, ``time`` and ``timestamp`` refer to the unique id, a link to the event descriptor the time and the EPICS timestamp respectively.
+Where the keys ``uid``, ``ev_desc``, ``time`` and ``timestamp`` refer to 
+the unique id, a link to the event descriptor the time and the EPICS timestamp 
+respectively.
 
-The field ``seq_num`` can be used by step-wise data collection to determine the
-order of the events in a run, as in :ref:`trigger_events`.
+The field ``seq_num`` is used to order the events in the order in which they were
+created.
 
 Event descriptors are used to describe an array of events which can form an
 event stream of a collection of events. For example a run forms
@@ -158,7 +160,7 @@ event_descriptors at run start to define the data collected. For the example
 above ``event`` is described by the ``event_descriptor`` ::
 
     {
-        "uid" : <uid>,
+        "uid" : <unique_id>,
         "type" : "measure",
         "keys" : {
             "chan1" : {"source" : "PV:XF:23ID1-ES{Sclr:1}.S1"},
@@ -171,7 +173,7 @@ above ``event`` is described by the ``event_descriptor`` ::
             "chan8" : {"source" : "PV:XF:23ID1-ES{Sclr:1}.S8"}, 
             "pimte: : {"source" : "FILESTORE:<...>"}
         },
-        "run_hdr" : <uid>,
+        "run_hdr" : <unique_id>,
         "time" : <time>
     }
 

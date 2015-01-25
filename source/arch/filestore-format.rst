@@ -8,7 +8,7 @@ Introduction
 The fileStore is for abstracting access to the contents of
 data stored in files.  It is important to make the distinction between
 *files* and *datasets*, as a single *file* can contain more than one *dataset*.
- There are two core collections, ``FileBase``
+There are two core collections, ``FileBase``
 which stores information about the *files* (where the file physically is,
 what format it is) and  ``FileEventLink`` which stores which file and how
 to extract a single *dataset* from that file.   Thus, by storing a single
