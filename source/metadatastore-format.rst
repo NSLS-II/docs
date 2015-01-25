@@ -49,10 +49,6 @@ These event types are:
 
 - ``measure`` : A measurement of data from external sources. For example,
   reading a scaler or taking a CCD image. 
-- ``trigger`` : An event which occurred because data sources were triggered.
-  For example, starting a scaler or CCD acquisition.
-- ``reduce`` : The result of a data reduction routine, such as background
-  subtraction and suppression.
 - ``analyze`` : The result of a data analysis output.
 - ``start_run`` : An event which is created when a data collection run starts.
 - ``end_run`` : An event which is created when a data collection run ends. 
@@ -65,7 +61,7 @@ Events
 ======
 
 Events are the smallest quantum of data stored in the metadatastore. They group
-values which are associated with temporally identical data. The definition of
+values which are associated with temporally bundled data. The definition of
 "temporally identical" is determined by the DAQ system. For example, the 32
 channels in a scaler can be considered to be temporally identical because they
 are hardware synchronized. Inclusion of a CCD image (with a reference to the
@@ -84,7 +80,7 @@ example, this is where beamline config information is located. The start run
 event also serves as a searchable entity which links all data associated by an
 event. For example::
 
-    start_event_b : {
+    {
         "uid" : <uid>,
         "scan_id" : <non-unique-id>,
         "beamline_id: : <string>,
@@ -113,51 +109,17 @@ event. For example::
 
 With the corresponding end run event as::
 
-    end_run_event_c : {
+    {
         "uid" : <id>,
         "run_hdr" : <id>,
         "reason" : <string>,
-        "time" : <time>
+        "time" : <time>,
+        "start_id" : <uid>
     }
 
 The field ``reason`` can be used to describe why a run ended e.g. was it aborted or
 was there an exception during data collection. The field ``start_id`` is a
 pointer to the start event. 
-
-.. _trigger_events:
-
-Trigger Events and Event Descriptors
-------------------------------------
-
-Trigger events follow the same format as :ref:`measure_events` 
-with the exception that there is usually no data associated with the trigger.
-
-For example a trigger of a scaler and a CCD frame would be::
-
-    event_trigger_a : {
-        "uid" : <uid>,
-        "data" : {
-            "sclr" : {"timestamp" : <ts> }
-            "ccd" : {"timestamp" : <ts> }
-        }
-        "seq_num" : <integer>,
-        "time" : <time>
-    }
-
-    event_trigger_descriptor_a : {
-        "uid" : <uid>,
-        "type" : "trigger",
-        "keys" : {
-            "sclr" : {"source" : "PV:XF:23ID1-ES{Sclr:1}.CNT", "value" : 1 } 
-            "ccd" : {"source" : "PV:XF:23ID1-ES{Dif-Cam:PIMTE}cam1:Acquire",
-                     "value", 1 }
-        }
-        "run_hdr" : <uid>,
-        "time" : <time>
-    }
-
-Where as before ``run`` is a pointer to the start run event. The field
-``seq_num`` is used for stepwise, *"scanning"* type acquisition. 
 
 .. _measure_events:
 
@@ -165,10 +127,9 @@ Measure Events and Event Descriptors
 ------------------------------------
 
 Measure events contain the data measured at a certain instance in time or
-explicit point in a sequence. Unlike :ref:`trigger_events` they contain actual
-data. For example::
+explicit point in a sequence. For example ::
 
-    measure_event_a : {
+    {
         "uid" : <uid>,
         "seq_num" : <integer>,
         "ev_desc" : <uid>,
@@ -186,8 +147,7 @@ data. For example::
         "time" : <time>
     }
 
-Where the keys ``uid``, ``ev_desc`` and ``timestamp`` refer to the unique id, a
-link to the event descriptor and the EPICS timestamp respectively.
+Where the keys ``uid``, ``ev_desc``, ``time`` and ``timestamp`` refer to the unique id, a link to the event descriptor the time and the EPICS timestamp respectively.
 
 The field ``seq_num`` can be used by step-wise data collection to determine the
 order of the events in a run, as in :ref:`trigger_events`.
@@ -197,7 +157,7 @@ event stream of a collection of events. For example a run forms
 event_descriptors at run start to define the data collected. For the example
 above ``event`` is described by the ``event_descriptor`` ::
 
-    event_desc_a : {
+    {
         "uid" : <uid>,
         "type" : "measure",
         "keys" : {
@@ -214,8 +174,4 @@ above ``event`` is described by the ``event_descriptor`` ::
         "run_hdr" : <uid>,
         "time" : <time>
     }
-
-
-
-
 
