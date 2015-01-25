@@ -183,7 +183,6 @@ pseudoxml:
 
 github:
 	@echo "Working Directory $(GH_DIR)"
-	#ID = $(shell git log master -1 --pretty=short --abbrev-commit`)
 	git clone $(GH_URL) $(GH_DIR)
 	cp -rv build/html/* $(GH_DIR)
 	cd $(GH_DIR) && git add -A
