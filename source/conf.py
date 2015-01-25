@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# NSLS-II Standards documentation build configuration file, created by
+# NSLS-II Controls documentation build configuration file, created by
 # sphinx-quickstart on Sun Jan 18 10:00:09 2015.
 #
 # This file is execfile()d with the current directory set to its
@@ -37,6 +37,8 @@ extensions = [
     'sphinx.ext.todo',
     'sphinx.ext.mathjax',
     'sphinx.ext.viewcode',
+    'sphinx.ext.autosummary',
+    'sphinxcontrib.napoleon'
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -52,7 +54,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'NSLS-II Standards'
+project = u'NSLS-II Controls Docs'
 copyright = u'2015, Stuart B. Wilkins'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -137,7 +139,7 @@ html_theme_path = sphinx_bootstrap_theme.get_html_theme_path()
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['_static']
+#html_static_path = ['_static']
 
 # Add any extra paths that contain custom files (such as robots.txt or
 # .htaccess) here, relative to this directory. These files are copied
@@ -186,7 +188,7 @@ html_static_path = ['_static']
 #html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'NSLS-IIStandardsdoc'
+htmlhelp_basename = 'NSLS-IIDocs'
 
 
 # -- Options for LaTeX output ---------------------------------------------
@@ -206,7 +208,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-  ('index', 'NSLS-IIStandards.tex', u'NSLS-II Standards Documentation',
+  ('index', 'NSLS-IIDocs.tex', u'NSLS-II Controls Documentation',
    u'Stuart B. Wilkins', 'manual'),
 ]
 
@@ -236,7 +238,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'nsls-iistandards', u'NSLS-II Standards Documentation',
+    ('index', 'nsls-iicontrolsdocs', u'NSLS-II Controls Documentation',
      [u'Stuart B. Wilkins'], 1)
 ]
 
@@ -250,8 +252,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', 'NSLS-IIStandards', u'NSLS-II Standards Documentation',
-   u'Stuart B. Wilkins', 'NSLS-IIStandards', 'One line description of project.',
+  ('index', 'NSLS-IIControlsDocs', u'NSLS-II Controls Documentation',
+   u'Stuart B. Wilkins', 'NSLS-IICOntrolsDocs', 'One line description of project.',
    'Miscellaneous'),
 ]
 
@@ -270,3 +272,8 @@ texinfo_documents = [
 
 # Example configuration for intersphinx: refer to the Python standard library.
 intersphinx_mapping = {'http://docs.python.org/': None}
+
+
+#Enable showing todos
+
+todo_include_todos = True
