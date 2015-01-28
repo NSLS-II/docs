@@ -82,7 +82,7 @@ event. For example::
 
     {
         "uid" : <unique_id>,
-        "scan_id" : <non-unique-id>,
+        "scan_id" : <non-unique-id>, # is this specified to be an integer, or is anything valid here?
         "beamline_id: : <string>,
         "sample" : {
             "uid" : <unique_id>
@@ -111,7 +111,7 @@ With the corresponding end run event as::
 
     {
         "uid" : <id>,
-        "run_hdr" : <id>,
+        "begin_run_event" : <id>,
         "reason" : <string>,
         "time" : <time>,
         "start_id" : <unique_id>
@@ -143,8 +143,8 @@ explicit point in a sequence. For example ::
             "chan7" : {"value" : <value>, "timestamp" : <ts>},
             "chan8" : {"value" : <value>, "timestamp" : <ts>},
             "pimte" : {"value" : <unique_id>, "timestamp" : <ts>}
-        }
-        "time" : <time>
+        },
+        "time" : <time>,
     }
 
 Where the keys ``uid``, ``ev_desc``, ``time`` and ``timestamp`` refer to 
@@ -161,7 +161,6 @@ above ``event`` is described by the ``event_descriptor`` ::
 
     {
         "uid" : <unique_id>,
-        "type" : "measure",
         "keys" : {
             "chan1" : {"source" : "PV:XF:23ID1-ES{Sclr:1}.S1"},
             "chan2" : {"source" : "PV:XF:23ID1-ES{Sclr:1}.S2"},
@@ -173,6 +172,7 @@ above ``event`` is described by the ``event_descriptor`` ::
             "chan8" : {"source" : "PV:XF:23ID1-ES{Sclr:1}.S8"}, 
             "pimte: : {"source" : "name_of_detector", "external": "FILESTORE:<...>"}
         },
-        "run_hdr" : <unique_id>,
+        "begin_run_event" : <unique_id>,
+        "time" : <time>,
     }
 
