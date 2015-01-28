@@ -171,9 +171,8 @@ above ``event`` is described by the ``event_descriptor`` ::
             "chan6" : {"source" : "PV:XF:23ID1-ES{Sclr:1}.S6"},
             "chan7" : {"source" : "PV:XF:23ID1-ES{Sclr:1}.S7"},
             "chan8" : {"source" : "PV:XF:23ID1-ES{Sclr:1}.S8"}, 
-            "pimte: : {"source" : "FILESTORE:<...>"}
+            "pimte: : {"source" : "name_of_detector", "external": "FILESTORE:<...>"}
         },
         "run_hdr" : <unique_id>,
-        "time" : <time>
     }
 
