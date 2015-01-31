@@ -62,8 +62,9 @@ Documents
 
 .. graphviz:: document_overview.dot
 
-Events
-------
+
+Events view of the world
+========================
 
 Events are the smallest quantum of data stored in the metadatastore. They group
 values which are associated with temporally bundled data. The definition of
@@ -78,44 +79,175 @@ determined by the DAQ philosophy).
 
 
 Event Descriptor Document
-~~~~~~~~~~~~~~~~~~~~~~~~~
+=========================
 
 Schema
 ++++++
+.. highlight:: javascript
+
+As TAC understands to be agreed::
+
+
+
+  {
+      "definitions": {
+          "data_key": {
+              "properties": {
+                  "external": {
+                      "type": "string",
+                      "pattern": "^[A-Z]+:?"
+                  },
+                  "source": {
+                      "type": "string",
+                      "pattern": "^[A-Z]+:"
+                  }
+              },
+              "required": [
+                  "source"
+              ],
+              "type": "object"
+          }
+      },
+      "properties": {
+          "keys": {
+              "additionalProperties": {
+                  "$ref": "#/definitions/data_key"
+              },
+              "type": "object"
+          },
+          "uid": {
+              "type": "string"
+          }
+      },
+      "required": ["uid", "keys"],
+      "type": "object"
+  }
+
+
+As this currently reads::
+
+  {
+      "definitions": {
+          "data_key": {
+              "properties": {
+                  "external": {
+                      "type": "string",
+                      "pattern": "^[A-Z]+:?"
+                  },
+                  "source": {
+                      "type": "string",
+                      "pattern": "^[A-Z]+:"
+                  }
+              },
+              "required": [
+                  "source"
+              ],
+              "type": "object"
+          }
+      },
+      "properties": {
+          "keys": {
+              "additionalProperties": {
+                  "$ref": "#/definitions/data_key"
+              },
+              "type": "object"
+          },
+          "uid": {
+              "type": "string"
+          },
+          "time": {
+              "type": "number",
+              },
+          "begin_run_event": {
+              "type": "string",
+              }
+
+      },
+      "required": ["uid", "keys", "time", "begin_run_event"],
+      "type": "object"
+  }
+
+
+As currently (1c2246d) implemented::
+
+  {
+      "definitions": {
+          "data_key": {
+              "properties": {
+                  "external": {
+                      "pattern": "^[A-Z]+:?",
+                      "type": "string"
+                  },
+                  "source": {
+                      "pattern": "^[A-Z]+:",
+                      "type": "string"
+                  }
+              },
+              "required": [
+                  "source"
+              ],
+              "type": "object"
+          }
+      },
+      "properties": {
+          "begin_run_event": {
+              "type": "string"
+          },
+          "data_keys": {
+              "additionalProperties": {
+                  "$ref": "#/definitions/data_key"
+              },
+              "type": "object"
+          },
+          "time": {
+              "type": "number"
+          },
+          "id": {
+              "type": "string"
+          },
+          "event_type": {
+              "type": "string"
+              }
+      },
+      "required": [
+          "id",
+          "keys",
+          "time",
+          "begin_run_event"
+      ],
+      "type": "object"
+  }
+
 
 The field ``seq_num`` is used to order the events in the order in which they were
 created.
 
-``event_descriptor`` ``keys`` take the form::
+Definitions
++++++++++++
 
-   'key_name': {"source": "NAMESPACE:NAME", "external": "NAMESPACE:NAME"}
+data_key
+~~~~~~~~
+{"source": "NAMESPACE:NAME", "external": "NAMESPACE:NAME"}
 
-    Description of the key_name dictionary:
+source
+  The reference to the physical piece of hardware that produced this data
 
-    source
-        - The reference to the physical piece of hardware that produced this data
+external, optional
+  The reference to the location where the data is being stored.
+  If this key is not present, then the data is stored inside the data
+  field of the corresponding ``Event`` document.
+  If this key is present, then the ``value`` field of the ``data``
+  dictionary inside the ``Event`` document is interpreted as a unique
+  key that can be used to retrieve corresponding data from the
+  service described by the value of the ``external`` key
 
-        NAMESPACE
-            Things like ``PV``. Unclear what other options might be.
-        NAME
-            If NAMESPACE is ``PV`` then this should be the PV. Otherwise,
-            something that makes sense to the user
+The values of both =source= and =external= are (=namespace=, =name=) pairs.
+The name is obligatory for source and optional for external
 
-    external, optional
-        - The reference to the location where the data is being stored.
-          - If this key is not present, then the data is stored inside the data
-            field of the corresponding ``Event`` document.
-          - If this key is present, then the ``value`` field of the ``data``
-            dictionary inside the ``Event`` document is interpreted as a unique
-            key that can be used to retrieve corresponding data from the
-            service described by the value of the ``external`` key
-
-        NAMESPACE
-            Things like ``FILESTORE``. Unclear what other options might be.
-        NAME, optional
-            Used to provide any additional information required to retrieve
-            data that ``NAMESPACE`` does not provide. Really unclear what might
-            go here.
+NAMESPACE
+   Things like ``PV`` or ``FileStore``.
+NAME
+   Thing in the name space.
 
 
 
@@ -144,10 +276,15 @@ above ``event`` is described by the ``event_descriptor``::
         "time": <time>,
     }
 
+Discussion points
++++++++++++++++++
 
+ - Should =begin_run_event= be a property?
+ - Should =time= be a property?
+ - should =data_key= carry information about dimension, shape, type, units, ... of data?
 
 Event Documents
-~~~~~~~~~~~~~~~
+===============
 
 
 Schema
@@ -183,7 +320,7 @@ respectively.
 
 
 Start Run Events
-----------------
+================
 
 
 Schema
@@ -228,7 +365,7 @@ event. For example::
 
 
 End Run Events
---------------
+==============
 
 Schema
 ++++++
