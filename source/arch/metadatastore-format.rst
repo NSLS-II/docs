@@ -83,7 +83,7 @@ Event Descriptor Document
 
 Schema
 ++++++
-.. highlight:: javascript
+.. highlight:: json
 
 As TAC understands to be agreed::
 
@@ -276,7 +276,7 @@ above ``event`` is described by the ``event_descriptor``::
 Discussion points
 +++++++++++++++++
 
- - Should =begin_run_event= be a property?
+ - Should =begin_run_event= be a property / optional?
  - Should =time= be a property?
  - should =data_key= carry information about dimension, shape, type, units, ... of data?
 
@@ -287,6 +287,7 @@ Schema
 ++++++
 
 As documented::
+
   {
       "definitions": {
           "data": {
