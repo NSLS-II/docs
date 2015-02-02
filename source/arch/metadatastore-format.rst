@@ -219,9 +219,6 @@ As currently (1c2246d) implemented::
   }
 
 
-The field ``seq_num`` is used to order the events in the order in which they were
-created.
-
 Definitions
 +++++++++++
 
@@ -286,9 +283,116 @@ Discussion points
 Event Documents
 ===============
 
-
 Schema
 ++++++
+
+As documented::
+  {
+      "definitions": {
+          "data": {
+              "properties": {
+                  "timestamp": {
+                      "type": "number"
+                  },
+                  "value": {
+                      "type": [
+                          "string",
+                          "number"
+                      ]
+                  }
+              },
+              "required": [
+                  "value",
+                  "timestamp"
+              ],
+              "type": "object"
+          }
+      },
+      "properties": {
+          "data": {
+              "additionalProperties": {
+                  "$ref": "#/definitions/data"
+              },
+              "type": "object"
+          },
+          "ev_desc": {
+              "type": "string"
+          },
+          "seq_num": {
+              "type": "number"
+          },
+          "time": {
+              "type": "number"
+          },
+          "uid": {
+              "type": "string"
+          }
+      },
+      "required": [
+          "uid",
+          "data",
+          "time",
+          "ev_desc"
+      ],
+      "type": "object"
+  }
+
+
+As implemented::
+
+  {
+      "definitions": {
+          "data": {
+              "properties": {
+                  "timestamp": {
+                      "type": "number"
+                  },
+                  "value": {
+                      "type": [
+                          "string",
+                          "number"
+                      ]
+                  }
+              },
+              "required": [
+                  "value",
+                  "timestamp"
+              ],
+              "type": "object"
+          }
+      },
+      "properties": {
+          "data": {
+              "additionalProperties": {
+                  "$ref": "#/definitions/data"
+              },
+              "type": "object"
+          },
+          "descriptor": {
+              "type": "string"
+          },
+          "seq_no": {
+              "type": "number"
+          },
+          "time": {
+              "type": "number"
+          },
+          "time_as_datetime": {
+              "type": "string"
+          }
+      },
+      "required": [
+          "data",
+          "time",
+          "descriptor",
+	  "seq_no"
+      ],
+      "type": "object"
+  }
+
+
+The field ``seq_num`` is used to order the events in the order in which they were
+created.
 
 Example
 +++++++
@@ -325,6 +429,9 @@ Start Run Events
 
 Schema
 ++++++
+
+As TAC understands it to be ::
+
 
 Example
 +++++++
