@@ -256,22 +256,22 @@ event stream of a collection of events. For example a run forms
 event_descriptors at run start to define the data collected. For the example
 above ``event`` is described by the ``event_descriptor``::
 
-    {
-        "uid": <unique_id>,
-        "keys": {
-            "chan1": {"source": "PV:XF:23ID1-ES{Sclr:1}.S1"},
-            "chan2": {"source": "PV:XF:23ID1-ES{Sclr:1}.S2"},
-            "chan3": {"source": "PV:XF:23ID1-ES{Sclr:1}.S3"},
-            "chan4": {"source": "PV:XF:23ID1-ES{Sclr:1}.S4"},
-            "chan5": {"source": "PV:XF:23ID1-ES{Sclr:1}.S5"},
-            "chan6": {"source": "PV:XF:23ID1-ES{Sclr:1}.S6"},
-            "chan7": {"source": "PV:XF:23ID1-ES{Sclr:1}.S7"},
-            "chan8": {"source": "PV:XF:23ID1-ES{Sclr:1}.S8"},
-            "pimte": {"source": "CCD:name_of_detector", "external": "FILESTORE"}
-        },
-        "begin_run_event": <unique_id>,
-        "time": <time>,
-    }
+  {
+      "uid": "f05338e0-ed07-4e15-8d7b-06a60dcebaff",
+      "keys": {
+          "chan1": {"source": "PV:XF:23ID1-ES{Sclr:1}.S1"},
+          "chan2": {"source": "PV:XF:23ID1-ES{Sclr:1}.S2"},
+          "chan3": {"source": "PV:XF:23ID1-ES{Sclr:1}.S3"},
+          "chan4": {"source": "PV:XF:23ID1-ES{Sclr:1}.S4"},
+          "chan5": {"source": "PV:XF:23ID1-ES{Sclr:1}.S5"},
+          "chan6": {"source": "PV:XF:23ID1-ES{Sclr:1}.S6"},
+          "chan7": {"source": "PV:XF:23ID1-ES{Sclr:1}.S7"},
+          "chan8": {"source": "PV:XF:23ID1-ES{Sclr:1}.S8"},
+          "pimte": {"source": "CCD:name_of_detector", "external": "FILESTORE"}
+      },
+      "begin_run_event": "2dc386b5-cfee-4906-98e9-1a8322581a92",
+      "time": 1422940263.7583334,
+  }
 
 Discussion points
 +++++++++++++++++
@@ -402,21 +402,22 @@ Measure events contain the data measured at a certain instance in time or
 explicit point in a sequence. For example::
 
     {
-        "uid": <unique_id>,
-        "seq_num": <integer>,
-        "ev_desc": <unique_id>,
+        "uid": "4609e51f-cf38-4c2a-a6ea-483edc461e43",
+        "seq_num": 42,
+        "ev_desc": "f05338e0-ed07-4e15-8d7b-06a60dcebaff",
         "data": {
-            "chan1": {"value": <value>, "timestamp": <ts>},
-            "chan2": {"value": <value>, "timestamp": <ts>},
-            "chan3": {"value": <value>, "timestamp": <ts>},
-            "chan4": {"value": <value>, "timestamp": <ts>},
-            "chan5": {"value": <value>, "timestamp": <ts>},
-            "chan6": {"value": <value>, "timestamp": <ts>},
-            "chan7": {"value": <value>, "timestamp": <ts>},
-            "chan8": {"value": <value>, "timestamp": <ts>},
-            "pimte": {"value": <unique_id>, "timestamp": <ts>}
+            "chan1": {"value": 3.14, "timestamp": 1422940467.3101866},
+            "chan2": {"value": 3.14, "timestamp": 1422940467.3101866},
+            "chan3": {"value": 3.14, "timestamp": 1422940467.3101866},
+            "chan4": {"value": 3.14, "timestamp": 1422940467.3101866},
+            "chan5": {"value": 3.14, "timestamp": 1422940467.3101866},
+            "chan6": {"value": 3.14, "timestamp": 1422940467.3101866},
+            "chan7": {"value": 3.14, "timestamp": 1422940467.3101866},
+            "chan8": {"value": 3.14, "timestamp": 1422940467.3101866},
+            "pimte": {"value": "8cad7f02-c3e1-4e76-a823-94a2a7d23f6b",
+                      "timestamp": 1422940481.8930786}
         },
-        "time": <time>,
+        "time": 1422940508.3491018,
     }
 
 Where the keys ``uid``, ``ev_desc``, ``time`` and ``timestamp`` refer to
@@ -508,30 +509,30 @@ event also serves as a searchable entity which links all data associated by an
 event. For example::
 
     {
-        "uid": <unique_id>,
-        "scan_id": <non-unique-id>, # anything sortable
-        "beamline_id:: <string>,
+        "uid": "2dc386b5-cfee-4906-98e9-1a8322581a92",
+        "scan_id": "ascan_52",
+        "beamline_id": "CSX",
         "sample": {
-            "uid": <unique_id>
-            "id": <number>,
-            "description": <string>
-        }
-        "project": <string>,
+            "uid": "0a785292-05c5-4c1b-bd9a-f2dd5b0580c8",
+            "id": 9,
+            "description": "A small piece of cheese"
+        },
+        "project": "Cheese_shop",
         "beamline_config": {
             "diffractometer": {
-                "geometry": <string>,
+                "geometry": "swiss",
                 "xtal_lattice": {
-                    "a": <float>,
-                    "b": <float>,
-                    "c": <float>,
-                    "alpha": <float>,
-                    "beta": <float>,
-                    "gamma": <float>
-                }
-                "UB": [...]
+                    "a": 1.1,
+                    "b": 2.2,
+                    "c": 3.3,
+                    "alpha": 4.4,
+                    "beta": 5.5,
+                    "gamma": 6.6
+                },
+                "UB": [1, 2, 3, 4]
             }
         },
-        "time": <time>
+        "time": 1422940625.2198992
     }
 
 
@@ -575,7 +576,7 @@ As implemented ::
               "type": "string"
           },
           "custom": {
-              "type": "obejct"
+              "type": "object"
           },
           "reason": {
               "type": "string"
@@ -602,11 +603,11 @@ Example
 With the corresponding end run event as::
 
     {
-        "uid": <id>,
-        "begin_run_event": <id>,
-        "reason": <string>,
-        "time": <time>,
-        "start_id": <unique_id>
+        "uid": "60bac4c7-e2d3-4c4b-a553-3790a8add866",
+        "begin_run_event": "2dc386b5-cfee-4906-98e9-1a8322581a92",
+        "reason": "FAIL: mouse ate cheese",
+        "time": 1422940679.72617,
+        "start_id": "95cc29eb-e4d8-429d-84b0-880cf8c42e7e"
     }
 
 The field ``reason`` can be used to describe why a run ended e.g. was it aborted or
