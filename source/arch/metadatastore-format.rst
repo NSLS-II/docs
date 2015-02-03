@@ -431,7 +431,71 @@ Start Run Events
 Schema
 ++++++
 
-As TAC understands it to be ::
+As documented::
+
+  {
+      "properties": {
+          "beamline_config": {
+              "type": "object"
+          },
+          "project": {
+              "type": "string"
+          },
+          "sample": {
+              "type": "object"
+          },
+          "scan_id": {
+              "type": "string"
+          },
+          "time": {
+              "type": "number"
+          },
+          "uid": {
+              "type": "string"
+          }
+      },
+      "required": [
+          "uid",
+          "time"
+       ],
+       "type": "object"
+  }
+
+
+
+As implemented ::
+
+  {
+        "properties": {
+          "beamline_config": {
+              "type": "object"
+          },
+          "beamline_id": {
+              "type": "string"
+          },
+          "custom": {
+              "type": "object"
+          },
+          "owner": {
+              "type": "string"
+          },
+          "scan_id": {
+              "type": "string"
+          },
+          "time": {
+              "type": "number"
+          },
+          "time_as_datetime": {
+              "type": "string"
+          }
+      },
+      "required": [
+         "time",
+         "owner",
+         "beamline_id"
+      ],
+      "type": "object"
+  }
 
 
 Example
@@ -477,6 +541,59 @@ End Run Events
 
 Schema
 ++++++
+As Documented ::
+
+  {
+      "properties": {
+          "begin_run_event": {
+              "type": "string"
+          },
+          "reason": {
+              "type": "string"
+          },
+          "start_id": {
+              "type": "string"
+          },
+          "time": {
+              "type": "number"
+          }
+      },
+      "required": [
+          "begin_run_event",
+          "timer",
+          "start_id"
+      ],
+      "type": "object"
+  }
+
+As implemented ::
+
+
+  {
+      "properties": {
+          "begin_run_event": {
+              "type": "string"
+          },
+          "custom": {
+              "type": "obejct"
+          },
+          "reason": {
+              "type": "string"
+          },
+          "time": {
+              "type": "number"
+          },
+          "time_as_datetime": {
+              "type": "string"
+          }
+      },
+      "required": [
+          "begin_run_event",
+          "time"
+      ],
+      "type": "object"
+  }
+
 
 Example
 +++++++
