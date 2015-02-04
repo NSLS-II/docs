@@ -39,7 +39,7 @@ from docutils import nodes
 from docutils import statemachine
 from sphinx.util.compat import Directive
 from sphinx.util.nodes import set_source_info
-
+import difflib
 import jsonschema
 
 
@@ -47,10 +47,34 @@ class jsonschema_node(nodes.Element):
     pass
 
 
+class diff_node(nodes.Element):
+    pass
+
+
 class AttrDict(dict):
     def __init__(self, *args, **kwargs):
         super(AttrDict, self).__init__(*args, **kwargs)
         self.__dict__ = self
+
+
+def pprint_json(jsdoc):
+    """
+    Pretty-print a json document
+
+    Parameters
+    ----------
+    jsdoc : dict
+        The json document to be pretty printed
+
+    Returns
+    -------
+    pprint_str : str
+        The json document 'pretty printed' as single string
+        with '\\n'
+
+    """
+    return json.dumps(jsdoc, sort_keys=True, indent=4,
+               separators=(',', ': '))
 
 
 def split_content(l):
@@ -69,23 +93,18 @@ def split_content(l):
             else:
                 # A complex number will never validate
                 json_content = 1+1j
+        print(comment)
         parts.append(AttrDict({
-            'should_pass': should_pass,
             'content': content,
             'json': json_content,
             'comment': comment}))
 
     for line in l:
+        line = line.strip().rstrip()
         if line.startswith('//'):
             comment.append(line[2:].lstrip())
         elif line == '--':
             add_part()
-            should_pass = True
-            part = []
-            comment = []
-        elif line == '--X':
-            add_part()
-            should_pass = False
             part = []
             comment = []
         else:
@@ -93,53 +112,19 @@ def split_content(l):
 
     add_part()
 
-    return parts[0], parts[1:]
+    return parts
 
 
-class SchemaExampleDirective(Directive):
+class SchemaDiffDirective(Directive):
     has_content = True
     validate = True
 
     def run(self):
         result = []
 
-        schema, parts = split_content(self.content)
-
-        container = jsonschema_node()
-        set_source_info(self, container)
-        literal = nodes.literal_block(
-            schema.content, schema.content)
-        literal['language'] = 'javascript'
-        literal['classes'] = container['classes'] = ['jsonschema']
-        set_source_info(self, literal)
-        container.children.append(literal)
-        result.append(container)
+        parts = split_content(self.content)
 
         for part in parts:
-            if self.validate:
-                is_valid = True
-                try:
-                    jsonschema.validate(part.json, schema.json)
-                except jsonschema.ValidationError as e:
-                    is_valid = False
-                except jsonschema.SchemaError as e:
-                    raise ValueError("Schema is invalid:\n{0}\n\n{1}".format(
-                        str(e), schema.content))
-
-                if is_valid != part.should_pass:
-                    if part.should_pass:
-                        raise ValueError(
-                            "Doc says fragment should pass, "
-                            "but it does not validate:\n" +
-                            part.content)
-                    else:
-                        raise ValueError(
-                            "Doc says fragment should not pass, "
-                            "but it validates:\n" +
-                            part.content)
-            else:
-                is_valid = part.should_pass
-
             if len(part.comment):
                 paragraph = nodes.paragraph('', '')
                 comment = statemachine.StringList(part.comment)
@@ -151,22 +136,37 @@ class SchemaExampleDirective(Directive):
 
             container = jsonschema_node()
             set_source_info(self, container)
+            pprint_content = pprint_json(part.json)
             literal = nodes.literal_block(
-                part.content, part.content)
-            literal['language'] = 'javascript'
-            if is_valid:
-                literal['classes'] = container['classes'] = ['jsonschema-pass']
-            else:
-                literal['classes'] = container['classes'] = ['jsonschema-fail']
+                pprint_content, pprint_content)
+
+            literal['language'] = 'json'
             set_source_info(self, literal)
             container.children.append(literal)
             result.append(container)
 
+        for indx, part in enumerate(parts):
+            for other_part in parts[(indx + 1):]:
+                p1 = pprint_json(part.json).split('\n')
+                p2 = pprint_json(other_part.json).split('\n')
+                diff_str = '\n'.join(difflib.unified_diff(p2, p1,
+                                     lineterm='',
+                                     fromfile=(other_part.comment[0]
+                                               if other_part.comment else ''),
+                                     tofile=(part.comment[0]
+                                             if part.comment else ''),))
+
+                container = diff_node()
+                set_source_info(self, container)
+                literal = nodes.literal_block(
+                    diff_str, diff_str)
+
+                literal['language'] = 'diff'
+                set_source_info(self, literal)
+                container.children.append(literal)
+                result.append(container)
+
         return result
-
-
-class SchemaExampleNoValidationDirective(SchemaExampleDirective):
-    validate = False
 
 
 def visit_jsonschema_node_html(self, node):
@@ -209,14 +209,33 @@ def depart_jsonschema_node_latex(self, node):
         self.body.append(r"\end{adjustwidth}")
 
 
+def visit_diff_node_html(self, node):
+    pass
+
+
+def depart_diff_node_html(self, node):
+    pass
+
+
+def visit_diff_node_latex(self, node):
+    pass
+
+
+def depart_diff_node_latex(self, node):
+    pass
+
+
 def setup(app):
-    app.add_directive('schema_example', SchemaExampleDirective)
-    app.add_directive('schema_example_novalid',
-                      SchemaExampleNoValidationDirective)
+    app.add_directive('schema_diff', SchemaDiffDirective)
 
     app.add_node(jsonschema_node,
-                 html=(visit_jsonschema_node_html, depart_jsonschema_node_html),
-                 latex=(visit_jsonschema_node_latex, depart_jsonschema_node_latex))
+                 html=(visit_jsonschema_node_html,
+                       depart_jsonschema_node_html),
+                 latex=(visit_jsonschema_node_latex,
+                        depart_jsonschema_node_latex))
+    app.add_node(diff_node,
+                 html=(visit_diff_node_html, depart_diff_node_html),
+                 latex=(visit_diff_node_latex, depart_diff_node_latex))
 
 
 latex_preamble = r"""

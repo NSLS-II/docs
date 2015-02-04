@@ -78,156 +78,167 @@ side timestamp of when the even was created. The same logic is applied to
 determined by the DAQ philosophy).
 
 
+
 Event Descriptor Document
 =========================
+.. highlight:: json
 
 Schema
 ++++++
-.. highlight:: json
 
-As TAC understands to be agreed::
+.. schema_diff::
 
-  {
-      "definitions": {
-          "data_key": {
-              "properties": {
-                  "external": {
-                      "type": "string",
-                      "pattern": "^[A-Z]+:?"
-                  },
-                  "source": {
-                      "type": "string",
-                      "pattern": "^[A-Z]+:"
-                  },
-                  "shape": {
-                      "type": "array",
-                      "items": {
-                          "type": "number"
-                          }
-                  },
-                  "integration_time": {
-                      "type": "number"
-                  }
-                  "dtype": {
-                      "type": "string",
-                      "enum": ["string", "number", "array", "boolean"]
-                  }
-              },
-              "required": [
-                  "source"
-              ],
-              "type": "object"
-          }
-      },
-      "properties": {
-          "keys": {
-              "additionalProperties": {
-                  "$ref": "#/definitions/data_key"
-              },
-              "type": "object"
-          },
-          "uid": {
-              "type": "string"
-          }
-      },
-      "required": ["uid", "keys"],
-      "type": "object"
-  }
+    // TAC
+    {
+        "definitions": {
+            "data_key": {
+                "properties": {
+                    "dtype": {
+                        "enum": [
+                            "string",
+                            "number",
+                            "array",
+                            "boolean"
+                        ],
+                        "type": "string"
+                    },
+                    "external": {
+                        "pattern": "^[A-Z]+:?",
+                        "type": "string"
+                    },
+                    "integration_time": {
+                        "type": "number"
+                    },
+                    "shape": {
+                        "items": {
+                            "type": "number"
+                        },
+                        "type": "array"
+                    },
+                    "source": {
+                        "pattern": "^[A-Z]+:",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "source"
+                ],
+                "type": "object"
+            }
+        },
+        "properties": {
+            "keys": {
+                "additionalProperties": {
+                    "$ref": "#/definitions/data_key"
+                },
+                "type": "object"
+            },
+            "uid": {
+                "type": "string"
+            }
+        },
+        "required": [
+            "uid",
+            "keys"
+        ],
+        "type": "object"
+    }
+    --
+    // as documented
+    {
+    "definitions": {
+        "data_key": {
+            "properties": {
+                "external": {
+                    "pattern": "^[A-Z]+:?",
+                    "type": "string"
+                },
+                "source": {
+                    "pattern": "^[A-Z]+:",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "source"
+            ],
+            "type": "object"
+        }
+    },
+    "properties": {
+        "begin_run_event": {
+            "type": "string"
+        },
+        "keys": {
+            "additionalProperties": {
+                "$ref": "#/definitions/data_key"
+            },
+            "type": "object"
+        },
+        "time": {
+            "type": "number"
+        },
+        "uid": {
+            "type": "string"
+        }
+    },
+    "required": [
+        "uid",
+        "keys",
+        "time",
+        "begin_run_event"
+    ],
+    "type": "object"
+    }
+    --
+    // As currently (1c2246d) implemented
 
-
-As this currently reads::
-
-  {
-      "definitions": {
-          "data_key": {
-              "properties": {
-                  "external": {
-                      "type": "string",
-                      "pattern": "^[A-Z]+:?"
-                  },
-                  "source": {
-                      "type": "string",
-                      "pattern": "^[A-Z]+:"
-                  }
-              },
-              "required": [
-                  "source"
-              ],
-              "type": "object"
-          }
-      },
-      "properties": {
-          "keys": {
-              "additionalProperties": {
-                  "$ref": "#/definitions/data_key"
-              },
-              "type": "object"
-          },
-          "uid": {
-              "type": "string"
-          },
-          "time": {
-              "type": "number",
-              },
-          "begin_run_event": {
-              "type": "string",
-              }
-
-      },
-      "required": ["uid", "keys", "time", "begin_run_event"],
-      "type": "object"
-  }
-
-
-As currently (1c2246d) implemented::
-
-  {
-      "definitions": {
-          "data_key": {
-              "properties": {
-                  "external": {
-                      "pattern": "^[A-Z]+:?",
-                      "type": "string"
-                  },
-                  "source": {
-                      "pattern": "^[A-Z]+:",
-                      "type": "string"
-                  }
-              },
-              "required": [
-                  "source"
-              ],
-              "type": "object"
-          }
-      },
-      "properties": {
-          "begin_run_event": {
-              "type": "string"
-          },
-          "data_keys": {
-              "additionalProperties": {
-                  "$ref": "#/definitions/data_key"
-              },
-              "type": "object"
-          },
-          "time": {
-              "type": "number"
-          },
-          "id": {
-              "type": "string"
-          },
-          "event_type": {
-              "type": "string"
-              }
-      },
-      "required": [
-          "id",
-          "keys",
-          "time",
-          "begin_run_event"
-      ],
-      "type": "object"
-  }
+    {
+        "definitions": {
+            "data_key": {
+                "properties": {
+                    "external": {
+                        "pattern": "^[A-Z]+:?",
+                        "type": "string"
+                    },
+                    "source": {
+                        "pattern": "^[A-Z]+:",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "source"
+                ],
+                "type": "object"
+            }
+        },
+        "properties": {
+            "begin_run_event": {
+                "type": "string"
+            },
+            "data_keys": {
+                "additionalProperties": {
+                    "$ref": "#/definitions/data_key"
+                },
+                "type": "object"
+            },
+            "time": {
+                "type": "number"
+            },
+            "id": {
+                "type": "string"
+            },
+            "event_type": {
+                "type": "string"
+                }
+        },
+        "required": [
+            "id",
+            "keys",
+            "time",
+            "begin_run_event"
+        ],
+        "type": "object"
+    }
 
 
 Definitions
@@ -296,8 +307,8 @@ Event Documents
 
 Schema
 ++++++
-
-As documented::
+.. schema_diff::
+  // As documented
 
   {
       "definitions": {
@@ -348,9 +359,9 @@ As documented::
       ],
       "type": "object"
   }
+  --
 
-
-As implemented::
+  // As implemented
 
   {
       "definitions": {
@@ -442,8 +453,9 @@ Start Run Events
 
 Schema
 ++++++
+.. schema_diff::
 
-As documented::
+  // As documented
 
   {
       "properties": {
@@ -472,10 +484,10 @@ As documented::
        ],
        "type": "object"
   }
+  --
 
 
-
-As implemented ::
+  // As implemented
 
   {
         "properties": {
@@ -553,7 +565,10 @@ End Run Events
 
 Schema
 ++++++
-As Documented ::
+
+.. schema_diff::
+
+  // As Documented
 
   {
       "properties": {
@@ -577,8 +592,8 @@ As Documented ::
       ],
       "type": "object"
   }
-
-As implemented ::
+  --
+  // As implemented
 
 
   {
