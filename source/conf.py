@@ -19,7 +19,7 @@ import os
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #sys.path.insert(0, os.path.abspath('.'))
-
+sys.path.insert(0, os.path.abspath(os.path.dirname('__file__')))
 import sphinx_bootstrap_theme
 
 # -- General configuration ------------------------------------------------
@@ -39,7 +39,8 @@ extensions = [
     'sphinx.ext.viewcode',
     'sphinx.ext.autosummary',
     'sphinx.ext.graphviz',
-    'sphinxcontrib.napoleon'
+    'sphinxcontrib.napoleon',
+    'sphinxext.jsonschema_diff',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
