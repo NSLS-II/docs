@@ -468,6 +468,9 @@ Schema
           "sample": {
               "type": "object"
           },
+	  "beamline_id": {
+              "type": "string"
+          },
           "scan_id": {
               "type": "string"
           },
