@@ -53,7 +53,7 @@ class AttrDict(dict):
         self.__dict__ = self
 
 
-def split_content(l):
+def split_content(input_string):
     parts = []
     should_pass = True
     part = []
@@ -75,7 +75,7 @@ def split_content(l):
             'json': json_content,
             'comment': comment}))
 
-    for line in l:
+    for line in input_string:
         if line.startswith('//'):
             comment.append(line[2:].lstrip())
         elif line == '--':
