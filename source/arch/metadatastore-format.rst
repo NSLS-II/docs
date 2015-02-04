@@ -87,8 +87,6 @@ Schema
 
 As TAC understands to be agreed::
 
-
-
   {
       "definitions": {
           "data_key": {
@@ -100,6 +98,19 @@ As TAC understands to be agreed::
                   "source": {
                       "type": "string",
                       "pattern": "^[A-Z]+:"
+                  },
+                  "shape": {
+                      "type": "array",
+                      "items": {
+                          "type": "number"
+                          }
+                  },
+                  "integration_time": {
+                      "type": "number"
+                  }
+                  "dtype": {
+                      "type": "string",
+                      "enum": ["string", "number", "array", "boolean"]
                   }
               },
               "required": [
