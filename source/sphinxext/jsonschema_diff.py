@@ -77,7 +77,6 @@ def pprint_json(jsdoc):
                separators=(',', ': '))
 
 
-
 def split_content(input_string):
     parts = []
     should_pass = True
@@ -87,6 +86,7 @@ def split_content(input_string):
     def add_part():
         content = '\n'.join(part)
         try:
+
             json_content = json.loads(content)
         except ValueError:
             if should_pass:
@@ -101,7 +101,7 @@ def split_content(input_string):
             'comment': comment}))
 
     for line in input_string:
-        line = line.strip().rstrip()
+        line = line.strip()
 
         if line.startswith('//'):
             comment.append(line[2:].lstrip())
