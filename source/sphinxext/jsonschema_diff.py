@@ -104,13 +104,16 @@ def split_content(input_string):
         line = line.strip()
 
         if line.startswith('//'):
-            comment.append(line[2:].lstrip())
+            line = line[2:].lstrip()
+            if line:
+                comment.append(line)
         elif line == '--':
             add_part()
             part = []
             comment = []
         else:
-            part.append(line)
+            if line:
+                part.append(line)
 
     add_part()
 
