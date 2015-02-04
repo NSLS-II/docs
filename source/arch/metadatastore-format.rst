@@ -298,9 +298,9 @@ above ``event`` is described by the ``event_descriptor``::
 Discussion points
 +++++++++++++++++
 
- - Should =begin_run_event= be a property / optional?
- - Should =time= be a property?
- - should =data_key= carry information about dimension, shape, type, units, ... of data?
+- Should ==begin_run_event== be a property / optional?
+- Should =time= be a property?
+- should =data_key= carry information about dimension, shape, type, units, ... of data?
 
 Event Documents
 ===============

@@ -100,7 +100,6 @@ def split_content(input_string):
             'json': json_content,
             'comment': comment}))
 
-
     for line in input_string:
         line = line.strip().rstrip()
 
