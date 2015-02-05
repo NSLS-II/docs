@@ -1,0 +1,54 @@
+    {
+        "definitions": {
+            "data_key": {
+                "properties": {
+                    "dtype": {
+                        "enum": [
+                            "string",
+                            "number",
+                            "array",
+                            "boolean"
+                        ],
+                        "type": "string"
+                    },
+                    "external": {
+                        "pattern": "^[A-Z]+:?",
+                        "type": "string"
+                    },
+                    "integration_time": {
+                        "type": "number"
+                    },
+                    "shape": {
+                        "items": {
+                            "type": "number"
+                        },
+                        "type": "array"
+                    },
+                    "source": {
+                        "pattern": "^[A-Z]+:",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "source"
+                ],
+                "type": "object"
+            }
+        },
+        "properties": {
+            "keys": {
+                "additionalProperties": {
+                    "$ref": "#/definitions/data_key"
+                },
+                "type": "object"
+            },
+            "uid": {
+                "type": "string"
+            }
+        },
+        "required": [
+            "uid",
+            "keys"
+        ],
+        "type": "object"
+    }

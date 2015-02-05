@@ -34,7 +34,7 @@
 #
 
 import json
-
+import os
 from docutils import nodes
 from docutils import statemachine
 from sphinx.util.compat import Directive
@@ -77,49 +77,6 @@ def pprint_json(jsdoc):
                separators=(',', ': '))
 
 
-def split_content(input_string):
-    parts = []
-    should_pass = True
-    part = []
-    comment = []
-
-    def add_part():
-        content = '\n'.join(part)
-        try:
-
-            json_content = json.loads(content)
-        except ValueError:
-            if should_pass:
-                raise ValueError("Invalid json: {0}".format(content))
-            else:
-                # A complex number will never validate
-                json_content = 1+1j
-        print(comment)
-        parts.append(AttrDict({
-            'content': content,
-            'json': json_content,
-            'comment': comment}))
-
-    for line in input_string:
-        line = line.strip()
-
-        if line.startswith('//'):
-            line = line[2:].lstrip()
-            if line:
-                comment.append(line)
-        elif line == '--':
-            add_part()
-            part = []
-            comment = []
-        else:
-            if line:
-                part.append(line)
-
-    add_part()
-
-    return parts
-
-
 class SchemaDiffDirective(Directive):
     has_content = True
     validate = True
@@ -127,7 +84,7 @@ class SchemaDiffDirective(Directive):
     def run(self):
         result = []
 
-        parts = split_content(self.content)
+        parts = self.split_content(self.content)
 
         for part in parts:
             if len(part.comment):
@@ -172,6 +129,58 @@ class SchemaDiffDirective(Directive):
                 result.append(container)
 
         return result
+
+    def split_content(self, input_string):
+        parts = []
+        should_pass = True
+        part = []
+        comment = []
+
+        def add_part():
+            content = '\n'.join(part)
+            if len(part) == 1:
+                try:
+                    rst_file = self.state_machine.document.attributes['source']
+                    print(rst_file)
+                    test_path = os.path.join(os.path.dirname(rst_file),
+                                              content)
+                    print(test_path)
+                    with open(test_path, 'r') as fin:
+                        content = '\n'.join(fin)
+                except FileNotFoundError:
+                    pass
+            try:
+                json_content = json.loads(content)
+            except ValueError:
+                if should_pass:
+                    raise ValueError("Invalid json: {0}".format(content))
+                else:
+                    # A complex number will never validate
+                    json_content = 1+1j
+            print(comment)
+            parts.append(AttrDict({
+                'content': content,
+                'json': json_content,
+                'comment': comment}))
+
+        for line in input_string:
+            line = line.strip()
+
+            if line.startswith('//'):
+                line = line[2:].lstrip()
+                if line:
+                    comment.append(line)
+            elif line == '--':
+                add_part()
+                part = []
+                comment = []
+            else:
+                if line:
+                    part.append(line)
+
+        add_part()
+
+        return parts
 
 
 def visit_jsonschema_node_html(self, node):

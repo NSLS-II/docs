@@ -88,61 +88,8 @@ Schema
 
 .. schema_diff::
 
-    // TAC
-    {
-        "definitions": {
-            "data_key": {
-                "properties": {
-                    "dtype": {
-                        "enum": [
-                            "string",
-                            "number",
-                            "array",
-                            "boolean"
-                        ],
-                        "type": "string"
-                    },
-                    "external": {
-                        "pattern": "^[A-Z]+:?",
-                        "type": "string"
-                    },
-                    "integration_time": {
-                        "type": "number"
-                    },
-                    "shape": {
-                        "items": {
-                            "type": "number"
-                        },
-                        "type": "array"
-                    },
-                    "source": {
-                        "pattern": "^[A-Z]+:",
-                        "type": "string"
-                    }
-                },
-                "required": [
-                    "source"
-                ],
-                "type": "object"
-            }
-        },
-        "properties": {
-            "keys": {
-                "additionalProperties": {
-                    "$ref": "#/definitions/data_key"
-                },
-                "type": "object"
-            },
-            "uid": {
-                "type": "string"
-            }
-        },
-        "required": [
-            "uid",
-            "keys"
-        ],
-        "type": "object"
-    }
+    // Proposed
+    ev_desc_prop.json
     --
     // as documented
     {
@@ -189,7 +136,9 @@ Schema
     ],
     "type": "object"
     }
+
     --
+
     // As currently (1c2246d) implemented
 
     {
@@ -238,7 +187,7 @@ Schema
             "begin_run_event"
         ],
         "type": "object"
-    }
+     }
 
 
 Definitions
