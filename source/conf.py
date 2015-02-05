@@ -41,6 +41,8 @@ extensions = [
     'sphinx.ext.graphviz',
     'sphinxcontrib.napoleon',
     'sphinxext.jsonschema_diff',
+    'IPython.sphinxext.ipython_directive',
+    'IPython.sphinxext.ipython_console_highlighting',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -308,3 +310,5 @@ import six
 if six.PY3:
     import queue
     sys.modules['Queue'] = queue
+
+ipython_savefig_dir = ''

@@ -134,9 +134,13 @@ Example
 Event descriptors are used to describe an array of events which can form an
 event stream of a collection of events. For example a run forms
 event_descriptors at run start to define the data collected. For the example
-above ``event`` is described by the ``event_descriptor``::
+above ``event`` is described by the ``event_descriptor``
 
-  {
+.. ipython:: python
+
+  import json
+  import jsonschema
+  ev_desc = {
       "uid": "f05338e0-ed07-4e15-8d7b-06a60dcebaff",
       "keys": {
           "chan1": {"source": "PV:XF:23ID1-ES{Sclr:1}.S1"},
@@ -152,13 +156,20 @@ above ``event`` is described by the ``event_descriptor``::
       "begin_run_event": "2dc386b5-cfee-4906-98e9-1a8322581a92",
       "time": 1422940263.7583334,
   }
+  with open('source/arch/ev_desc_prop.json') as fin:
+      schema_prop = json.load(fin)
+
+  jsonschema.validate(ev_desc, schema_prop) is None
+
+Note that ``validate`` returns ``None`` for documents that pass and raises
+exceptions for those that do not.
 
 Discussion points
 +++++++++++++++++
 
-- Should ==begin_run_event== be a property / optional?
-- Should =time= be a property?
-- should =data_key= carry information about dimension, shape, type, units, ... of data?
+- Should ``begin_run_event`` be a property / optional?
+- Should ``time`` be a property?
+- should ``data_key`` carry information about dimension, shape, type, units, ... of data? Should it be allowed?  Should it be required?
 
 Event Documents
 ===============
