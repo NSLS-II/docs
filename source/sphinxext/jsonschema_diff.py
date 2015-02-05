@@ -77,58 +77,9 @@ def pprint_json(jsdoc):
                separators=(',', ': '))
 
 
-class SchemaDiffDirective(Directive):
+class _baseSchemaDirective(Directive):
     has_content = True
     validate = True
-
-    def run(self):
-        result = []
-
-        parts = self.split_content(self.content)
-
-        for part in parts:
-            if len(part.comment):
-                paragraph = nodes.paragraph('', '')
-                comment = statemachine.StringList(part.comment)
-                comment.parent = self.content.parent
-                self.state.nested_parse(comment, 0, paragraph)
-                paragraph['classes'] = ['jsonschema-comment']
-                set_source_info(self, paragraph)
-                result.append(paragraph)
-
-            container = jsonschema_node()
-            set_source_info(self, container)
-            pprint_content = pprint_json(part.json)
-            literal = nodes.literal_block(
-                pprint_content, pprint_content)
-
-            literal['language'] = 'json'
-            set_source_info(self, literal)
-            container.children.append(literal)
-            result.append(container)
-
-        for indx, part in enumerate(parts):
-            for other_part in parts[(indx + 1):]:
-                p1 = pprint_json(part.json).split('\n')
-                p2 = pprint_json(other_part.json).split('\n')
-                diff_str = '\n'.join(difflib.unified_diff(p2, p1,
-                                     lineterm='',
-                                     fromfile=(other_part.comment[0]
-                                               if other_part.comment else ''),
-                                     tofile=(part.comment[0]
-                                             if part.comment else ''),))
-
-                container = diff_node()
-                set_source_info(self, container)
-                literal = nodes.literal_block(
-                    diff_str, diff_str)
-
-                literal['language'] = 'diff'
-                set_source_info(self, literal)
-                container.children.append(literal)
-                result.append(container)
-
-        return result
 
     def split_content(self, input_string):
         parts = []
@@ -178,6 +129,58 @@ class SchemaDiffDirective(Directive):
         add_part()
 
         return parts
+
+
+class SchemaDiffDirective(_baseSchemaDirective):
+
+    def run(self):
+        result = []
+
+        parts = self.split_content(self.content)
+
+        for part in parts:
+            if len(part.comment):
+                paragraph = nodes.paragraph('', '')
+                comment = statemachine.StringList(part.comment)
+                comment.parent = self.content.parent
+                self.state.nested_parse(comment, 0, paragraph)
+                paragraph['classes'] = ['jsonschema-comment']
+                set_source_info(self, paragraph)
+                result.append(paragraph)
+
+            container = jsonschema_node()
+            set_source_info(self, container)
+            pprint_content = pprint_json(part.json)
+            literal = nodes.literal_block(
+                pprint_content, pprint_content)
+
+            literal['language'] = 'json'
+            set_source_info(self, literal)
+            container.children.append(literal)
+            result.append(container)
+
+        for indx, part in enumerate(parts):
+            for other_part in parts[(indx + 1):]:
+                p1 = pprint_json(part.json).split('\n')
+                p2 = pprint_json(other_part.json).split('\n')
+                diff_str = '\n'.join(difflib.unified_diff(p2, p1,
+                                     lineterm='',
+                                     fromfile=(other_part.comment[0]
+                                               if other_part.comment else ''),
+                                     tofile=(part.comment[0]
+                                             if part.comment else ''),))
+
+                container = diff_node()
+                set_source_info(self, container)
+                literal = nodes.literal_block(
+                    diff_str, diff_str)
+
+                literal['language'] = 'diff'
+                set_source_info(self, literal)
+                container.children.append(literal)
+                result.append(container)
+
+        return result
 
 
 def visit_jsonschema_node_html(self, node):
