@@ -141,10 +141,8 @@ class SchemaDiffDirective(Directive):
             if len(part) == 1:
                 try:
                     rst_file = self.state_machine.document.attributes['source']
-                    print(rst_file)
                     test_path = os.path.join(os.path.dirname(rst_file),
                                               content)
-                    print(test_path)
                     with open(test_path, 'r') as fin:
                         content = '\n'.join(fin)
                 except FileNotFoundError:
@@ -157,7 +155,6 @@ class SchemaDiffDirective(Directive):
                 else:
                     # A complex number will never validate
                     json_content = 1+1j
-            print(comment)
             parts.append(AttrDict({
                 'content': content,
                 'json': json_content,
