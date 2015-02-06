@@ -143,15 +143,16 @@ above ``event`` is described by the ``event_descriptor``
   ev_desc = {
       "uid": "f05338e0-ed07-4e15-8d7b-06a60dcebaff",
       "keys": {
-          "chan1": {"source": "PV:XF:23ID1-ES{Sclr:1}.S1"},
-          "chan2": {"source": "PV:XF:23ID1-ES{Sclr:1}.S2"},
-          "chan3": {"source": "PV:XF:23ID1-ES{Sclr:1}.S3"},
-          "chan4": {"source": "PV:XF:23ID1-ES{Sclr:1}.S4"},
-          "chan5": {"source": "PV:XF:23ID1-ES{Sclr:1}.S5"},
-          "chan6": {"source": "PV:XF:23ID1-ES{Sclr:1}.S6"},
-          "chan7": {"source": "PV:XF:23ID1-ES{Sclr:1}.S7"},
-          "chan8": {"source": "PV:XF:23ID1-ES{Sclr:1}.S8"},
-          "pimte": {"source": "CCD:name_of_detector", "external": "FILESTORE"}
+          "chan1": {"source": "PV:XF:23ID1-ES{Sclr:1}.S1", "dtype": "number", "shape": None},
+          "chan2": {"source": "PV:XF:23ID1-ES{Sclr:1}.S2", "dtype": "number", "shape": None},
+          "chan3": {"source": "PV:XF:23ID1-ES{Sclr:1}.S3", "dtype": "number", "shape": None},
+          "chan4": {"source": "PV:XF:23ID1-ES{Sclr:1}.S4", "dtype": "number", "shape": None},
+          "chan5": {"source": "PV:XF:23ID1-ES{Sclr:1}.S5", "dtype": "number", "shape": None},
+          "chan6": {"source": "PV:XF:23ID1-ES{Sclr:1}.S6", "dtype": "number", "shape": None},
+          "chan7": {"source": "PV:XF:23ID1-ES{Sclr:1}.S7", "dtype": "number", "shape": None},
+          "chan8": {"source": "PV:XF:23ID1-ES{Sclr:1}.S8", "dtype": "number", "shape": None},
+          "pimte": {"source": "CCD:name_of_detector", "external": "FILESTORE",
+                    "dtype": "array", "shape": [1254, 2014]}
       },
       "begin_run_event": "2dc386b5-cfee-4906-98e9-1a8322581a92",
       "time": 1422940263.7583334,

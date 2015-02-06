@@ -1,36 +1,42 @@
     {
         "definitions": {
             "data_key": {
+                "title": "data_key",
+                "description": "Describes the objects in the data property of Event documents",
                 "properties": {
                     "dtype": {
                         "enum": [
                             "string",
                             "number",
                             "array",
-                            "boolean"
+                            "boolean",
+                            "integer"
                         ],
-                        "type": "string"
+                        "type": "string",
+                        "description": "The type of the data in the event."
                     },
                     "external": {
                         "pattern": "^[A-Z]+:?",
-                        "type": "string"
-                    },
-                    "integration_time": {
-                        "type": "number"
+                        "type": "string",
+                        "description": "Where the data is stored if it is stored external to the events."
                     },
                     "shape": {
                         "items": {
-                            "type": "number"
+                            "type": "integer"
                         },
-                        "type": "array"
+                        "type": ["array", "null"],
+                        "destription": "The shape of the data.  Null and empty list mean scalar data."
                     },
                     "source": {
                         "pattern": "^[A-Z]+:",
-                        "type": "string"
+                        "type": "string",
+                        "description": "The source (ex piece of hardware) of the data."
                     }
                 },
                 "required": [
-                    "source"
+                    "source",
+                    "dtype",
+                    "shape"
                 ],
                 "type": "object"
             }
@@ -40,15 +46,23 @@
                 "additionalProperties": {
                     "$ref": "#/definitions/data_key"
                 },
-                "type": "object"
+                "type": "object",
+                "description": "The data to be in the event Documents"
             },
             "uid": {
-                "type": "string"
+                "type": "string",
+                "description": "Globally unique ID for this event descriptor."
+            },
+            "time": {
+                "type": "number",
+                "description": "Creation time of the document as unix epoch time."
             }
         },
         "required": [
             "uid",
             "keys"
         ],
-        "type": "object"
+        "type": "object",
+        "title": "event_descriptor",
+        "description": "Document to describe the data captured in the associated event documents"
     }
