@@ -347,7 +347,11 @@ event. For example::
                 "UB": [1, 2, 3, 4]
             }
         },
-        "time": 1422940625.2198992
+        "time": 1422940625.2198992,
+        "owner": "jcleese",
+        "group": "monty"
+
+
     }
 
 
@@ -401,7 +405,7 @@ With the corresponding end run event as::
     {
         "uid": "60bac4c7-e2d3-4c4b-a553-3790a8add866",
         "begin_run_event": "2dc386b5-cfee-4906-98e9-1a8322581a92",
-        "reason": "mouse ate cheese",
+        "reason": "This shop does not contain any cheese",
         "completion_state": "fail",
         "time": 1422940679.72617,
     }
