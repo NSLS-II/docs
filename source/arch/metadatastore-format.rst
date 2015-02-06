@@ -246,7 +246,7 @@ explicit point in a sequence. For example::
     {
         "uid": "4609e51f-cf38-4c2a-a6ea-483edc461e43",
         "seq_num": 42,
-        "ev_desc": "f05338e0-ed07-4e15-8d7b-06a60dcebaff",
+        "descriptor": "f05338e0-ed07-4e15-8d7b-06a60dcebaff",
         "data": {
             "chan1": [3.14, 1422940467.3101866],
             "chan2": [3.14, 1422940467.3101866],
@@ -276,39 +276,8 @@ Schema
 .. schema_diff::
 
   // As documented
-
-  {
-      "properties": {
-          "beamline_config": {
-              "type": "object"
-          },
-          "project": {
-              "type": "string"
-          },
-          "sample": {
-              "type": "object"
-          },
-	  "beamline_id": {
-              "type": "string"
-          },
-          "scan_id": {
-              "type": "string"
-          },
-          "time": {
-              "type": "number"
-          },
-          "uid": {
-              "type": "string"
-          }
-      },
-      "required": [
-          "uid",
-          "time"
-       ],
-       "type": "object"
-  }
+  begin_run_event.json
   --
-
 
   // As implemented
 
@@ -392,29 +361,7 @@ Schema
 .. schema_diff::
 
   // As Documented
-
-  {
-      "properties": {
-          "begin_run_event": {
-              "type": "string"
-          },
-          "reason": {
-              "type": "string"
-          },
-          "start_id": {
-              "type": "string"
-          },
-          "time": {
-              "type": "number"
-          }
-      },
-      "required": [
-          "begin_run_event",
-          "timer",
-          "start_id"
-      ],
-      "type": "object"
-  }
+  end_run_event.json
   --
   // As implemented
 
@@ -454,11 +401,11 @@ With the corresponding end run event as::
     {
         "uid": "60bac4c7-e2d3-4c4b-a553-3790a8add866",
         "begin_run_event": "2dc386b5-cfee-4906-98e9-1a8322581a92",
-        "reason": "FAIL: mouse ate cheese",
+        "reason": "mouse ate cheese",
+        "completion_state": "fail",
         "time": 1422940679.72617,
-        "start_id": "95cc29eb-e4d8-429d-84b0-880cf8c42e7e"
     }
 
 The field ``reason`` can be used to describe why a run ended e.g. was it aborted or
-was there an exception during data collection. The field ``start_id`` is a
-pointer to the start event.
+was there an exception during data collection. The field ``begin_run_event`` is a
+pointer to the start document.
