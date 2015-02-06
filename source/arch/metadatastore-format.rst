@@ -168,9 +168,8 @@ exceptions for those that do not.
 Discussion points
 +++++++++++++++++
 
-- Should ``begin_run_event`` be a property / optional?
-- Should ``time`` be a property?
-- should ``data_key`` carry information about dimension, shape, type, units, ... of data? Should it be allowed?  Should it be required?
+- Should ``begin_run_event`` be a mandatory?
+
 
 Event Documents
 ===============
@@ -179,56 +178,7 @@ Schema
 ++++++
 .. schema_diff::
   // As documented
-
-  {
-      "definitions": {
-          "data": {
-              "properties": {
-                  "timestamp": {
-                      "type": "number"
-                  },
-                  "value": {
-                      "type": [
-                          "string",
-                          "number"
-                      ]
-                  }
-              },
-              "required": [
-                  "value",
-                  "timestamp"
-              ],
-              "type": "object"
-          }
-      },
-      "properties": {
-          "data": {
-              "additionalProperties": {
-                  "$ref": "#/definitions/data"
-              },
-              "type": "object"
-          },
-          "ev_desc": {
-              "type": "string"
-          },
-          "seq_num": {
-              "type": "number"
-          },
-          "time": {
-              "type": "number"
-          },
-          "uid": {
-              "type": "string"
-          }
-      },
-      "required": [
-          "uid",
-          "data",
-          "time",
-          "ev_desc"
-      ],
-      "type": "object"
-  }
+  event.json
   --
 
   // As implemented
@@ -298,16 +248,16 @@ explicit point in a sequence. For example::
         "seq_num": 42,
         "ev_desc": "f05338e0-ed07-4e15-8d7b-06a60dcebaff",
         "data": {
-            "chan1": {"value": 3.14, "timestamp": 1422940467.3101866},
-            "chan2": {"value": 3.14, "timestamp": 1422940467.3101866},
-            "chan3": {"value": 3.14, "timestamp": 1422940467.3101866},
-            "chan4": {"value": 3.14, "timestamp": 1422940467.3101866},
-            "chan5": {"value": 3.14, "timestamp": 1422940467.3101866},
-            "chan6": {"value": 3.14, "timestamp": 1422940467.3101866},
-            "chan7": {"value": 3.14, "timestamp": 1422940467.3101866},
-            "chan8": {"value": 3.14, "timestamp": 1422940467.3101866},
-            "pimte": {"value": "8cad7f02-c3e1-4e76-a823-94a2a7d23f6b",
-                      "timestamp": 1422940481.8930786}
+            "chan1": [3.14, 1422940467.3101866],
+            "chan2": [3.14, 1422940467.3101866],
+            "chan3": [3.14, 1422940467.3101866],
+            "chan4": [3.14, 1422940467.3101866],
+            "chan5": [3.14, 1422940467.3101866],
+            "chan6": [3.14, 1422940467.3101866],
+            "chan7": [3.14, 1422940467.3101866],
+            "chan8": [3.14, 1422940467.3101866],
+            "pimte": ["8cad7f02-c3e1-4e76-a823-94a2a7d23f6b",
+                      "timestamp": 1422940481.8930786]
         },
         "time": 1422940508.3491018,
     }
