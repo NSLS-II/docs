@@ -47,11 +47,15 @@
                     "$ref": "#/definitions/data_key"
                 },
                 "type": "object",
-                "description": "The data to be in the event Documents"
+                "description": "The describes the data to be in the event Documents"
             },
             "uid": {
                 "type": "string",
                 "description": "Globally unique ID for this event descriptor."
+            },
+            "begin_run_event": {
+                "type": "string",
+                "description": "Globally unique ID to the begin_run document this descriptor is associtaed with."
             },
             "time": {
                 "type": "number",
@@ -60,7 +64,8 @@
         },
         "required": [
             "uid",
-            "keys"
+            "keys",
+            "time"
         ],
         "type": "object",
         "title": "event_descriptor",
