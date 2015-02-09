@@ -9,7 +9,7 @@ Welcome to NSLS-II Beamline Controls Doccumentation
 Contents:
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 2
 
    arch/arch
    ophyd/ophyd
@@ -23,4 +23,3 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
-
