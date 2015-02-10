@@ -86,15 +86,16 @@ class XFig(Directive):
 
 def convent_file(self, inp_fname, options, exp_format, prefix):
     hashkey = (inp_fname + str(options) +
-              str(self.builder.config.graphviz_dot) +
-              str(self.builder.config.graphviz_dot_args)
+              str(self.builder.config.xfig_fig2dev) +
+              str(self.builder.config.xfig_fig2dev_args)
               ).encode('utf-8')
 
     fname = '%s-%s.%s' % (prefix, sha1(hashkey).hexdigest(), exp_format)
     print(fname)
     relfn = posixpath.join(self.builder.imgpath, fname)
-    #    outfn = path.join(self.builder.outdir, self.builder.imagedir, fname)
-    outfn = path.join(self.builder.outdir, '_images', fname)
+    outfn = path.join(self.builder.outdir,
+                      getattr(self.builder, 'imagedir', '_images'),
+                      fname)
 
     if path.isfile(outfn):
         return relfn, outfn
@@ -167,5 +168,5 @@ def setup(app):
     app.add_directive('xfig', XFig)
     app.add_config_value('xfig_output_format', 'svg', 'html')
     app.add_config_value('xfig_fig2dev', 'fig2dev', 'html')
-    app.add_config_value('xfig_fig2dev_args', [], 'html')
+    app.add_config_value('xfig_fig2dev_args', ['-m', '2'], 'html')
     return {'version': sphinx.__version__, 'parallel_read_safe': True}
