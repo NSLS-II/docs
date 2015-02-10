@@ -60,7 +60,7 @@ We use the literal ``<time>`` to indicate a client side date/time and
 Documents
 =========
 
-.. graphviz:: document_overview.dot
+.. xfig:: mds.fig
 
 
 Events view of the world
