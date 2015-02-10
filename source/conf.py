@@ -312,3 +312,5 @@ if six.PY3:
     sys.modules['Queue'] = queue
 
 ipython_savefig_dir = ''
+html_static_path = ["_static"]
+templates_path = ['_templates']

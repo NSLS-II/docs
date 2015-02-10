@@ -45,17 +45,22 @@ import jinja2
 
 
 readble_template = jinja2.Template("""
-<dl>
+<dl class='jsonschematable'>
 {%- for item in jss recursive %}
-   <dt>{{ item.title }}</dt>
+   <dt class='jss_title h4'>{{ item.title }}</dt>
    <dd>
-     <dl>
-       <dt>Description</dt><dd>{{ item.description }}</dd>
-       <dt>Type</dt><dd>{{ item.type }}</dd>
+
+     <dl class='jsonschematable'>
+       <dt class='jss_desc text-primary'>Description:</dt>
+       <dd>{{ item.description }}</dd>
+       <dt class='jss_type text-primary'>Type:</dt>
+       <dd>{{ item.type }}</dd>
        {%- if item.properties -%}
+       <dt class='jss_prop text-primary'>Properties:</dt><dd>
        <dl>
            {{ loop(item['properties'].values())|indent }}
        </dl>
+       </dd>
        {%- endif -%}
      </dl>
    </dd>
