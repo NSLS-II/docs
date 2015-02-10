@@ -41,6 +41,27 @@ from sphinx.util.compat import Directive
 from sphinx.util.nodes import set_source_info
 import difflib
 import jsonschema
+import jinja2
+
+
+readble_template = jinja2.Template("""
+<dl>
+{%- for item in jss recursive %}
+   <dt>{{ item.title }}</dt>
+   <dd>
+     <dl>
+       <dt>Description</dt><dd>{{ item.description }}</dd>
+       <dt>Type</dt><dd>{{ item.type }}</dd>
+       {%- if item.properties -%}
+       <dl>
+           {{ loop(item['properties'].values())|indent }}
+       </dl>
+       {%- endif -%}
+     </dl>
+   </dd>
+{%- endfor %}
+</dl>
+""")
 
 
 class jsonschema_node(nodes.Element):
@@ -137,7 +158,6 @@ class SchemaDiffDirective(_baseSchemaDirective):
         result = []
 
         parts = self.split_content(self.content)
-
         for part in parts:
             if len(part.comment):
                 paragraph = nodes.paragraph('', '')
@@ -149,6 +169,7 @@ class SchemaDiffDirective(_baseSchemaDirective):
                 result.append(paragraph)
 
             container = jsonschema_node()
+            container['raw_json'] = part.json
             set_source_info(self, container)
             pprint_content = pprint_json(part.json)
             literal = nodes.literal_block(
@@ -187,8 +208,22 @@ def visit_jsonschema_node_html(self, node):
     pass
 
 
+def _ensure_title(input_dict):
+    return_dict = dict(input_dict)
+    if 'properties' in input_dict:
+        props = return_dict['properties']
+        for k, v in props.items():
+            if 'title' not in v:
+                v['title'] = k
+            if 'properties' in v:
+                v['properties'] = _ensure_title[v]
+    return return_dict
+
+
 def depart_jsonschema_node_html(self, node):
-    pass
+    form_dict = _ensure_title(node['raw_json'])
+    self.body.append(readble_template.render(
+        jss=[form_dict]))
 
 
 def visit_jsonschema_node_latex(self, node):
