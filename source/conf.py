@@ -19,7 +19,7 @@ import os
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #sys.path.insert(0, os.path.abspath('.'))
-
+sys.path.insert(0, os.path.abspath(os.path.dirname('__file__')))
 import sphinx_bootstrap_theme
 
 # -- General configuration ------------------------------------------------
@@ -38,7 +38,11 @@ extensions = [
     'sphinx.ext.mathjax',
     'sphinx.ext.viewcode',
     'sphinx.ext.autosummary',
-    'sphinxcontrib.napoleon'
+    'sphinxcontrib.napoleon',
+    'sphinxext.jsonschema_diff',
+    'sphinxext.xfig',
+    'IPython.sphinxext.ipython_directive',
+    'IPython.sphinxext.ipython_console_highlighting',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -277,3 +281,36 @@ intersphinx_mapping = {'http://docs.python.org/': None}
 #Enable showing todos
 
 todo_include_todos = True
+
+
+class MyMock(object):
+
+    __all__ = []
+
+    def __init__(self, *args, **kwargs):
+        pass
+
+    def __call__(self, *args, **kwargs):
+        return MyMock()
+
+    def __getattr__(self, name):
+        if name in ('__file__', '__path__'):
+            return '/dev/null'
+        elif name == 'c_byte':
+            return 0
+        else:
+            return MyMock()
+
+
+MOCK_MODULES = ['epics', 'epics.pv', 'epics.ca', 'pcaspy']
+for mod_name in MOCK_MODULES:
+    sys.modules[mod_name] = MyMock()
+
+import six
+if six.PY3:
+    import queue
+    sys.modules['Queue'] = queue
+
+ipython_savefig_dir = ''
+html_static_path = ["_static"]
+templates_path = ['_templates']
