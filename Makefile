@@ -9,8 +9,17 @@ BUILDDIR      = build
 
 # For auto gh-pages
 GH_PAGES_SOURCES = Makefile source 
-GH_DIR := $(shell mktemp -d)
-GH_URL = https://github.com/NSLS-II/NSLS-II.github.io.git
+UNAME := $(shell uname)
+ifeq ($(UNAME), Darwin)
+	GH_DIR := $(shell mktemp -dt foobar)
+else
+	GH_DIR := $(shell mktemp -d)
+endif
+ifeq ($(GIT_MF), 1)
+	GH_URL = git@github.com:NSLS-II/NSLS-II.github.io.git
+else
+	GH_URL = https://github.com/NSLS-II/NSLS-II.github.io.git
+endif
 
 # User-friendly check for sphinx-build
 ifeq ($(shell which $(SPHINXBUILD) >/dev/null 2>&1; echo $$?), 1)
