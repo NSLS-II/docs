@@ -26,10 +26,11 @@ from the wired campus network or controls network.
     conda install binstar
     binstar config --set url https://conda.nsls2.bnl.gov/api
     conda config --add channels Nikea beamline
+    conda config --add create_default_packages pip
     conda update --all
 
-   Where ``beamline`` is the name of the beam-line organization you want to install source
-   for (see table at bottom)
+   Where ``beamline`` is the name of the beam-line organization you want to
+   install source for (in uppercase -- see the table at bottom)
 
 #. Install the collection or analysis stacks create a new environment ::
 
