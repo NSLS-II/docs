@@ -1,11 +1,19 @@
+************
 Installation
-------------
+************
+
 .. highlight:: bash
 
-We distribute the beamline control and analysis software
+We distribute binary packages from an internal server using the *conda*
+package manager, developed for and by the scientific Python community. The
+internal server can be accessed via a web browser at
+https://conda.nsls2.bnl.gov from the wired campus network or controls network.
 
-The internal binstar server can be accessed via a web browser at https://conda.nsls2.bnl.gov
-from the wired campus network or controls network.
+For users outside Brookhaven National Lab, the packages can be built from
+source.
+
+Installation Procedure
+----------------------
 
 #. If needed, fix proxy settings so you can see the internet ::
 
@@ -37,13 +45,12 @@ from the wired campus network or controls network.
 
      conda create -n env_name package_name
 
-   For example, to install the data-collection stack for SRX (assuming that you have
-   SRX in your channels) ::
+   For example, to install the data-collection stack for SRX (assuming that
+   you have SRX in your channels) ::
 
      conda create -n SRX srx_collection
 
    See table at bottom for list of available packages
-
 
 #. Enable env ::
 
