@@ -68,5 +68,8 @@ CSX (23id) CSX     https://conda.nsls2.bnl.gov/CSX
 XPD (28id) XPD     https://conda.nsls2.bnl.gov/XPD     xpd_collection
 HXN (03id) HXN     https://conda.nsls2.bnl.gov/HXN     hxn_collection
 CHX (11id) CHX     https://conda.nsls2.bnl.gov/CHX     chx_collection
-IXS (10id) IXS     https://conda.nsls2.bnl.gov/IXS
+IXS (10id) IXS     https://conda.nsls2.bnl.gov/IXS     ixs_collection
 ========== ======= ==================================  ==================== ==================
+Package sources
+---------------
+
