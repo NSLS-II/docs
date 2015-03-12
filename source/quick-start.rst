@@ -2,11 +2,8 @@
 Quick Start
 ***********
 
-1. Log into your controls account, e.g., xf23id.
+1. Log into your beamline user account, e.g., xf23id.
    
-You can do this sitting at a beamline computer or remotely from any account
-using the UNIX command ``su`` ("switch user"), as in ``su xf23id``.
-
 2. Activate the ``ophyd``  conda environment.
 
 .. bash::
@@ -27,7 +24,7 @@ where ``BEAMLINE`` is the full beamline branch name, like ``xf23id1``.
 A "profile" runs code at startup to define useful variables and
 functions, including the names of motors and detectors.
 
-Finally, collect data. For example, list on positioners.
+Finally, collect data. For example, list on positioners.::
 
    In [1]: wh_pos()
 
