@@ -17,7 +17,7 @@ your UNIX ``$PATH``.
 
 .. bash::
 
-   ipython --ipython_dir=~/profile_ophyd --profile=BEAMLINE
+   ipython --ipython_dir=~/ipython_ophyd --profile=BEAMLINE
 
 where ``BEAMLINE`` is the full beamline branch name, like ``xf23id1``.
 
