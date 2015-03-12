@@ -101,3 +101,26 @@ HXN (03id) HXN     https://conda.nsls2.bnl.gov/HXN     hxn_collection
 CHX (11id) CHX     https://conda.nsls2.bnl.gov/CHX     chx_collection
 IXS (10id) IXS     https://conda.nsls2.bnl.gov/IXS     ixs_collection
 ========== ======= ==================================  ==================== ==================
+
+Upgrade
+-------
+
+#. Arrange with beamline scientist to schedule upgrade
+#. Copy the conda packages to the organization
+#. Remove the :file:`ophyd-backup` environment
+#. Copy the current :file:`ophyd`  environment to :file:`ophyd-backup` ::
+
+     conda create -n ophyd-backup --clone ophyd
+
+#. Activate and update the :file:`ophyd` environment::
+
+     source activate ophyd
+     conda update --all
+
+#. To capture a snap shot of the current code state ::
+
+     conda list --export > installed_packages.txt
+
+   This can (should?) be logged to OLog
+
+#. Create entry in OLog to record the upgrade
