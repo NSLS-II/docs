@@ -32,13 +32,13 @@ Installation Procedure
        metadatastore/
          connection.yml
        binstar/
-     ipython-ophyd/
-       profile-ophyd/
-       profile-beamline/
+     ipython_ophyd/
+       profile_ophyd/
+       profile_beamline/
      .bashrc
 
    If the beamline does not have nfs home directories, then these
-   files should be stored on the nfs share (:file:`/nfs/bealmineid/`)
+   files should be stored on the nfs share (:file:`/nfs/beamlineid/`)
    and sym-linked into the home directory (possibly not for
    :file:`.bashrc`).
 
