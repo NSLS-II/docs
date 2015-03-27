@@ -2,6 +2,10 @@
    :suppress:
 
    # Do this so Quick Start does not include example-generation.
+   from metadatastore.utils.testing import mds_setup
+   from filestore.utils.testing import fs_setup
+   mds_setup()
+   fs_setup()
    from dataportal.examples.sample_data import temperature_ramp
    from metadatastore.api import insert_run_start, insert_beamline_config
 
@@ -94,15 +98,26 @@ type ``DataBroker[-N]``.
    header = DataBroker[-1]
 
 What we get is a Header, a dictionary-like (for C programmers, struct-like)
-object with all the information pertaining to a run. We can explore its
-contents by typing ``header.`` <tab> or using the built-in Python function
-``vars``.
+object with all the information pertaining to a run.
 
 .. ipython:: python
 
-   vars(header)
+   header
 
-For example, to inspect the owner of the run,
+We can view its complete contents with ``print`` or, equivalently, 
+``str(header)``.
+
+.. ipython:: python
+
+   print header
+
+You can access the contents like a Python dictionary
+
+.. ipython:: python
+
+   header['owner']
+
+or, equivalently, an attribute. In IPython, use tab-completion to explore.
 
 .. ipython:: python
 
