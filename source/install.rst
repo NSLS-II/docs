@@ -124,3 +124,41 @@ Upgrade
    This can (should?) be logged to OLog
 
 #. Create entry in OLog to record the upgrade
+
+IPython profile
+---------------
+This section covers the setup of the ipython profile for ophyd.  Realistically
+there are three important considerations.
+
+#. Where are you going to put the ipython profile?
+
+   - There is an environmental variable ``IPYTHONDIR`` that changes where the
+     `ipython --profile=some_profile` command line argument points.
+   - There is a command line argument ``ipython --ipythondir=some_directory``
+     that can change
+
+#. Run this command: ``ipython profile create ipython_ophyd``
+
+#. These lines must be added to the ``ipython_config.py`` file which is located
+   at ``$IPYTHONDIR/profile_ophyd/ipython_config.py`` ::
+
+      c.StoreMagics.autorestore = True
+      c.InteractiveShellApp.extensions = ['ophyd.session',
+                                          'pyOlog.cli.ipy']
+      c.TerminalIPythonApp.pylab = 'auto'
+
+#. Copy over the README.md file from `here <https://raw.githubusercontent.com/NSLS-II-CSX/ipython_ophyd/master/profile_xf23id1/startup/README>`_
+   to ``$IPYTHONDIR/profile_ophyd/startup/README.md``
+
+#. Running ``ipython --profile=ophyd`` should now successfully start up ophyd.
+   To check that it is working, run `wh_pos` at the ipython prompt and make
+   sure that an error is not thrown.
+
+#. To start adding positioners and detectors, see the currently active
+   profiles for `CSX1 <https://github.com/NSLS-II-CSX/ipython_ophyd/tree/master/profile_xf23id1/startup>`_,
+   `CSX2 <https://github.com/NSLS-II-CSX/ipython_ophyd/tree/master/profile_xf23id2/startup>`_,
+   `SRX <https://github.com/NSLS-II-SRX/ipython_ophyd/tree/master/profile_xf05id1/startup>`_,
+   `XPD <https://github.com/NSLS-II-XPD/ipython_ophyd/tree/master/profile_xf28id1/startup>`_,
+   `CHX <https://github.com/NSLS-II-CHX/ipython_ophyd/tree/master/profile_xf11id/startup>`_,
+   `HXN <https://github.com/NSLS-II-HXN/ipython_ophyd/tree/master/profile_xf03id/startup>`_,
+   and `IXS <https://github.com/NSLS-II-IXS/ipython_ophyd/tree/master/profile_xf10id/startup>`_
