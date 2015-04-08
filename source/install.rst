@@ -162,3 +162,14 @@ there are three important considerations.
    `CHX <https://github.com/NSLS-II-CHX/ipython_ophyd/tree/master/profile_xf11id/startup>`_,
    `HXN <https://github.com/NSLS-II-HXN/ipython_ophyd/tree/master/profile_xf03id/startup>`_,
    and `IXS <https://github.com/NSLS-II-IXS/ipython_ophyd/tree/master/profile_xf10id/startup>`_
+
+Potential Pitfalls
+------------------
+
+OLog issues
+~~~~~~~~~~~
+#. The owner of the logbooks in olog should be `ologs-log`.
+
+XServer Issues with ssh
+~~~~~~~~~~~~~~~~~~~~~~~
+`xhost +`
