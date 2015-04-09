@@ -94,12 +94,12 @@ Package sources
 ========== ======= ==================================  ==================== ==================
 Beamline   Channel List of Packages                    Collection Package   Analysis Package
 ---------- ------- ----------------------------------  -------------------- ------------------
-SRX (05id) SRX     https://conda.nsls2.bnl.gov/SRX     srx_collection
-CSX (23id) CSX     https://conda.nsls2.bnl.gov/CSX
-XPD (28id) XPD     https://conda.nsls2.bnl.gov/XPD     xpd_collection
-HXN (03id) HXN     https://conda.nsls2.bnl.gov/HXN     hxn_collection
-CHX (11id) CHX     https://conda.nsls2.bnl.gov/CHX     chx_collection
-IXS (10id) IXS     https://conda.nsls2.bnl.gov/IXS     ixs_collection
+SRX (05id) SRX     https://conda.nsls2.bnl.gov/SRX     srx_collection       srx_analysis
+CSX (23id) CSX     https://conda.nsls2.bnl.gov/CSX     csx_collection       csx_analysis
+XPD (28id) XPD     https://conda.nsls2.bnl.gov/XPD     xpd_collection       xpd_analysis
+HXN (03id) HXN     https://conda.nsls2.bnl.gov/HXN     hxn_collection       hxn_analysis
+CHX (11id) CHX     https://conda.nsls2.bnl.gov/CHX     chx_collection       chx_analysis
+IXS (10id) IXS     https://conda.nsls2.bnl.gov/IXS     ixs_collection       ixs_analysis
 ========== ======= ==================================  ==================== ==================
 
 Upgrade
