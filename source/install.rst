@@ -104,12 +104,14 @@ IXS (10id)  IXS     https://conda.nsls2.bnl.gov/IXS     ixs_collection       ixs
 Upgrade
 -------
 
-#. Arrange with beamline scientist to schedule upgrade
-#. Copy the conda packages to the organization
-#. Remove the :file:`ophyd-backup` environment
-#. Copy the current :file:`ophyd`  environment to :file:`ophyd-backup` ::
+#. Arrange with beamline scientist to schedule upgrade.
+#. Copy the conda packages to the organization.::
 
-     conda create -n ophyd-backup --clone ophyd
+    binstar copy --to-owner BEAMLINE latest/PACKAGE_NAME/VERSION_STRING
+
+#. Copy the current :file:`ophyd`  environment to :file:`ophyd-{TODAY'S DATE}` ::
+
+     conda create -n ophyd-`date +"%Y-%m-%d"` --clone ophyd
 
 #. Activate and update the :file:`ophyd` environment::
 
@@ -120,9 +122,7 @@ Upgrade
 
      conda list --export > installed_packages.txt
 
-   This can (should?) be logged to OLog
-
-#. Create entry in OLog to record the upgrade
+#. Create entry in OLog to record the upgrade.
 
 IPython profile
 ---------------
