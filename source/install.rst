@@ -15,22 +15,11 @@ source.
 Installation Procedure
 ----------------------
 
-#. If needed, fix proxy settings so you can see the internet ::
-
-    echo 'export https_proxy=https://proxy:8888' >> ~/.bashrc
-    echo 'export http_proxy=http://proxy:8888' >> ~/.bashrc
-    source ~/.bashrc
-
-#. Set up all of the configuration files.  In the home directory the
-   following files are used ::
+#. The following configuration files are touched by this procedure.
 
      pyOlog.conf
      .condarc
      .config/
-       filestore/
-         connection.yml
-       metadatastore/
-         connection.yml
        binstar/
      ipython_ophyd/
        profile_ophyd/
@@ -41,6 +30,15 @@ Installation Procedure
    files should be stored on the nfs share (:file:`/nfs/beamlineid/`)
    and sym-linked into the home directory (possibly not for
    :file:`.bashrc`).
+
+#. If needed, fix proxy settings so you can see the internet ::
+
+    echo 'export https_proxy=https://proxy:8888' >> ~/.bashrc
+    echo 'export http_proxy=http://proxy:8888' >> ~/.bashrc
+    source ~/.bashrc
+
+#. Set up a configuration file for pyOlog, :file:`pyOlog.conf` in
+   the home directory.
 
 #. install miniconda ::
 
