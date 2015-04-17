@@ -109,14 +109,14 @@ Upgrade
 
     binstar copy --to-owner BEAMLINE latest/PACKAGE_NAME/VERSION_STRING
 
-#. Copy the current :file:`ophyd`  environment to :file:`ophyd-{TODAY'S DATE}` ::
-
-     conda create -n ophyd-`date +"%Y-%m-%d"` --clone ophyd
-
 #. Activate and update the :file:`ophyd` environment::
 
      source activate ophyd
      conda update --all
+
+#. Make an archival copy of the new environment, named :file:`ophyd-{TODAY'S DATE}` ::
+
+     conda create -n ophyd-`date +"%Y-%m-%d"` --clone ophyd
 
 #. To capture a snap shot of the current code state ::
 
