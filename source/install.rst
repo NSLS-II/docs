@@ -15,22 +15,11 @@ source.
 Installation Procedure
 ----------------------
 
-#. If needed, fix proxy settings so you can see the internet ::
-
-    echo 'export https_proxy=https://proxy:8888' >> ~/.bashrc
-    echo 'export http_proxy=http://proxy:8888' >> ~/.bashrc
-    source ~/.bashrc
-
-#. Set up all of the configuration files.  In the home directory the
-   following files are used ::
+#. The following configuration files are touched by this procedure.
 
      pyOlog.conf
      .condarc
      .config/
-       filestore/
-         connection.yml
-       metadatastore/
-         connection.yml
        binstar/
      ipython_ophyd/
        profile_ophyd/
@@ -41,6 +30,15 @@ Installation Procedure
    files should be stored on the nfs share (:file:`/nfs/beamlineid/`)
    and sym-linked into the home directory (possibly not for
    :file:`.bashrc`).
+
+#. If needed, fix proxy settings so you can see the internet ::
+
+    echo 'export https_proxy=https://proxy:8888' >> ~/.bashrc
+    echo 'export http_proxy=http://proxy:8888' >> ~/.bashrc
+    source ~/.bashrc
+
+#. Set up a configuration file for pyOlog, :file:`pyOlog.conf` in
+   the home directory.
 
 #. install miniconda ::
 
@@ -91,39 +89,40 @@ Installation Procedure
 Package sources
 ---------------
 
-========== ======= ==================================  ==================== ==================
-Beamline   Channel List of Packages                    Collection Package   Analysis Package
----------- ------- ----------------------------------  -------------------- ------------------
-SRX (05id) SRX     https://conda.nsls2.bnl.gov/SRX     srx_collection       srx_analysis
-CSX (23id) CSX     https://conda.nsls2.bnl.gov/CSX     csx_collection       csx_analysis
-XPD (28id) XPD     https://conda.nsls2.bnl.gov/XPD     xpd_collection       xpd_analysis
-HXN (03id) HXN     https://conda.nsls2.bnl.gov/HXN     hxn_collection       hxn_analysis
-CHX (11id) CHX     https://conda.nsls2.bnl.gov/CHX     chx_collection       chx_analysis
-IXS (10id) IXS     https://conda.nsls2.bnl.gov/IXS     ixs_collection       ixs_analysis
-========== ======= ==================================  ==================== ==================
+=========== ======= ==================================  ==================== ==================
+Beamline    Channel List of Packages                    Collection Package   Analysis Package
+----------- ------- ----------------------------------  -------------------- ------------------
+SRX (05id)  SRX     https://conda.nsls2.bnl.gov/SRX     srx_collection       srx_analysis
+CSX (23id1) CSX     https://conda.nsls2.bnl.gov/CSX     csx_collection       csx_analysis
+CSX (23id2) CSX2    https://conda.nsls2.bnl.gov/CSX2    csx2_collection      csx2_analysis
+XPD (28id)  XPD     https://conda.nsls2.bnl.gov/XPD     xpd_collection       xpd_analysis
+HXN (03id)  HXN     https://conda.nsls2.bnl.gov/HXN     hxn_collection       hxn_analysis
+CHX (11id)  CHX     https://conda.nsls2.bnl.gov/CHX     chx_collection       chx_analysis
+IXS (10id)  IXS     https://conda.nsls2.bnl.gov/IXS     ixs_collection       ixs_analysis
+=========== ======= ==================================  ==================== ==================
 
 Upgrade
 -------
 
-#. Arrange with beamline scientist to schedule upgrade
-#. Copy the conda packages to the organization
-#. Remove the :file:`ophyd-backup` environment
-#. Copy the current :file:`ophyd`  environment to :file:`ophyd-backup` ::
+#. Arrange with beamline scientist to schedule upgrade.
+#. Copy the conda packages to the organization.::
 
-     conda create -n ophyd-backup --clone ophyd
+    binstar copy --to-owner BEAMLINE latest/PACKAGE_NAME/VERSION_STRING
 
 #. Activate and update the :file:`ophyd` environment::
 
      source activate ophyd
      conda update --all
 
+#. Make an archival copy of the new environment, named :file:`ophyd-{TODAY'S DATE}` ::
+
+     conda create -n ophyd-`date +"%Y-%m-%d"` --clone ophyd
+
 #. To capture a snap shot of the current code state ::
 
      conda list --export > installed_packages.txt
 
-   This can (should?) be logged to OLog
-
-#. Create entry in OLog to record the upgrade
+#. Create entry in OLog to record the upgrade.
 
 IPython profile
 ---------------
