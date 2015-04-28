@@ -17,7 +17,7 @@ Installation Procedure
 
 #. The following configuration files are touched by this procedure.
 
-     pyOlog.conf
+     .pyOlog.conf
      .condarc
      .config/
        binstar/
