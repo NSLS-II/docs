@@ -14,7 +14,8 @@
 
 import sys
 import os
-import sphinx_bootstrap_theme
+# import sphinx_bootstrap_theme
+import sphinx_rtd_theme
 import six
 
 # If extensions (or modules to document with autodoc) are in another directory,
@@ -24,7 +25,7 @@ import six
 sys.path.insert(0, os.path.abspath(os.path.dirname('__file__')))
 
 # # NSLS-II repo name
-repo_name = ''
+repo_name = 'NSLS-II Software Documentation'
 # The short X.Y version.
 version = '0.0.1'
 # The full version, including alpha/beta/rc tags.
@@ -122,7 +123,7 @@ pygments_style = 'sphinx'
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-html_theme = 'bootstrap'
+html_theme = 'sphinx_rtd_theme'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
@@ -130,7 +131,7 @@ html_theme = 'bootstrap'
 # html_theme_options = {}
 
 # Add any paths that contain custom themes here, relative to this directory.
-html_theme_path = sphinx_bootstrap_theme.get_html_theme_path()
+html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 # html_theme_path = []
 
 # The name for this set of Sphinx documents.  If None, it defaults to

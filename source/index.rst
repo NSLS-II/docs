@@ -3,16 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-NSLS-II Beamline Controls Documentation
-=======================================
-
-.. raw:: html
-
-   <div class="container-fluid">
-   <div class="row">
-   <div class="col-md-6">
-   <h2>For Users</h2>
-   <h3>Colllecting Data</h3>
+NSLS-II Software Documentation
+==============================
 
 The user interface to beamline controls and data collection is *ophyd*, a
 Python package with a syntax that will be familiar to users of SPEC.

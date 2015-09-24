@@ -1,27 +1,29 @@
 .. highlight:: bash
-***********
-Quick Start
-***********
+***************************
+Data Collection Quick Start
+***************************
+
+Here we are assume that you are sitting at a beamline computer that has
+the software installed and configured. If you need to start from the *very*
+beginning, 
 
 #. Log into your beamline user account, e.g., xf23id.
    
-#. Activate the ``ophyd``  conda environment.::
+#. Activate the ``collection`` conda environment.::
 
-    source activate ophyd
+    source activate collection
 
-   This command makes the collection software available by adding it
+   This command makes the data collection software available by adding it
    your UNIX ``$PATH``.
 
 #. Start IPython with a profile.::
 
-    ipython --ipython-dir=~/ipython_ophyd --profile=BEAMLINE
-
-   where ``BEAMLINE`` is the full beamline branch name, like ``xf23id1``.
+    ipython --profile=collection
 
    A "profile" runs code at startup to define useful variables and
    functions, including the names of motors and detectors.
 
-#. Collect data. For example, list all positioners.::
+#. You are ready to work. For example, list all positioners.::
 
     In [1]: wh_pos()
 
@@ -40,18 +42,3 @@ Quick Start
     | dlm_c1_xo          | -1 counts          |  0.000000 counts   |  0.000000 counts   |
     ...
     -------------------------------------------------------------------------------------
-
-
-#. In a separate terminal, you can open Replay, a graphical user interface.::
-
-    source activate ophyd
-    replay
-
-
-   Notice that this is not a Python command; it should be typed directly into
-   the shell, not into IPython.
-
-   To view the latest scan, automatically updating live as new data is collected,
-   use::
-
-    replay --live
