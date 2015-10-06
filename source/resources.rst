@@ -28,5 +28,5 @@ Scientific Python Packages We Use
 Good Scientific Software Habits
 -------------------------------
 
-* `Noivce-level introduction from Software Carpentry <http://www.software-carpentry.org/v5/novice/git/>`_
+* `Novice-level introduction from Software Carpentry <http://swcarpentry.github.io/git-novice>`_
 * `Intermediate-Level explanation of the git workflow we use <http://nvie.com/posts/a-successful-git-branching-model/>`_

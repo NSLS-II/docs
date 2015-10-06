@@ -80,7 +80,7 @@ Data Broker
 
 Data Broker is a Python package that provdies a simple, user-friendly interface
 for retireving stored data. Emphatically, it is agnostic to data formats:
-however the data is store, Data Broker provides it to the user as data in
+however the data is stored, Data Broker provides it to the user as data in
 memory (RAM).
 
 `Full Documentation <https://nsls-ii.github.io/dataportal>`_
@@ -130,7 +130,7 @@ MongoDB
    :align: right
 
 MongoDB is an open-source document database designed for ease of
-development and scaling. It support rich search capability and flexible
+development and scaling. It supports rich search capability and flexible
 document specification, which is ideal for scientific workflows.
 At NSLS-II, we store all experiment metadata and "small" data
 (i.e., not images) in MongoDB.
@@ -138,7 +138,7 @@ At NSLS-II, we store all experiment metadata and "small" data
 metadatastore
 ++++++++++++++
 
-metadatastore is a Python package that interface with MongoDB to store
+metadatastore is a Python package that interfaces with MongoDB to store
 experiment metadata and some data.
 
 filestore
@@ -146,4 +146,4 @@ filestore
 
 filestore is Python package that interfaces with MongoDB to maintain a
 "directory" of all large-data files produced by experiments, along with
-instructions for how to open those files and the data inside them.
+instructions for how to open those files and access the data inside them.
