@@ -14,7 +14,9 @@ User Documetation
 
    collection-quick-start
    analysis-quick-start
+   configuration-quick-start
    overview
+   examples/index
    resources
 
 
