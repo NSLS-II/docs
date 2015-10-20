@@ -27,3 +27,4 @@ Developer Documentation
    :maxdepth: 2
 
    arch/arch
+   conda

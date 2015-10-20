@@ -1,13 +1,33 @@
 .. highlight:: bash
-***************************
-Configuration Quick Start
-***************************
+**********************
+Beamline Configuration
+**********************
+
+IPython profiles
+----------------
 
 Configuration can be done interactively or in a Python script.
 At NSLS-II, configuration is done by startup scripts that are part of an
 `IPython profile <https://ipython.org/ipython-doc/dev/config/intro.html#profiles>`_
 . But note that it is not essential to use IPython or IPython profile in 
 general -- this is just a convenience.
+
+At the time of this writing, all profiles are stored in or at least soft-linked
+from ``~/.ipython`` in the user profile of the beamline account (e.g.,
+``xf11id``). In the future, we want users to perform data collection under
+their own user accounts, and we will probably move the profiles to a system
+location like ``/usr/share/ipython``.
+
+The standard profile is called "collection," and the startup scripts are
+located in ``~/.ipython/profile_collection/startup/``. As stated in the on
+quick start page, they can be invoked by typing:
+
+.. code-block:: bash
+
+    ipython --profile=collection
+
+Boilerplate configuration
+-------------------------
 
 Some boilerplate setup is done in the module ``bluesky.standard_config``. It
 does the following things:
@@ -58,7 +78,7 @@ This is a example startup file.::
     import logging
     from ophyd.session import get_session_manager
     sessionmgr = get_session_manager()
-    session_mgr._logger.setLevel(logging.INFO)
+    sessionmgr._logger.setLevel(logging.INFO)
 
 Configuring the Olog
 --------------------
@@ -75,6 +95,11 @@ Back in a startup file, add:::
     # Set up the logbook.
     sessionmgr['olog_client'] = olog_client
     gs.RE.logbook = olog_wrapper(olog_client, ['Data Acquisition'])
+
+Defining Hardware Objects
+-------------------------
+
+TODO
 
 Set up Default ("Global State")
 -------------------------------
