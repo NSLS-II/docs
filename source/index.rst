@@ -28,3 +28,4 @@ Developer Documentation
 
    arch/arch
    conda
+   beamline-configuration
