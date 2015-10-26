@@ -115,3 +115,46 @@ configuration files in ``~/conda_envs/my_analysis/etc/`` that will be used by
 metadatastore and filestore.
 
 From here, users can add or remove packages at will using conda and pip.
+
+Access custom user environments in NSLS-II's JupyterHub
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The NSLS-II Jupyterhub provides easy-to-use access to different host machines
+and conda environments. For example, choosing CHX from the drop-down menu
+connects to the CHX beamline's analysis server (xf11id-srv1),
+activates the ``/opt/conda_envs/analysis`` conda environment, and starts
+a Python process in that environment.
+
+   .. image:: _static/jupyterhub-kernel-menu.png
+      :align: center
+
+Jupyter calls the entries in this menu "kernels." You can read the gory
+details in `the IPython documentation <https://ipython.org/ipython-doc/3/development/kernels.html>`_.
+Users can also connect to their own user-created conda environments through
+Jupyterhub. We provide a utilty called ``kernelize`` to streamline the
+process.
+
+#. Log in to the host where the conda environment should be run. This is
+   how Jupyterhub will know which host to open the Python process on.
+#. Install the ``kernelize`` conda package into environment of interest:
+
+   .. code-block:: bash
+
+      conda install -n YOUR_ENV_NAME_HERE kernelize
+
+This adds create a new file (or overwrites any existing file) at
+``~/conda_envs/ENV_NAME/share/jupyter/kernels/env_ENV_NAME/kernel.json``
+that will be automatically discovered by Jupyterhub. For example, installing
+``kernelize`` into a conda environment called ``test5`` while logged into the
+host ``xf23id1-srv1`` adds this entry to Jupyterhub's drop-down menu. To
+update the menu, simply refresh the browser.
+
+   .. image:: _static/jupyterhub-customized-kernel-menu.png
+      :align: center
+
+Thus, installing the ``kernelize`` package captures to pieces of information:
+the path to the conda environment and the name of the host where Jupyterhub
+will run that kernel.
+
+These user-customized environments only appear to the indivudal user who adds
+them; they do not affect all users.
