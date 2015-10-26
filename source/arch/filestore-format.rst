@@ -90,5 +90,5 @@ The handler classes are what hold all of the data retrieval logic together.  The
   # use the spec value to look up what handler to use
   h_class = handler_dispatch(fb_doc.spec)
   # use the file_path and custom values to create a handler
-  h = h_class(fb_doc.file_pach, **fb_doc.custom)
+  h = h_class(fb_doc.file_path, **fb_doc.custom)
   dataset = h(**fel_doc.link_parameters)

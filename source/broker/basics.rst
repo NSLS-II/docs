@@ -37,7 +37,7 @@ DataBroker Basics
 What is the Data Broker?
 ========================
 
-The Data Broker prodives one interface for retrieving data from all sources.
+The Data Broker provides one interface for retrieving data from all sources.
 
 You, the user, don't have to know where the data is stored or in what format
 it is stored. The Data Broker returns all the data in one simply-structured
