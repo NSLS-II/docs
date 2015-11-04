@@ -96,6 +96,24 @@ Back in a startup file, add:::
     sessionmgr['olog_client'] = olog_client
     gs.RE.logbook = olog_wrapper(olog_client, ['Data Acquisition'])
 
+Finally, pyOlog requires a configuration file to specify the connection
+settings. It can go in one of several locations, but currently it is
+typically stored in the user home directory. The file should be called
+``.pyOlog.conf``. Note the leading dot. Its contents should look like::
+
+    [DEFAULT]
+
+    url = https://controlsweb.nsls2.bnl.gov/logbook-<BEAMLINE>/Olog
+    logbooks = Experiments
+    username = BEAMLINE_USERNAME
+    password = PASSWORD
+
+where ``<BEAMLINE>`` is the lowercase three-letter designation --
+for example, ``hxn``.
+
+If for some reason the external network is not available, use the interal
+network url, e.g., ``https://xf03id-ca1:9191/Olog``.
+
 Defining Hardware Objects
 -------------------------
 
@@ -110,3 +128,30 @@ Set attributes of ``gs``. This can be done interactively or in a startup file.::
     gs.TABLE_COLS = ['det1']
     gs.PLOT_Y = 'det1'
 
+
+Customizing IPython
+-------------------
+
+Customizing the Prompt
+^^^^^^^^^^^^^^^^^^^^^^
+
+Running the following
+
+.. ipython::
+    :verbatim:
+
+    In [1]: %config PromptManager.in_template = '\T In [\\#]: '
+    In [2]: %config PromptManager.out_template = '\T Out[\\#]: '
+
+will make your terminal look like this:
+
+.. code-block:: bash
+
+    10:01:40 In [49]: 1
+    10:01:42 Out[49]: 1
+    10:01:42 In [50]: 
+    10:02:21 In [50]: a = 2
+    10:02:28 In [51]: 
+
+It is not much more work to customize that timestamp to be truncated, include
+date / day of week etc. See `this section of the IPython documentation <https://ipython.org/ipython-doc/3/config/details.html#prompts>`_ for details.
