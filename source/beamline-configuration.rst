@@ -128,3 +128,30 @@ Set attributes of ``gs``. This can be done interactively or in a startup file.::
     gs.TABLE_COLS = ['det1']
     gs.PLOT_Y = 'det1'
 
+
+Customizing IPython
+-------------------
+
+Customizing the Prompt
+^^^^^^^^^^^^^^^^^^^^^^
+
+Running the following
+
+.. ipython::
+    :verbatim:
+
+    In [1]: %config PromptManager.in_template = '\T In [\\#]: '
+    In [2]: %config PromptManager.out_template = '\T Out[\\#]: '
+
+will make your terminal look like this:
+
+.. code-block:: bash
+
+    10:01:40 In [49]: 1
+    10:01:42 Out[49]: 1
+    10:01:42 In [50]: 
+    10:02:21 In [50]: a = 2
+    10:02:28 In [51]: 
+
+It is not much more work to customize that timestamp to be truncated, include
+date / day of week etc. See `this section of the IPython documentation <https://ipython.org/ipython-doc/3/config/details.html#prompts>`_ for details.
