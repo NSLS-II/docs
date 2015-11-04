@@ -96,6 +96,24 @@ Back in a startup file, add:::
     sessionmgr['olog_client'] = olog_client
     gs.RE.logbook = olog_wrapper(olog_client, ['Data Acquisition'])
 
+Finally, pyOlog requires a configuration file to specify the connection
+settings. It can go in one of several locations, but currently it is
+typically stored in the user home directory. The file should be called
+``.pyOlog.conf``. Note the leading dot. Its contents should look like::
+
+    [DEFAULT]
+
+    url = https://controlsweb.nsls2.bnl.gov/logbook-<BEAMLINE>/Olog
+    logbooks = Experiments
+    username = BEAMLINE_USERNAME
+    password = PASSWORD
+
+where ``<BEAMLINE>`` is the lowercase three-letter designation --
+for example, ``hxn``.
+
+If for some reason the external network is not available, use the interal
+network url, e.g., ``https://xf03id-ca1:9191/Olog``.
+
 Defining Hardware Objects
 -------------------------
 
