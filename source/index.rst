@@ -38,9 +38,6 @@ documentation, linked below.
         * `hxntools <https://github.com/NSLS-II-CHX/hxntools>`_ (undocumented)
         * `xpdtools <https://github.com/NSLS-II-XPD/xpdtools>`_ (placeholder)
 
-Table of Contents
-=================
-
 .. toctree::
    :hidden:
    :maxdepth: 2
@@ -54,6 +51,7 @@ Table of Contents
    technologies
 
 .. toctree::
+   :hidden:
    :caption: GitHub Links
 
    NSLS-II repositories <https://github.com/NSLS-II/>
