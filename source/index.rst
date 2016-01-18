@@ -8,8 +8,8 @@ NSLS-II Software Documentation
 
 We are deploying an event-based data collection and analysis framework.
 
-
-PICTURE
+.. image:: _static/collection-overview.png
+   :align: center
 
 Software Packages
 =================
