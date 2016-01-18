@@ -7,30 +7,17 @@ NSLS-II Software Documentation
 ==============================
 
 
+
+.. toctree::
+   :maxdepth: 2
+
+   architecture-overview
+   collection-quick-start
+   analysis-quick-start
+   deployment-details
+   resources
+   technologies
+
 If you are inside the Brookhaven National Lab firewall -- either via
 VPN or a wired connection -- you can run live data collection and analysis
 code in our "sandbox" environment. `Try it <https://try.nsls2.bnl.gov>`_.
-
-User Documetation
------------------
-
-.. toctree::
-   :maxdepth: 2
-
-   collection-quick-start
-   analysis-quick-start
-   configuration-quick-start
-   overview
-   examples/index
-   resources
-
-
-Developer Documentation
------------------------
-
-.. toctree::
-   :maxdepth: 2
-
-   arch/arch
-   conda
-   beamline-configuration
