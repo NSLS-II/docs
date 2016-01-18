@@ -64,21 +64,18 @@ This is a example startup file.::
     from bluesky.standard_config import *  # get all of the above for free
 
     gs.RE.md['beamline_id'] = 'YOUR_BEAMLINE_HERE'
-    # For now, this is required, but it is going away soon:
-    gs.RE.md['config'] = {}
 
+    import ophyd
     from ophyd.commands import *  # imports mov, wh_pos, etc.
 
     # Import matplotlib and put it in interactive mode.
     import matplotlib.pyplot as plt
     plt.ion()
 
-    # Make ophyd less verbose.
-    # (Do not spew DEBUG messages each time a device connects.)
-    import logging
-    from ophyd.session import get_session_manager
-    sessionmgr = get_session_manager()
-    sessionmgr._logger.setLevel(logging.INFO)
+    # Uncomment the following lines to turn on verbose messages for debugging.
+    # import logging
+    # ophyd.logger.setLevel(logging.DEBUG)
+    # logging.basicConfig(level=logging.DEBUG)
 
 Configuring the Olog
 --------------------
@@ -92,9 +89,7 @@ Add the line::::
 
 Back in a startup file, add:::
 
-    # Set up the logbook.
-    sessionmgr['olog_client'] = olog_client
-    gs.RE.logbook = olog_wrapper(olog_client, ['Data Acquisition'])
+    # TODO: Update this!
 
 Finally, pyOlog requires a configuration file to specify the connection
 settings. It can go in one of several locations, but currently it is
@@ -117,7 +112,14 @@ network url, e.g., ``https://xf03id-ca1:9191/Olog``.
 Defining Hardware Objects
 -------------------------
 
-TODO
+For example::
+
+    from ophyd import EpicsMotor
+
+    # the two-theta motor
+    tth = EpicsMotor('XF:28IDC-ES:1{Dif:1-Ax:2ThI}Mtr', name='tth')
+
+See the `ophyd documentation <http://nsls-ii.github.io/ophyd>`_ for more.
 
 Set up Default ("Global State")
 -------------------------------
