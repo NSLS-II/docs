@@ -11,7 +11,7 @@ BUILDDIR      = build
 GH_PAGES_SOURCES = Makefile source 
 UNAME := $(shell uname)
 ifeq ($(UNAME), Darwin)
-	GH_DIR := $(shell mktemp -dt foobar)
+	GH_DIR := $(shell mktemp -d)
 else
 	GH_DIR := $(shell mktemp -d)
 endif
