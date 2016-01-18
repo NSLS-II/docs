@@ -46,7 +46,7 @@ also need a controls account. (Contact one of the NSLS-II sysadmins.)
    Remember, if you are not connected to the campus network, that link will not
    work.
 
-#. You are will be shown a log in prompt. Enter your *controls* account and
+#. You will be shown a login prompt. Enter your *controls* account and
    password.
 
    .. image:: _static/jupyterhub-login.png
