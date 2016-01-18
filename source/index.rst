@@ -16,7 +16,7 @@ Software Packages
 
 The following software packages work together to handle different aspects of
 data collection and analysis. They interoperate by sharing a common
-`event-based model <architecture>`_. Each package has its own detailed
+:ref:`event-based model <architecture>`. Each package has its own detailed
 documentation, linked below.
 
 * Data Collection Packages
