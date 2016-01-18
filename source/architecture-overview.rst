@@ -39,3 +39,6 @@ a set of individual measurements that will be collected or processed together.
 * Stop: At the end of a run, a Document is generated with information that is
   only known at the end -- such as whether the run terminated due to some 
   failure.
+
+The precise schemas for these documents are provided as jsonschema documents
+in `this repository <https://github.com/NSLS-II/event-model#event-model>`_.

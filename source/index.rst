@@ -4,9 +4,57 @@
    contain the root `toctree` directive.
 
 NSLS-II Software Documentation
-==============================
+******************************
+
+We are deploying an event-based data collection and analysis framework.
 
 
+PICTURE
+
+Software Packages
+=================
+
+The following software packages work together to handle different aspects of
+data collection and analysis. They interoperate by sharing a common
+`event-based model <architecture>`_. Each package has its own detailed
+documentation, linked below.
+
+Data Collection Packages
+------------------------
+
+* `bluesky <http://nsls-ii.github.io/bluesky>`_ -- a framework for specifying and executing experiments
+* `ophyd <http://nsls-ii.github.io/ophyd>`_ -- a collection of Python objects that represent hardware, providing a common high-level interface
+
+Data Access Packages
+--------------------
+
+High-level Data Access
+^^^^^^^^^^^^^^^^^^^^^^
+
+* data broker -- a simple interface that pulls together data from all sources
+
+Low-Level Data Storage and Access
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* metadataclient (preferred), metadatastore (deprecated)
+* filestore
+
+Data Munging Packages
+---------------------
+
+* datamuxer
+
+Scientific Data Processing Packages
+-----------------------------------
+
+* the built-in subscriptions in `bluesky <http://nsls-ii.github.io/bluesky>`_
+* Beamline-specific \*tools repositories:
+    * `csxtools <nsls-ii-csx.github.io/csxtools/>`_
+    * `chxtools <https://github.com/NSLS-II-CHX/chxtools>`_ (undocumented)
+    * `xpdtools <https://github.com/NSLS-II-XPD/xpdtools>`_ (placeholder)
+
+Table of Contents
+=================
 
 .. toctree::
    :maxdepth: 2
@@ -14,10 +62,7 @@ NSLS-II Software Documentation
    architecture-overview
    collection-quick-start
    analysis-quick-start
+   sandbox
    deployment-details
    resources
    technologies
-
-If you are inside the Brookhaven National Lab firewall -- either via
-VPN or a wired connection -- you can run live data collection and analysis
-code in our "sandbox" environment. `Try it <https://try.nsls2.bnl.gov>`_.
