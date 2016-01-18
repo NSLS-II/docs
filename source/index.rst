@@ -42,6 +42,7 @@ Table of Contents
 =================
 
 .. toctree::
+   :hidden:
    :maxdepth: 2
 
    architecture-overview
@@ -51,3 +52,10 @@ Table of Contents
    deployment-details
    resources
    technologies
+
+.. toctree::
+   :caption: GitHub Links
+
+   NSLS-II repositories <https://github.com/NSLS-II/>
+   Wish List <https://github.com/NSLS-II/wishlist/issues>
+   Bug Reports <https://github.com/NSLS-II/Bug-Reports/issues>
