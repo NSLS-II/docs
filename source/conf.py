@@ -27,9 +27,7 @@ sys.path.insert(0, os.path.abspath(os.path.dirname('__file__')))
 # # NSLS-II repo name
 repo_name = 'NSLS-II Software Documentation'
 # The short X.Y version.
-version = '0.0.1'
 # The full version, including alpha/beta/rc tags.
-release = '0.0.1'
 
 # -- General configuration ------------------------------------------------
 
