@@ -24,12 +24,12 @@ documentation, linked below.
     * `ophyd <http://nsls-ii.github.io/ophyd>`_ -- a collection of Python objects that represent hardware, providing a common high-level interface
 * Data Access Packages
     * High-level Data Access
-        * data broker -- a simple interface that pulls together data from all sources
+        * `databroker <http://nsls-ii.github.io/databroker>`_ -- a simple interface that pulls together data from all sources
     * Low-Level Data Storage and Access
         * metadataclient (preferred), metadatastore (deprecated)
         * filestore
 * Data Munging Packages
-    * datamuxer
+    * `datamuxer <http://nsls-ii.github.io/datamuxer>`_ -- alignment and basic processing of asynchronous event-based data
 * Scientific Data Processing Packages
     * the built-in subscriptions in `bluesky <http://nsls-ii.github.io/bluesky>`_
     * Beamline-specific \*tools repositories:
@@ -49,6 +49,25 @@ documentation, linked below.
    deployment-details
    resources
    technologies
+
+.. toctree::
+   :hidden:
+   :caption: Data Collection
+
+   bluesky <https://nsls-ii.github.io/bluesky>
+   ophyd <https://nsls-ii.github.io/ophyd>
+
+.. toctree::
+   :hidden:
+   :caption: Data Access
+
+   databroker <https://nsls-ii.github.io/databroker>
+
+.. toctree::
+   :hidden:
+   :caption: Data Munging
+
+   datamuxer <https://nsls-ii.github.io/datamuxer>
 
 .. toctree::
    :hidden:
