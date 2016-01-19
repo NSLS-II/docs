@@ -29,4 +29,4 @@ Good Scientific Software Habits
 -------------------------------
 
 * `Novice-level introduction from Software Carpentry <http://swcarpentry.github.io/git-novice>`_
-* `Intermediate-Level explanation of the git workflow we use <http://nvie.com/posts/a-successful-git-branching-model/>`_
+* `Intermediate-Level explanation of the git workflow we use <https://guides.github.com/introduction/flow/>`_
