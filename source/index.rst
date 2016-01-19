@@ -29,7 +29,7 @@ documentation, linked below.
         * metadataclient (preferred), metadatastore (deprecated)
         * filestore
 * Data Munging Packages
-    * `datamuxer <http://nsls-ii.github.io/datamuxer>`_ -- alignment and basic processing of asynchronous event-based data
+    * `datamuxer <http://nsls-ii.github.io/datamuxer>`_ -- a "de-multiplexer" for alignment and basic processing of asynchronous, event-based data
 * Scientific Data Processing Packages
     * the built-in subscriptions in `bluesky <http://nsls-ii.github.io/bluesky>`_
     * Beamline-specific \*tools repositories:
