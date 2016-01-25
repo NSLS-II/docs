@@ -71,6 +71,12 @@ documentation, linked below.
 
 .. toctree::
    :hidden:
+   :caption: Data Export
+
+   suitcase <https://nsls-ii.github.io/suitcase>
+
+.. toctree::
+   :hidden:
    :caption: GitHub Links
 
    NSLS-II repositories <https://github.com/NSLS-II/>
