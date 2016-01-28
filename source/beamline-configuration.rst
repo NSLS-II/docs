@@ -82,11 +82,8 @@ Back in an IPython profile startup file, add::
     from pyOlog import SimpleOlogClient
     from bluesky.callbacks.olog import logbook_cb_factory
 
-    # Set up the logbook. This configured bluesky's summaries of 
-    # data acquisition (scan type, ID, etc.). It does NOT affect the
-    # convenience functions in ophyd (log_pos, etc.) or the IPython
-    # magics (%logit, %grabit). Those are configured in ~/.pyOlog.conf
-    # or wherever the pyOlog configuration file is stored.
+    # Set up the logbook. This configures bluesky's summaries of 
+    # data acquisition (scan type, ID, etc.).
 
     LOGBOOKS = ['Data Acquisition']  # list of logbook names to publish to
     simple_olog_client = SimpleOlogClient()
@@ -107,6 +104,10 @@ profile startup file, add::
     # a variable called 'logbook' in the global IPython namespace.
     logbook = simple_olog_client
 
+The log entires will be written into the logbook specified in
+``.pyOlog.conf`` (in our example, "Commissioning"), not the logbook
+used by bluesky (in our example, "Data Acquisition").
+
 Olog IPython "Magics"
 =====================
 
@@ -124,6 +125,10 @@ as ``~/.ipython/profile_collection``, edit the file ``ipython_config.py``.
 Add the line::
 
     c.InteractiveShellApp.extensions = ['pyOlog.cli.ipy']
+
+The log entires will be written into the logbook specified in
+``.pyOlog.conf`` (in our example, "Commissioning"), not the logbook
+used by bluesky (in our example, "Data Acquisition").
 
 
 Defining Hardware Objects
