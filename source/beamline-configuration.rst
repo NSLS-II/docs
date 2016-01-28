@@ -63,10 +63,13 @@ This is a example startup file.::
 
     from bluesky.standard_config import *  # get all of the above for free
 
-    gs.RE.md['beamline_id'] = 'YOUR_BEAMLINE_HERE'
+    RE = gs.RE  # convenient alias
+    RE.md['beamline_id'] = 'YOUR_BEAMLINE_HERE'
 
     import ophyd
-    from ophyd.commands import *  # imports mov, wh_pos, etc.
+    from ophyd import *
+    from bluesky.plans import *
+    from bluesky.callbacks import *
 
     # Import matplotlib and put it in interactive mode.
     import matplotlib.pyplot as plt
@@ -88,8 +91,23 @@ Add the line::::
     c.InteractiveShellApp.extensions = ['pyOlog.cli.ipy']
 
 Back in a startup file, add:::
+    from functools import partial
+    from pyOlog import SimpleOlogClient
+    from bluesky.callbacks.olog import logbook_cb_factory
 
-    # TODO: Update this!
+    # Set up the logbook. This configured bluesky's summaries of 
+    # data acquisition (scan type, ID, etc.). It does NOT affect the
+    # convenience functions in ophyd (log_pos, etc.) or the IPython
+    # magics (%logit, %grabit). Those are configured in ~/.pyOlog.conf
+    # or wherever the pyOlog configuration file is stored.
+
+    LOGBOOKS = ['Data Acquisition']  # list of logbook names to publish to
+    simple_olog_client = SimpleOlogClient()
+    generic_logbook_func = simple_olog_client.log
+    configured_logbook_func = partial(generic_logbook_func, logbooks=LOGBOOKS)
+
+    cb = logbook_cb_factory(configured_logbook_func)
+    RE.subscribe('start', cb)
 
 Finally, pyOlog requires a configuration file to specify the connection
 settings. It can go in one of several locations, but currently it is
@@ -97,17 +115,12 @@ typically stored in the user home directory. The file should be called
 ``.pyOlog.conf``. Note the leading dot. Its contents should look like::
 
     [DEFAULT]
+    url = https://<beamline>-log.cs.nsls2.local:8181/Olog
+    logbooks = Commissioning   # use the name of an existing logbook
+    username = <username>
+    password = <password>
 
-    url = https://controlsweb.nsls2.bnl.gov/logbook-<BEAMLINE>/Olog
-    logbooks = Experiments
-    username = BEAMLINE_USERNAME
-    password = PASSWORD
-
-where ``<BEAMLINE>`` is the lowercase three-letter designation --
-for example, ``hxn``.
-
-If for some reason the external network is not available, use the interal
-network url, e.g., ``https://xf03id-ca1:9191/Olog``.
+where ``<beamline>`` is the designation formatted like ``xf23id1``.
 
 Defining Hardware Objects
 -------------------------
