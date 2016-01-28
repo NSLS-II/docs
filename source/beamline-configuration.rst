@@ -53,12 +53,28 @@ This is a example IPython profile startup file.::
 Configuring the Olog
 --------------------
 
-This piece actually requires IPython. In the profile directory, such as
-``~/.ipython/profile_collection``, edit the file ``ipython_config.py``.
+Essential Configuration
+=======================
 
-Add the line::
+pyOlog requires a configuration file to specify the connection
+settings. It can go in one of several locations, but currently it is
+typically stored in the user home directory. The file should be called
+``.pyOlog.conf``. Note the leading dot. Its contents should look like::
 
-    c.InteractiveShellApp.extensions = ['pyOlog.cli.ipy']
+    [DEFAULT]
+    url = https://<beamline>-log.cs.nsls2.local:8181/Olog
+    logbooks = Commissioning   # use the name of an existing logbook
+    username = <username>
+    password = <password>
+
+where ``<beamline>`` is the designation formatted like ``xf23id1``.
+
+Integration with Bluesky
+========================
+
+Bluesky automatically logs basic scan information at the start of a
+scan. (All of this information is strictly a subset of what is
+also stored in metadatastore -- this is just a convenience.)
 
 Back in an IPython profile startup file, add::
 
@@ -80,18 +96,35 @@ Back in an IPython profile startup file, add::
     cb = logbook_cb_factory(configured_logbook_func)
     RE.subscribe('start', cb)
 
-Finally, pyOlog requires a configuration file to specify the connection
-settings. It can go in one of several locations, but currently it is
-typically stored in the user home directory. The file should be called
-``.pyOlog.conf``. Note the leading dot. Its contents should look like::
+Integration with Ophyd
+======================
 
-    [DEFAULT]
-    url = https://<beamline>-log.cs.nsls2.local:8181/Olog
-    logbooks = Commissioning   # use the name of an existing logbook
-    username = <username>
-    password = <password>
+Ophyd has as ``log_pos`` method that writes the current position of all
+positioners into the log. To enable this, add the following to an IPython
+profile startup file, add::
+    
+    # This is for ophyd.commands.get_logbook, which simply looks for
+    # a variable called 'logbook' in the global IPython namespace.
+    logbook = simple_olog_client
 
-where ``<beamline>`` is the designation formatted like ``xf23id1``.
+Olog IPython "Magics"
+=====================
+
+"Magics" are special IPython commands (not part of Python itself). They
+begin with %. There are two IPython magics for conveniently writing to
+the Olog.
+
+* Type ``%logit`` to quickly type a text log entry.
+* Type ``%grabit``, select an area of the screen to capture, and type in a 
+  text caption.
+
+These require their own special configuration. In the profile directory, such
+as ``~/.ipython/profile_collection``, edit the file ``ipython_config.py``.
+
+Add the line::
+
+    c.InteractiveShellApp.extensions = ['pyOlog.cli.ipy']
+
 
 Defining Hardware Objects
 -------------------------
