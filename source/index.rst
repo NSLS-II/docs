@@ -11,6 +11,21 @@ We are deploying an event-based data collection and analysis framework.
 .. image:: _static/collection-overview.gif
    :align: center
 
+Design Goals
+============
+
+* Provide an integrated, **end-to-end solution** for data collection and analysis.
+* Support **streaming** data processing, variously called "in-line" or "live."
+* Use **existing, open-source technologies and languages**; avoid inventing a
+  domain-specific language.
+* Leverage tools from the rapidly-growing **scientfic Python** community.
+* Adhere to good modern software practices, especially code review and
+  automated testing, with the goal of enabling **large-scale collaboration**
+  while maintaining **stability and robustness**.
+* Establish **clear, consistent interfaces** (meaning inputs and outputs, not
+  graphical interfaces) that allow project components to be used independently,
+  extended, and interfaced with other, outside projects.
+
 Software Packages
 =================
 
@@ -30,6 +45,8 @@ documentation, linked below.
         * filestore
 * Data Munging Packages
     * `datamuxer <http://nsls-ii.github.io/datamuxer>`_ -- a "de-multiplexer" for alignment and basic processing of asynchronous, event-based data
+* Data Export Packages
+    * `suitcase <http://nsls-ii.github.io/suitcase>`_ -- a simple proof-of-concept, exporting experiment data and metadata from a database to a stand-alone file
 * Scientific Data Processing Packages
     * the built-in subscriptions in `bluesky <http://nsls-ii.github.io/bluesky>`_
     * Beamline-specific \*tools repositories:
