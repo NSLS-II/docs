@@ -11,6 +11,49 @@ We are deploying an event-based data collection and analysis framework.
 .. image:: _static/collection-overview.gif
    :align: center
 
+Design Goals
+============
+
+* Provide an integrated, **end-to-end solution** for data collection and analysis.
+* Support **streaming** data analysis, variously called "in-line" or "live."
+* Support **prompt** data analysis: immediate, semi-automated data analysis that
+  can inform decisions made during an experiment
+* Use **existing, open-source technologies and languages**; avoid inventing a
+  domain-specific language.
+* Leverage tools from the **scientfic Python** community, a mature and
+  widely-used ecosystem of scientific code used in trusted, critical
+  applications in research and beyond.
+* Adhere to good modern software practices, especially code review and
+  automated testing, with the goal of enabling **large-scale collaboration**
+  while maintaining **stability and robustness**.
+* Establish **clear, consistent interfaces** (meaning inputs and outputs, not
+  graphical interfaces) that allow project components to be used independently,
+  extended, and interfaced with other, outside projects.
+
+Project Roadmap
+===============
+
+Early work has been focused on identifying common tasks and key
+abstractions to guide the development of a general-purpose framework.
+Interacting with real hardware and real users, the framework has undergone
+several iterations of re-design.
+
+Now, during the present operating cycle at NSLS-II (winter 2016), the framework
+is stabilizing. New and unforeseen applications are fitting well into the
+framework, validating its assumptions and optimizations. At the same time,
+software bugs are being discovered less often and being fixed more quickly. 
+
+Looking forward, software targeted to more specific tasks will need to built.
+For example, a user who only does about five different kinds of experiment does
+not need the full power of the framework and can benefit from a simpler (if
+more limited) toolkit. The volume of such toolkits will be large, but it is
+hoped that the effort required can be greatly diminished by resting on this
+framework --- and reaching outside of it when necessary.
+
+Detailed plans for each project are managed and discussed in the open on
+`GitHub <https://github.com/NSLS-II/>`_, where the user community is invited to
+observe, comment, and contribute.
+
 Software Packages
 =================
 
@@ -30,6 +73,8 @@ documentation, linked below.
         * filestore
 * Data Munging Packages
     * `datamuxer <http://nsls-ii.github.io/datamuxer>`_ -- a "de-multiplexer" for alignment and basic processing of asynchronous, event-based data
+* Data Export Packages
+    * `suitcase <http://nsls-ii.github.io/suitcase>`_ -- a simple proof-of-concept, exporting experiment data and metadata from a database to a stand-alone file
 * Scientific Data Processing Packages
     * the built-in subscriptions in `bluesky <http://nsls-ii.github.io/bluesky>`_
     * Beamline-specific \*tools repositories:
