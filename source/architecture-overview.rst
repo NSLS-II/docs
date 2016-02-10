@@ -75,8 +75,8 @@ a set of individual measurements that will be collected or processed together.
   .. code-block:: javascript
 
         {'data_keys':
-            {'temperature': {'source': ..., 'dtype': 'number'},
-             'position': {'source': ..., 'dtype': ...}},
+            {'temperature': {'source': 'PV:...', 'dtype': 'number', 'precision': 2, 'units': 'K'},
+             'position': {'source': 'PV:...', 'dtype': 'number': 'precision': 3, 'units': 'cm'}},
          'configuration': {...},
          'time': ...,
          'uid': ...,
