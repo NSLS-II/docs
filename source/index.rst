@@ -18,17 +18,21 @@ Design Goals
 * Support **streaming** data analysis, variously called "in-line" or "live."
 * Support **prompt** data analysis: immediate, semi-automated data analysis that
   can inform decisions made during an experiment
+* Capture **metadata** to record a detailed snapshot of the hardware and --- as
+  much as possible --- represent the user intention, the meaning of the
+  measurements.
 * Use **existing, open-source technologies and languages**; avoid inventing a
   domain-specific language.
-* Leverage tools from the **scientfic Python** community, a mature and
-  widely-used ecosystem of scientific code used in trusted, critical
-  applications in research and beyond.
-* Adhere to good modern software practices, especially code review and
+* Leverage tools from the **open scentific software** community and in
+  particular the **scientific Python** community, a mature and widely-used
+  ecosystem of scientific code used in trusted, critical applications in
+  research and beyond.
+* Establish **clear, consistent interfaces** (meaning inputs and outputs,
+  APIs) that allow project components to be used independently, extended, and
+  interfaced with other, outside projects.
+* Adhere to good software practices, especially code review and
   automated testing, with the goal of enabling **large-scale collaboration**
   while maintaining **stability and robustness**.
-* Establish **clear, consistent interfaces** (meaning inputs and outputs, not
-  graphical interfaces) that allow project components to be used independently,
-  extended, and interfaced with other, outside projects.
 
 Project Roadmap
 ===============
