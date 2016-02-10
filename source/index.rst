@@ -18,6 +18,7 @@ Design Goals
 * Capture **metadata** to record a detailed snapshot of the hardware and --- as
   much as possible --- represent the user intention, the meaning of the
   measurements.
+* Make datasets **searchable** with rich queries on metadata and data.
 * Use **existing, open-source technologies and languages**; avoid inventing a
   domain-specific language.
 * Leverage tools from the **open scentific software** community and in
