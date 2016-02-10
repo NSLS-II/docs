@@ -8,9 +8,6 @@ NSLS-II Software Documentation
 
 We are deploying an event-based data collection and analysis framework.
 
-.. image:: _static/collection-overview.gif
-   :align: center
-
 Design Goals
 ============
 
@@ -33,6 +30,9 @@ Design Goals
 * Adhere to good software practices, especially code review and
   automated testing, with the goal of enabling **large-scale collaboration**
   while maintaining **stability and robustness**.
+
+.. image:: _static/collection-overview.gif
+   :align: center
 
 Project Roadmap
 ===============
