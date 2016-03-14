@@ -46,7 +46,7 @@ Activating the root environments
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Every beamline workstation has at least two conda environments that are
-"locked down," requiring root privilidges to change. They named are
+"locked down", requiring root privileges to change. They are named 
 ``analysis`` and ``collection``. The exact contents of these environments will
 vary from beamline to beamline based on their software needs, but the names
 are consistent so that at any beamline, this should work:
@@ -90,7 +90,7 @@ To downgrade, install a specific version.
 Packages are inconsistent about whether they use a 'v' in their version string
 so be advised that they may or may not be required.
 
-There are couple handy options to no about. Sometimes conda will overeagerly
+There are couple of handy options to know about. Sometimes conda will overeagerly
 update dependencies that we don't need to or want to update. To suppress this,
 use the ``--no-deps`` option.
 
@@ -119,7 +119,7 @@ From here, users can add or remove packages at will using conda and pip.
 Access custom user environments in NSLS-II's JupyterHub
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The NSLS-II Jupyterhub provides easy-to-use access to different host machines
+The NSLS-II JupyterHub provides easy-to-use access to different host machines
 and conda environments. For example, choosing CHX from the drop-down menu
 connects to the CHX beamline's analysis server (xf11id-srv1),
 activates the ``/opt/conda_envs/analysis`` conda environment, and starts
@@ -131,11 +131,11 @@ a Python process in that environment.
 Jupyter calls the entries in this menu "kernels." You can read the gory
 details in `the IPython documentation <https://ipython.org/ipython-doc/3/development/kernels.html>`_.
 Users can also connect to their own user-created conda environments through
-Jupyterhub. We provide a utilty called ``kernelize`` to streamline the
+JupyterHub. We provide a utility called ``kernelize`` to streamline the
 process.
 
 #. Log in to the host where the conda environment should be run. This is
-   how Jupyterhub will know which host to open the Python process on.
+   how JupyterHub will know which host to open the Python process on.
 #. Install the ``kernelize`` conda package into environment of interest:
 
    .. code-block:: bash
@@ -144,17 +144,17 @@ process.
 
 This adds create a new file (or overwrites any existing file) at
 ``~/conda_envs/ENV_NAME/share/jupyter/kernels/env_ENV_NAME/kernel.json``
-that will be automatically discovered by Jupyterhub. For example, installing
+that will be automatically discovered by JupyterHub. For example, installing
 ``kernelize`` into a conda environment called ``test5`` while logged into the
-host ``xf23id1-srv1`` adds this entry to Jupyterhub's drop-down menu. To
+host ``xf23id1-srv1`` adds this entry to JupyterHub's drop-down menu. To
 update the menu, simply refresh the browser.
 
    .. image:: _static/jupyterhub-customized-kernel-menu.png
       :align: center
 
-Thus, installing the ``kernelize`` package captures to pieces of information:
-the path to the conda environment and the name of the host where Jupyterhub
+Thus, installing the ``kernelize`` package captures two pieces of information:
+the path to the conda environment and the name of the host where JupyterHub
 will run that kernel.
 
-These user-customized environments only appear to the indivudal user who adds
+These user-customized environments only appear to the individual user who adds
 them; they do not affect all users.

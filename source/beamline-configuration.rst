@@ -19,7 +19,7 @@ their own user accounts, and we will probably move the profiles to a system
 location like ``/usr/share/ipython``.
 
 The standard profile is called "collection," and the startup scripts are
-located in ``~/.ipython/profile_collection/startup/``. As stated in the on
+located in ``~/.ipython/profile_collection/startup/``. As stated in the 
 quick start page, they can be invoked by typing:
 
 .. code-block:: bash

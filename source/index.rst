@@ -12,7 +12,7 @@ Design Goals
 ============
 
 * Provide an integrated, **end-to-end solution** for data collection and analysis.
-* Support **streaming** data analysis, variously called "in-line" or "live."
+* Support **streaming** data analysis, variously called "in-line" or "live".
 * Support **prompt** data analysis: immediate, semi-automated data analysis that
   can inform decisions made during an experiment
 * Capture **metadata** to record a detailed snapshot of the hardware and --- as
@@ -21,7 +21,7 @@ Design Goals
 * Make datasets **searchable** with rich queries on metadata and data.
 * Use **existing, open-source technologies and languages**; avoid inventing a
   domain-specific language.
-* Leverage tools from the **open scentific software** community and in
+* Leverage tools from the **open scientific software** community and in
   particular the **scientific Python** community, a mature and widely-used
   ecosystem of scientific code used in trusted, critical applications in
   research and beyond.
@@ -48,12 +48,12 @@ is stabilizing. New and unforeseen applications are fitting well into the
 framework, validating its assumptions and optimizations. At the same time,
 software bugs are being discovered less often and being fixed more quickly. 
 
-Looking forward, software targeted to more specific tasks will need to built.
-For example, a user who only does about five different kinds of experiment does
-not need the full power of the framework and can benefit from a simpler (if
-more limited) toolkit. The volume of such toolkits will be large, but it is
-hoped that the effort required can be greatly diminished by resting on this
-framework --- and reaching outside of it when necessary.
+Looking forward, software targeted to more specific tasks will need to be
+built.  For example, a user who only does about five different kinds of
+experiment does not need the full power of the framework and can benefit from a
+simpler (if more limited) toolkit. The volume of such toolkits will be large,
+but it is hoped that the effort required can be greatly diminished by resting
+on this framework --- and reaching outside of it when necessary.
 
 Detailed plans for each project are managed and discussed in the open on
 `GitHub <https://github.com/NSLS-II/>`_, where the user community is invited to
@@ -85,7 +85,7 @@ documentation, linked below.
     * Beamline-specific \*tools repositories:
         * `csxtools <https://nsls-ii-csx.github.io/csxtools/>`_
         * `chxtools <https://github.com/NSLS-II-CHX/chxtools>`_ (undocumented)
-        * `hxntools <https://github.com/NSLS-II-CHX/hxntools>`_ (undocumented)
+        * `hxntools <https://github.com/NSLS-II-HXN/hxntools>`_ (undocumented)
         * `xpdtools <https://github.com/NSLS-II-XPD/xpdtools>`_ (placeholder)
 
 .. toctree::
