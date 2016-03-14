@@ -3,7 +3,7 @@
 Data Analysis Quick Start
 *************************
 
-You can perform data analysis remotely, off site, or at a beamline computer.
+You can perform data analysis remotely, off-site, or at a beamline computer.
 Accordingly, there are two parts to this guide.
 
 Option 1: At the Beamline
@@ -31,7 +31,7 @@ Option 1: At the Beamline
     ipython notebook
 
 You are ready to work. See the
-`dataportal documentaion <https://nsls-ii.github.io/dataportal>`_
+`dataportal documentation <https://nsls-ii.github.io/dataportal>`_
 to look up scans and retrieve data. See the
 `scikit-xray documentation <https://scikit-xray.github.io/scikit-xray>`_
 for some Python tools for X-ray data analysis.
@@ -64,7 +64,7 @@ has fast access to the beamline's data.
       :align: center
 
 You are ready to work. See the
-`dataportal documentaion <https://nsls-ii.github.io/dataportal>`_
+`dataportal documentation <https://nsls-ii.github.io/dataportal>`_
 to look up scans and retrieve data. See the
 `scikit-xray documentation <https://scikit-xray.github.io/scikit-xray>`_
 for some Python tools for X-ray data analysis.

@@ -15,10 +15,10 @@ Scientific Python Packages We Use
 ---------------------------------
 
 * `numpy tutorial <http://wiki.scipy.org/Tentative_NumPy_Tutorial>`_ -- core package for fast array computation in Python
-* `pandas <http://pandas.pydata.org/pandas-docs/stable/overview.html>`_ -- pratical data analysis tools (e.g., IO in many formats, handling missing data)
+* `pandas <http://pandas.pydata.org/pandas-docs/stable/overview.html>`_ -- practical data analysis tools (e.g., IO in many formats, handling missing data)
 * `scikit-image <http://scikit-image.org/docs/dev/auto_examples/>`_ -- image analysis tools
 * `scipy <http://docs.scipy.org/doc/scipy/reference/tutorial/index.html>`_ --
-  miscellaneous funcitons and algorithms (special functions,
+  miscellaneous functions and algorithms (special functions,
   linear algebra, etc.)
 * `matplotlib <http://matplotlib.org/>`_ -- powerful, publication-quality
   plotting

@@ -9,17 +9,17 @@ Creating a Release Version
 #. Write release notes / collapse whats_new and api_changes folders
 #. Create a new commit, version bumping as needed. Commit
    message should be truncated release notes.
-#. create annotated tag on release commit, text should be truncated release
+#. Create annotated tag on release commit, text should be truncated release
    notes.  Tag format is `vX.Y.Z`
-#. create new commit version bumping back to dev version pattern as needed
-#. check to make sure everything looks right
-#. push to master branch
-#. push tag
-#. create new conda recipe in conda-prescriptions/releases, updating
+#. Create new commit version bumping back to dev version pattern as needed
+#. Check to make sure everything looks right
+#. Push to master branch
+#. Push tag
+#. Create new conda recipe in conda-prescriptions/releases, updating
    as needed
-#. use build server or beamline computer to build conda package
-#. upload to proper internal binstar organization(s)
-#. rebuild (all) the docs
+#. Use build server or beamline computer to build conda package
+#. Upload to proper internal binstar organization(s)
+#. Rebuild (all) the docs
 
 Decide on version number
 ------------------------
@@ -35,7 +35,7 @@ rules do not apply.
 
 PEP440 defines a way of adding qualifiers to a version string to
 ensure proper sorting of development releases.  The rules are quite
-general and specify how to sort multiply stacked pre- and post-
+general and specify how to sort multiply-stacked pre- and post-
 releases.  We will only be using a very simple case and all of our
 development releases should look like ``vX.Y.Z.postN+gHEXVAL`` which
 say that this the ``N`` commit after release ``vX.Y.Z`` and with the
@@ -50,23 +50,23 @@ Release notes/ API changes
 --------------------------
 
 The release notes should be a succinct document which
-summarizes the accumulated changes sense the last version.
+summarizes the accumulated changes since the last version.
 It is particularly important to document **all** API changes.
 
 Each repository should have a folder in the docs directory for new
-features (:file:`whats_new`) and for api changes (:file:`api_changes`).
+features (:file:`whats_new`) and for API changes (:file:`api_changes`).
 Collect all of the files into this folder into the top-level
 :file:`*.rst`.
 
 
 An abbreviated version of the release notes will go in the release
-commit message + the tag annotation.
+commit message and the tag annotation.
 
 
 Version bump / Release commit
 -----------------------------
 On the branch you plan to cut the release off do the version bumping
-as needed.  Currently this require changing
+as needed.  Currently this requires changing
 
 - version number in ``setup.py``
 - ``__version__`` in ``__init__.py``
@@ -108,7 +108,7 @@ Check your work
 
 Take some time to consider what you have just done and make sure
 everything looks right.  Run some local tests, install off the tagged
-commit to make sure the versions are ok.  Run the tests locally.  Make
+commit to make sure the versions are OK.  Run the tests locally.  Make
 sure that the dev version of the conda package still builds.
 
 Once a tag is made public it can not be taken back!
@@ -116,7 +116,7 @@ Once a tag is made public it can not be taken back!
 Push everything
 ---------------
 
-Push the branch with your new commits + the tag up to the canonical
+Push the branch with your new commits and the tag up to the canonical
 repository.
 
 Create conda recipe for release
@@ -126,7 +126,7 @@ In `conda-prescriptions
 <https://github.com/NSLS-II/conda-prescriptions>`_ create a new recipe
 in :file:`releases/project/vX.Y.Z`.  This is most easily done by
 copying and updating the recipe from the previous version.  You will
-need to update at least the ``version`` string ande the ``git_rev``.
+need to update at least the ``version`` string and the ``git_rev``.
 In addition you may need to update the imports that are tested and the
 dependencies if they have changed between versions.
 
@@ -135,7 +135,7 @@ Build and upload new binaries
 -----------------------------
 
 Use either the :ref:`binstar build server <binstar_build>` or by using
-``conda build`` on one of the beam line computers to build the conda
+``conda build`` on one of the beamline computers to build the conda
 package off of your newly created recipe.  ::
 
   cd conda-prescriptions
@@ -157,7 +157,7 @@ the files between organizations ::
 Rebuild all of the documentation
 --------------------------------
 
-Rebuild both the project specific documentation and the over-all
+Rebuild both the project specific documentation and the overall
 NSLS-II documentation and push to the correct github.io locations.
 
 

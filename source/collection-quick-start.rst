@@ -7,8 +7,8 @@ Data Collection Quick Start
 
    Here we are assume that you are sitting at a beamline computer that has
    the software installed and configured. If you are starting from scratch
-   and you have administative access to your machine, see
-   :ref:`deployment-details` -- or contact that DAMA group.
+   and you have administrative access to your machine, see
+   :ref:`deployment-details` -- or contact the DAMA group.
 
 #. You should be logged in as a "beamline user" (e.g., ``xf23id1``). Open a
    terminal.
@@ -28,5 +28,5 @@ Data Collection Quick Start
    functions, including the names of motors and detectors.
 
 You are ready to work. See the
-`bluesky documentaion <https://nsls-ii.github.io/bluesky>`_
+`bluesky documentation <https://nsls-ii.github.io/bluesky>`_
 to learn how to run experiments.

@@ -26,12 +26,12 @@ Installation Procedure
        profile_beamline/
      .bashrc
 
-   If the beamline does not have nfs home directories, then these
-   files should be stored on the nfs share (:file:`/nfs/beamlineid/`)
+   If the beamline does not have NFS home directories, then these
+   files should be stored on the NFS share (:file:`/nfs/beamlineid/`)
    and sym-linked into the home directory (possibly not for
    :file:`.bashrc`).
 
-#. If needed, fix proxy settings so you can see the internet ::
+#. If needed, fix proxy settings so you can see the Internet ::
 
     echo 'export https_proxy=https://proxy:8888' >> ~/.bashrc
     echo 'export http_proxy=http://proxy:8888' >> ~/.bashrc
@@ -40,7 +40,7 @@ Installation Procedure
 #. Set up a configuration file for pyOlog, :file:`pyOlog.conf` in
    the home directory.
 
-#. install miniconda ::
+#. Install miniconda ::
 
 
     wget http://repo.continuum.io/miniconda/Miniconda-3.8.3-Linux-x86_64.sh -O miniconda.sh
@@ -49,9 +49,9 @@ Installation Procedure
     echo "export PATH=`pwd`/mc/bin:\$PATH" >> ~/.bashrc
     source ~/.bashrc
 
-   If the beam line does not have nfs home directories then this
+   If the beam line does not have NFS home directories then this
    should be done in the :file:`/nfs/beamline` directory.  This does
-   not need to be sym-linked as the path logic ind :file:`.bashrc`
+   not need to be sym-linked as the path logic in :file:`.bashrc`
    will take care of finding the correct version of conda which will
    take care of finding the correct environments.
 
@@ -64,7 +64,7 @@ Installation Procedure
     conda config --add create_default_packages pip
     conda update --all
 
-   Where ``BEAMLINE`` is the name of the beam-line organization you want to
+   Where ``BEAMLINE`` is the name of the beamline organization you want to
    install source for (in uppercase -- see the table at bottom)
 
 #. Install the collection or analysis stacks create a new environment ::
