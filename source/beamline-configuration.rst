@@ -38,8 +38,12 @@ This is a example IPython profile startup file.::
 
     import ophyd
     from ophyd import *
+    from ophyd.commands import setup_ophyd
     from bluesky.plans import *
     from bluesky.callbacks import *
+
+    # Set up ophyd for use (this is required)
+    setup_ophyd()
 
     # Import matplotlib and put it in interactive mode.
     import matplotlib.pyplot as plt
