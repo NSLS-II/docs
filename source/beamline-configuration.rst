@@ -12,11 +12,8 @@ At NSLS-II, configuration is done by startup scripts that are part of an
 . But note that it is not essential to use IPython or IPython profile in 
 general -- this is just a convenience.
 
-At the time of this writing, all profiles are stored in or at least soft-linked
-from ``~/.ipython`` in the user profile of the beamline account (e.g.,
-``xf11id``). In the future, we want users to perform data collection under
-their own user accounts, and we will probably move the profiles to a system
-location like ``/usr/share/ipython``.
+Profiles are stored in (or soft-linked) from ``~/.ipython`` in the user profile
+of individual users or shared beamline accounts.
 
 The standard profile is called "collection," and the startup scripts are
 located in ``~/.ipython/profile_collection/startup/``. As stated in the 
@@ -26,28 +23,47 @@ quick start page, they can be invoked by typing:
 
     ipython --profile=collection
 
+To refresh a script that has been edited, restart IPython or re-execute the
+script using ``%run -i ~/.ipython/profile_collection/startup/<FILENAME>``.
+Do this for any file(s) that have been updated. (There is no way to run
+all files at once.)
+
 Example Configuration File
 --------------------------
 
 This is a example IPython profile startup file.::
 
-    from bluesky.standard_config import *  # get all of the above for free
-
-    RE = gs.RE  # convenient alias
-    RE.md['beamline_id'] = 'YOUR_BEAMLINE_HERE'
-
-    import ophyd
-    from ophyd import *
-    from ophyd.commands import setup_ophyd
-    from bluesky.plans import *
-    from bluesky.callbacks import *
-
-    # Set up ophyd for use (this is required)
+    # Make ophyd listen to pyepics.
+    from ophyd import setup_ophyd
     setup_ophyd()
+
+    # Subscribe metadatastore to documents.
+    # If this is removed, data is not saved to metadatastore.
+    from bluesky.register_mds import register_mds
+    RE = gs.RE  # convenience alias
+    register_mds(RE)
 
     # Import matplotlib and put it in interactive mode.
     import matplotlib.pyplot as plt
     plt.ion()
+
+    # Make plots update live while scans run.
+    from bluesky.qt_kicker import install_qt_kicker
+    install_qt_kicker()
+
+    # Optional: set any metadata that rarely changes.
+    RE.md['beamline_id'] = 'YOUR_BEAMLINE_HERE'
+
+    # convenience imports
+    from ophyd.commands import *
+    from bluesky.plans import *
+    from bluesky.callbacks import *
+    from bluesky.spec_api import *
+    from bluesky.global_state import gs, abort, stop, resume, panic, all_is_well
+    from databroker import (DataBroker as db, get_events, get_images,
+                            get_table, get_fields, restream, process)
+    from time import sleep
+    import numpy as np
 
     # Uncomment the following lines to turn on verbose messages for debugging.
     # import logging
