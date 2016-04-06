@@ -24,7 +24,9 @@ quick start page, they can be invoked by typing:
     ipython --profile=collection
 
 To refresh a script that has been edited, restart IPython or re-execute the
-script using ``%run -i ~/.ipython/profile_collection/startup/<FILENAME>``
+script using ``%run -i ~/.ipython/profile_collection/startup/<FILENAME>``.
+Do this for any file(s) that have been updated. (There is no way to run
+all files at once.)
 
 Example Configuration File
 --------------------------
