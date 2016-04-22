@@ -77,9 +77,8 @@ Essential Configuration
 =======================
 
 pyOlog requires a configuration file to specify the connection
-settings. It can go in one of several locations, but currently it is
-typically stored in the user home directory. The file should be called
-``.pyOlog.conf``. Note the leading dot. Its contents should look like::
+settings. As root, create a file at ``/etc/pyOlog.conf`` with the following
+contents.::
 
     [DEFAULT]
     url = https://<beamline>-log.cs.nsls2.local:8181/Olog
