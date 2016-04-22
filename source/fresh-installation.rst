@@ -4,7 +4,7 @@ Fresh Installation
 1. Install mongo 3.x some dedicated server and start the mongo daemon.
 2. Conda should be installed by puppet. Add ``/opt/conda/bin`` to the
    ``$PATH``.
-4. Several proxy-related environmental variables should be defined. They
+3. Several proxy-related environmental variables should be defined. They
    may already be defined by the system; you can check with the command
    ``env | grep proxy``. Set the following:
 
