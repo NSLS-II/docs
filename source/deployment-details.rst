@@ -7,5 +7,5 @@ Deployment Details
    :maxdepth: 2
 
    conda
+   fresh-installation
    beamline-configuration
-   deployment-howto
