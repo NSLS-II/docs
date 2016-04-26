@@ -39,9 +39,9 @@ This is a example IPython profile startup file.::
 
     # Subscribe metadatastore to documents.
     # If this is removed, data is not saved to metadatastore.
-    from bluesky.register_mds import register_mds
-    RE = gs.RE  # convenience alias
-    register_mds(RE)
+    import metadatastore.commands
+    from bluesky.global_state import gs
+    gs.RE.subscribe_lossless('all', metadatastore.commands.insert)
 
     # Import matplotlib and put it in interactive mode.
     import matplotlib.pyplot as plt
@@ -52,7 +52,7 @@ This is a example IPython profile startup file.::
     install_qt_kicker()
 
     # Optional: set any metadata that rarely changes.
-    RE.md['beamline_id'] = 'YOUR_BEAMLINE_HERE'
+    # RE.md['beamline_id'] = 'YOUR_BEAMLINE_HERE'
 
     # convenience imports
     from ophyd.commands import *
@@ -64,6 +64,8 @@ This is a example IPython profile startup file.::
                             get_table, get_fields, restream, process)
     from time import sleep
     import numpy as np
+
+    RE = gs.RE  # convenience alias
 
     # Uncomment the following lines to turn on verbose messages for debugging.
     # import logging
