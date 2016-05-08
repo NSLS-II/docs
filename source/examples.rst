@@ -21,5 +21,6 @@ These examples assume:
 .. toctree::
     :maxdepth: 1
 
+    examples/simple-scan
     examples/count-with-exp-decay-delay
     examples/flyer-progress-bar
