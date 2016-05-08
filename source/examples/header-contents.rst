@@ -1,5 +1,5 @@
-Understanding the contents of the header
-****************************************
+Understand the contents of the header
+*************************************
 
 Problem
 =======

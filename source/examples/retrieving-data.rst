@@ -1,5 +1,5 @@
-Retrieving metadata, tabular data, and image data
-*************************************************
+Retrieve metadata, tabular data, and image data
+***********************************************
 
 Problem
 =======

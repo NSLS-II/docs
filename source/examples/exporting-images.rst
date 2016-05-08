@@ -1,5 +1,5 @@
-Exporting Images as TIFF files
-******************************
+Export Images as TIFF files
+***************************
 
 Problem
 =======
