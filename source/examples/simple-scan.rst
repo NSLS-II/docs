@@ -11,7 +11,7 @@ Approach
 ========
 
 Set up a table and a plot, create a plan, and execute it. View the live stream
-of data on the table and the while it is collected.
+of data on the table and the plot while it is collected.
 
 Example Solution
 ================
