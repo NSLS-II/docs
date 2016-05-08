@@ -36,7 +36,10 @@ Example Solution
     RE = RunEngine({})
     RE.subscribe_lossless('all', mds.insert)
 
-We'll preface this example by generating some example data.
+The first step is always retrieving the metadata; from there, we can retrieve
+the data itself.
+
+We'll preface this example by running a scan to generate some example data.
 
 .. ipython:: python
 
@@ -57,7 +60,15 @@ run.  For example, we can review the names of the detector(s) involved:
     h['start']['detectors']
 
 There is a lot of information in ``h``. See :doc:`/examples/header-contents`.
-What about the data itself?
+
+If we don't know the uid, we can search for the metadata in other ways. One
+of the most common is recency: ``db[-1]`` retrieves the header of the most
+recent scan; ``db[-5]`` means "five scans ago"; ``db[-5:]`` retrieve *all*
+of the last five scans together. See
+`this section of the databroker documentation <http://nsls-ii.github.io/databroker/searching.html>`_ 
+for more.
+
+Now, what about the data itself?
 
 General-Purpose Method
 ----------------------
@@ -137,7 +148,42 @@ to filter the results (and corespondingly speed up the retrieval). Examples:
 Retrieving Images
 -----------------
 
-.. warning::
+Our example data above did not include images, so ``get_table`` served our
+purposes. It is not as suitable for image data, so a separate method is
+available.
 
-    The short answer is, ``db.get_table(h, 'image_field_name')``. This section
-    is to be written.
+If the scan includes image data, use the ``get_images`` method. You will need
+to specify field name with which the image data was labeled. If you aren't sure
+what this is, you can review all the field names using ``get_fields``.
+
+.. code-block:: python
+
+    from databroker import get_fields
+    get_fields(h)  # returns list of fields names
+
+Common choices are just ``'image'`` or ``'detector_name_image'``.
+
+.. code-block:: python
+
+    images = db.get_images(h, 'image_field_name')
+
+Plot individual images using matplotlib.
+
+.. code-block:: python
+
+    # These imports may be not be necessary; they already be in your config.
+    %matplotlib
+    import matplotlib.pyplot as plt
+
+    first_img = images[0]
+
+    # First, print the image dimensions and check that they make sense.
+    print(first_img.shape)
+
+    # Plot.
+    plt.imshow(first_img)
+
+The ``imshow`` (i.e., "image show") function has many useful optional
+parameters. Refer to
+`this section of the matplotlib documentation <http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.imshow>`_
+for more.
