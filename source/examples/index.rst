@@ -19,9 +19,9 @@ These examples assume:
 .. toctree::
     :maxdepth: 1
 
-    examples/simple-scan
-    examples/retrieving-data
-    examples/replot
-    examples/header-contents
-    examples/count-with-exp-decay-delay
-    examples/flyer-progress-bar
+    simple-scan
+    retrieving-data
+    replot
+    header-contents
+    count-with-exp-decay-delay
+    flyer-progress-bar

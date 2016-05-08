@@ -95,7 +95,7 @@ documentation, linked below.
    architecture-overview
    collection-quick-start
    analysis-quick-start
-   examples
+   examples/index
    sandbox
    deployment-details
    resources
