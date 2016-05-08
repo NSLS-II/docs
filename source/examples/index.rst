@@ -23,5 +23,7 @@ These examples assume:
     retrieving-data
     replot
     header-contents
+    exporting-csv
+    exporting-images
     count-with-exp-decay-delay
     flyer-progress-bar
