@@ -96,12 +96,7 @@ unique ID of the run, and an integer scan ID.
 While the table prints line by line, points appear on a plot one at a time.
 This is the final result:
 
-.. ipython:: python
-    :suppress:
-
-    del RE.md['scan_id']  # reset so that it matches what the table says
-    @savefig simple-scan3.png
-    subs = [LiveTable(['det']), LivePlot('det', 'motor')]; RE(scan([det], motor, -10, 10, 15), subs)
+.. image:: /_static/simple-scan.png
 
 Let's look again at the output from our command. As shown above, it was
 
