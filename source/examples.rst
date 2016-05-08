@@ -20,6 +20,8 @@ These examples assume:
     :maxdepth: 1
 
     examples/simple-scan
+    example/retrieving-data
     examples/replot
+    examples/header-contents
     examples/count-with-exp-decay-delay
     examples/flyer-progress-bar
