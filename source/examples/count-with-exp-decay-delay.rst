@@ -74,7 +74,7 @@ time using a ``list_scan``.
     plan = list_scan([det], motor, (2**i for i in range(4)))
 
 Next, instead of giving a specific number of readings, let's run ``count``
-indefinitely --- until interrupted by the user pressing Ctrl^C. Instead
+indefinitely --- until interrupted by the user pressing Ctrl^C. Instead of
 ``range``, which counts integers up to a given upper limit, we'll use another
 built in fucntion, ``itertools.count``, which counts integers without bound.
 
