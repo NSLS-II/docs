@@ -43,6 +43,11 @@ This is a example IPython profile startup file.::
     from bluesky.global_state import gs
     gs.RE.subscribe_lossless('all', metadatastore.commands.insert)
 
+    # At the end of every run, verify that files were saved and
+    # print a confirmation message.
+    from bluesky.callbacks.broker import verify_files_saved
+    gs.RE.subscribe('stop', post_run(verify_files_saved))
+
     # Import matplotlib and put it in interactive mode.
     import matplotlib.pyplot as plt
     plt.ion()
@@ -56,10 +61,9 @@ This is a example IPython profile startup file.::
 
     # convenience imports
     from ophyd.commands import *
-    from bluesky.plans import *
     from bluesky.callbacks import *
     from bluesky.spec_api import *
-    from bluesky.global_state import gs, abort, stop, resume, panic, all_is_well
+    from bluesky.global_state import gs, abort, stop, resume
     from databroker import (DataBroker as db, get_events, get_images,
                             get_table, get_fields, restream, process)
     from time import sleep
