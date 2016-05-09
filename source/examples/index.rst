@@ -22,8 +22,10 @@ These examples assume:
     simple-scan
     retrieving-data
     replot
+    fit-peaks
     header-contents
     exporting-csv
     exporting-images
+    adaptive-steps
     count-with-exp-decay-delay
     flyer-progress-bar
