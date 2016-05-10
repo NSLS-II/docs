@@ -45,4 +45,4 @@ We'll add a ``LiveTable`` and a ``LivePlot``.
 
 Observe how the scan lengthens its stride through the flat regions, oversteps
 through the peak, moves back, samples it with smaller steps, and gradually
-adopts are larger stride as the peak flattens out again.
+adopts a larger stride as the peak flattens out again.

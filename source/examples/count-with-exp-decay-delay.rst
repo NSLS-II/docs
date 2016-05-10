@@ -76,7 +76,7 @@ time using a ``list_scan``.
 Next, instead of giving a specific number of readings, let's run ``count``
 indefinitely --- until interrupted by the user pressing Ctrl^C. Instead of
 ``range``, which counts integers up to a given upper limit, we'll use another
-built in fucntion, ``itertools.count``, which counts integers without bound.
+built in function, ``itertools.count``, which counts integers without bound.
 
 
 .. code-block:: python

@@ -25,8 +25,10 @@ A given header ``h`` has three main pieces:
 * the 'stop' document, ``h['stop']``, contains what we only know when
   the scan is complete --- mainly, did it terminate successfully?
 * a list of 'descriptor' documents in ``h['descriptors']`` which serve
-  a sort of table of contents, giving metadata about each field (PV name,
-  data type, precision, units) and its configuration (e.g., exposure time).
+  a sort of table of contents, giving metadata about each field
+  about each data field in the corresponding event
+  document (PV, data type, precision, units) and its configuration (e.g.,
+  exposure time).
 
 Common Metadata
 ---------------
@@ -37,8 +39,8 @@ For brevity, let's set ``s = h['start']``.
 * Many plans record a human-friendly list of the names of detectors and motors
   in ``s['detectors']`` and ``s['motors']``.
 * The start time is always recorded in ``s['time']``.
-* The randomly-generated unique ID in ``s['uid']`` is gauranteed to be a
-  permanent idenfier for the data forever.
+* The randomly-generated unique ID in ``s['uid']`` is guaranteed to be a
+  permanent identifier for the data forever.
 * The strings in ``s['plan_name']`` and ``s['plan_type']`` provide a
   human-friendly description of the plan like 'count' or 'relative scan'.
   (These are generated autmoatically by the bluesky RunEngine, which inspects

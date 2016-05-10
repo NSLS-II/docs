@@ -13,7 +13,7 @@ Approach
 Use the bluesky ``PeakStats`` callback. Here's how it works:
 
 1. Like ``LiveTable`` and ``LivePlot``, it receives a live stream of data.
-2. It silent accumulates this data until a run completes.
+2. It silently accumulates this data until a run completes.
 3. It performs a nonlinear best fit, and it makes the results available through
    attributes that can be used in plots, computations, or future scans.
 

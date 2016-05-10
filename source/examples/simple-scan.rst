@@ -54,7 +54,7 @@ and need not be typed every time.
     RE = RunEngine({})
 
 First, set up a table and a plot. The table takes a list of field names to
-show. The plot takes a field name for yfollowed (optionally) by a field name
+show. The plot takes a field name for y followed (optionally) by a field name
 for x.  (If only y is provided, it plots y against point number.)
 
 .. ipython:: python
@@ -65,7 +65,7 @@ You can name the variable anything you like; we call it ``subs``, short for
 "subscriptions." They are functions that "subscribe" to the live stream of
 data from the scan.
 
-We'll scan``motor`` from -10 to 10 inclusive, sampling 15 equally-spaced
+We'll scan ``motor`` from -10 to 10 inclusive, sampling 15 equally-spaced
 points, and reading detector ``det`` at each point. We specify this like so:
 
 

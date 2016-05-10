@@ -50,7 +50,7 @@ progress bar.
     class FlyerWithProgressBar(Flyer):
     
         def collect(self):
-            yield from tqmd(super().collect())
+            yield from tqdm(super().collect())
 
     flyer = FlyerWithProgressBar(some_arguments)
 
@@ -66,9 +66,9 @@ should be defined like:
     class FlyerWithProgressBar(Flyer):
     
         def collect(self):
-            yield from tqmd(super().collect(), total=100)
+            yield from tqdm(super().collect(), total=100)
 
-Or, add an attribute that can be updated iteractively:
+Or, add an attribute that can be updated interactively:
 
 .. code-block:: python
  
@@ -79,7 +79,7 @@ Or, add an attribute that can be updated iteractively:
             self.total = 100
     
         def collect(self):
-            yield from tqmd(super().collect(), total=self.total)
+            yield from tqdm(super().collect(), total=self.total)
 
 Here is a demo of ``FlyerWithProgressBar``.
 

@@ -82,7 +82,7 @@ In the variable ``events``, we now have a collection of documents
 a single data point, a row in table.
 
 For performance reasons, the data has not actually been loaded yet. The data
-is loaded one point at a time if loop through ``events``. (This is very
+is loaded one point at a time if we loop through ``events``. (This is very
 useful for applications where we don't need to load the entire data set.)
 
 To load the entire data set once, convert ``events`` to a list.
@@ -101,7 +101,7 @@ You might be thinking, "Just give me data!" As promised, the general-purpose
 method is flexible, but it lacks terseness. For more direct methods, read on!
 
 To learn more about the structure of an ``event``, refer to the
-`overview of the document model <nsls-ii.github.io/architecture-overview.html>`_.
+`overview of the document model <https://nsls-ii.github.io/architecture-overview.html>`_.
 
 Retrieving a Table
 ------------------

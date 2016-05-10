@@ -68,7 +68,7 @@ For example, to add more saved data:
 
 .. code-block:: python
 
-    h  = db[-2]  # the second-to-most-recent run
+    h  = db[-2]  # the second-most-recent run
     db.process(h, p)
 
 To now add *live* data from a new scan, include ``p`` as a subscription.

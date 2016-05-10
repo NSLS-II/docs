@@ -50,7 +50,7 @@ Finally, import the databroker if it is not already imported.
 Execution
 ---------
 
-To perform export after a scan has finished, use this method:
+To export after a scan has finished, use this method:
 
 .. code-block:: python
 
