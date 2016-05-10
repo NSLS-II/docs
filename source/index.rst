@@ -43,7 +43,7 @@ abstractions to guide the development of a general-purpose framework.
 Interacting with real hardware and real users, the framework has undergone
 several iterations of re-design.
 
-Now, during the present operating cycle at NSLS-II (winter 2016), the framework
+Now, approaching the Summer 2016 operating cycle at NSLS-II , the framework
 is stabilizing. New and unforeseen applications are fitting well into the
 framework, validating its assumptions and optimizations. At the same time,
 software bugs are being discovered less often and being fixed more quickly. 
@@ -95,6 +95,7 @@ documentation, linked below.
    architecture-overview
    collection-quick-start
    analysis-quick-start
+   examples/index
    sandbox
    deployment-details
    resources
