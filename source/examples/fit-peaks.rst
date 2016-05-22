@@ -1,4 +1,4 @@
-Fit and Analyze Peaks
+Fit and analyze peaks
 *********************
 
 Problem

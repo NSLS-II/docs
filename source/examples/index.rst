@@ -22,10 +22,16 @@ These examples assume:
     simple-scan
     retrieving-data
     replot
+    pausing
+    concatenating-plans
     fit-peaks
     header-contents
     exporting-csv
     exporting-images
+    simulation-mode
+    baseline-readings
     adaptive-steps
     count-with-exp-decay-delay
     flyer-progress-bar
+    archiver-appliance-integration
+    msg-hook

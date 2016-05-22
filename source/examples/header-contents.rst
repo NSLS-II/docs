@@ -1,5 +1,5 @@
-Understand the contents of the header
-*************************************
+How metadata is organized: understand the contents of the header
+****************************************************************
 
 Problem
 =======
