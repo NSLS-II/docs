@@ -19,7 +19,7 @@ script:
   - |
     if [ $BUILD_DOCS == true ]; then
       pip install sphinx_rtd_theme
-      pip install sphinxcontrib-napolean
+      pip install sphinxcontrib-napoleon
       cd $TRAVIS_BUILD_DIR/..
       cd docs
       make html
