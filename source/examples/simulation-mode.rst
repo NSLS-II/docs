@@ -61,3 +61,10 @@ the variables that represent real hardware.
 .. code-block:: python
 
     RE(count([det]))  # executes the plan, 'reading' the simulated detector
+
+To avoid saving data from these "rehearsal" runs, make a separate instance of
+the RunEngine, and do not subscribe metadatastore.
+
+.. code-block:: python
+
+    SIM_RE = RunEngine({})
