@@ -14,11 +14,12 @@ before_install:
 install:
   - conda update --yes conda
   - conda install --yes -c lightsource2 -c soft-matter bluesky ophyd xray-vision pyolog
-  - if [ $BUILD_DOCS == true ]; then pip install sphinx_rtd_theme; fi
 
 script:
   - |
     if [ $BUILD_DOCS == true ]; then
+      pip install sphinx_rtd_theme
+      pip install sphinxcontrib-napolean
       cd $TRAVIS_BUILD_DIR/..
       cd docs
       make html
