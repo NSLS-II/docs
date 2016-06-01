@@ -39,7 +39,7 @@ after_success:
       git config --global push.default simple
       cd ..
       git clone git@github.com:NSLS-II/NSLS-II.github.io.git ./doc-repo
-      cd doc-repo/trackpy
+      cd doc-repo/
       git checkout --orphan temp_branch
       git rm -rf ./dev
       mv $TRAVIS_BUILD_DIR/doc/_build/html ./dev
