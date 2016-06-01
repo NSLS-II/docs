@@ -13,7 +13,7 @@ before_install:
 
 install:
   - conda update --yes conda
-  - conda install -c lightsource2 -c soft-matter bluesky ophyd xray-vision pyolog
+  - conda install --yes -c lightsource2 -c soft-matter bluesky ophyd xray-vision pyolog
   - if [ $BUILD_DOCS == true ]; then pip install sphinx_rtd_theme; fi
 
 script:
