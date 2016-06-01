@@ -41,7 +41,7 @@ after_success:
       git clone git@github.com:NSLS-II/NSLS-II.github.io.git ./doc-repo
       cd doc-repo/
       git checkout --orphan temp_branch
-      mv $TRAVIS_BUILD_DIR/build/html/* .
+      rsync -r localhost:$TRAVIS_BUILD_DIR/build/html/* .
       if [ -n "$TRAVIS_TAG" ]; then
         cp -R dev $TRAVIS_TAG;
       fi
