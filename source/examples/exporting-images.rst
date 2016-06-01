@@ -1,4 +1,4 @@
-Export Images as TIFF files
+Export images as TIFF files
 ***************************
 
 Problem

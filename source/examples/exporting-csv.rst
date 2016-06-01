@@ -1,5 +1,5 @@
-Export Tabular Data as a CSV
-****************************
+Export tabular data as a CSV file
+*********************************
 
 Problem
 =======
