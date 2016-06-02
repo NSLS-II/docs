@@ -11,7 +11,7 @@ env:
 
 before_install:
   - git clone https://github.com/danielballan/nsls2-ci --branch docs-fixes --single-branch ~/ci_scripts
-  - ~/ci_scripts/install_miniconda.sh
+  - ~/ci_scripts/install-miniconda.sh
 
 script:
   - |
@@ -19,8 +19,6 @@ script:
       pip install sphinx_rtd_theme
       pip install sphinxcontrib-napoleon
       cd $TRAVIS_BUILD_DIR/..
-      ~/scripts/init_metadatastore.sh
-      ~/scripts/init_filestore.sh
       cd docs
       make html
     fi
