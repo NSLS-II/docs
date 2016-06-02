@@ -24,11 +24,14 @@ Example Solution
     from bluesky import RunEngine
     from bluesky.plans import scan
     from bluesky.examples import motor, det
-    import metadatastore.commands as mds
-    # import filestore.api as fs
-    # from databroker import Broker
-    # db = Broker(mds, fs)
-    from databroker import db
+    from metadatastore.mds import MDS
+    from metadatastore.utils import create_test_database as mds_ctd
+    from filestore.fs import FileStore
+    from filestore.utils import create_test_database as fs_ctd
+    from databroker import Broker
+    mds = MDS(mds_ctd('localhost'))
+    fs = FileStore(fs_ctd('localhost'))
+    db = Broker(mds, fs)
     RE = RunEngine({})
     RE.subscribe_lossless('all', mds.insert)
 
