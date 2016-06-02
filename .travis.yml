@@ -16,7 +16,7 @@ before_install:
 script:
   - |
     if [ $BUILD_DOCS == true ]; then
-      source ~/ci_scripts/make-docs.sh
+      DOCS_DIR=$TRAVIS_BUILD_DIR source ~/ci_scripts/make-docs.sh
     fi
 
 after_success:
