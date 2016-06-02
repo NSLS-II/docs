@@ -16,11 +16,7 @@ before_install:
 script:
   - |
     if [ $BUILD_DOCS == true ]; then
-      pip install sphinx_rtd_theme
-      pip install sphinxcontrib-napoleon
-      cd $TRAVIS_BUILD_DIR/..
-      cd docs
-      make html
+      source ~/ci_scripts/make-docs.sh
     fi
 
 after_success:
