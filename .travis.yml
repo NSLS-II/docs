@@ -5,7 +5,7 @@ env:
     python: "3.5"
     BUILD_DOCS: true
     BUILD_DOCS_BRANCH: master
-    DOCS_SUBDIR: docs
+    DOCS_SUBDIR: ..
     TARGET_DEV_SUBDIR: .
     HTML_SUBDIR: build/html
     DOCS_CONDA_DEPS: "bluesky ophyd xray-vision pyolog metadatastore"
