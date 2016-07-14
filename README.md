@@ -6,7 +6,14 @@ Documentation for NSLS-II DAQ and Analysis
 This repo and others build the sphinx on Travis-CI and force-push the build
 products to the repo NSLS-II/NSLS-II.github.io.
 
-To set this up:
+If you haven't done this before:
+
+```
+gem install travis
+travis login
+```
+
+Then:
 
 ```
 ssh-keygen -t rsa -C "bluesky-docs-deploy"
