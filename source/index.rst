@@ -86,7 +86,6 @@ documentation, linked below.
         * `csxtools <https://nsls-ii-csx.github.io/csxtools/>`_
         * `chxtools <https://github.com/NSLS-II-CHX/chxtools>`_ (undocumented)
         * `hxntools <https://github.com/NSLS-II-HXN/hxntools>`_ (undocumented)
-        * `xpdtools <https://github.com/NSLS-II-XPD/xpdtools>`_ (placeholder)
 
 .. toctree::
    :hidden:

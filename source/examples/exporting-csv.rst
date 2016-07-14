@@ -18,24 +18,6 @@ incorporated metadata from the scan in automated fashion.
 Example Solution
 ================
 
-.. ipython:: python
-    :suppress:
-
-    from bluesky import RunEngine
-    from bluesky.plans import scan
-    from bluesky.examples import motor, det
-    from metadatastore.mds import MDS
-    from metadatastore.utils import create_test_database as mds_ctd
-    from filestore.fs import FileStore
-    from filestore.utils import create_test_database as fs_ctd
-    from databroker import Broker
-    mds = MDS(mds_ctd('localhost'))
-    fs = FileStore(fs_ctd('localhost'))
-    db = Broker(mds, fs)
-    RE = RunEngine({})
-    RE.subscribe_lossless('all', mds.insert)
-
-
 Suppose we ran a scan like this to generate some data. Notice that we stash the
 unique ID(s) in a variable, ``uids``. This is the most convenient and reliable
 way to retrieve the data afterward.
