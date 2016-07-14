@@ -13,7 +13,7 @@ env:
     DOCS_SUBDIR: .
 
 before_install:
-  - git clone https://github.com/danielballan/nsls2-ci --branch docs-fixes --single-branch ~/ci_scripts
+  - git clone https://github.com/NSLS-II/nsls2-ci --branch master --single-branch ~/ci_scripts
   - source ~/ci_scripts/install-miniconda.sh
 
 script:
