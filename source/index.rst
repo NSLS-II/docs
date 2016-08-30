@@ -96,7 +96,7 @@ documentation, linked below.
    analysis-quick-start
    examples/index
    sandbox
-   deployment-details
+   fresh-installation
    resources
    technologies
 

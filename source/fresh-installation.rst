@@ -1,5 +1,5 @@
-New Installation
-================
+Installation at a Beamline
+==========================
 
 New Beamline
 ------------
