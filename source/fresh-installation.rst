@@ -244,15 +244,9 @@ New User
 
 2. Install all the data collection software.
 
-.. warning::
-
-    The command below will change in the near future: ``lightsource2`` will
-    revert back to the name ``nsls-tag``, which is it had been named until
-    recently.
-
 .. code-block:: bash
 
-    conda create -c lightsource2-tag -n collection ophyd bluesky pyolog xray_vision
+    conda create -c nsls2-tag -n collection ophyd bluesky pyolog xray_vision
 
 To test the new environment, activate it:
 
