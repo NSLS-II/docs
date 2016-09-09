@@ -233,7 +233,10 @@ New Workstation for Data Collection or Analysis
 New User
 --------
 
-1. Add the following to the user's ``~/.bashrc`` file.
+One-time configuration
+++++++++++++++++++++++
+
+Add the following to the user's ``~/.bashrc`` file.
 
 .. code-block:: bash
 
@@ -242,7 +245,21 @@ New User
     export no_proxy=cs.nsls2.local
     export PATH=/opt/conda/bin:$PATH
 
-2. Install all the data collection software.
+   The first three lines are local NSLS-II controls network configuration.
+
+   Conda has already been installed on all NSLS-II workstations (ws) and
+   servers (srv) in a shared location. The last line adds conda to the user's
+   PATH so that it overrides any system-installed Python, IPython, etc.
+
+Custom User Environments
+++++++++++++++++++++++++
+
+Any user can create a conda environment, a set of binaries and Python packages
+completely under their control. User conda environments are stored under
+``~/conda_envs/<environment-name>``.
+
+This command creates a new environment called ``collection`` with the latest
+"tagged" (i.e., stable) versions of ophyd, bluesky, pyolog, and xray_vision.
 
 .. code-block:: bash
 
@@ -254,6 +271,39 @@ To test the new environment, activate it:
 
     source activate collection
 
-3. Check that ``which ipython`` point to a path with the word ``collection`` it
-   in (not ``/usr/bin/python``, as a counterexample). To troubleshoot, you
-   might need to refresh bash with the command ``hash -r``.
+Check that ``which ipython`` point to a path with the word ``collection`` it
+in (not ``/usr/bin/python``, as a counterexample). To troubleshoot, you
+might need to refresh bash with the command ``hash -r``.
+
+To get "development" versions that are maybe less stable but contain the latest
+bug fixes and features, use the ``nsls2-dev`` channel in place of
+``nsls2-tag``.
+
+
+Create or Updating Shared (Root) Environments
++++++++++++++++++++++++++++++++++++++++++++++
+
+Administrators with sudo access can create or update conda environments that
+users can use ("activate") but only administrators can edit. These environments
+are located in ``/opt/conda_envs``. All beamlines that use JupyterHub
+(notebook.nsls2.bnl.gov) have an environment at ``/opt/conda_envs/analysis``.
+Some beamlines also have a shared collection environment at
+``/opt/conda_envs/collection``. Others prefer to install the collection
+software individually per user. In either case, it always possible for users to
+create custom environments as desired.
+
+.. note::
+
+    To review the detailed conda configuration, refer to
+    ``/opt/conda/.condarc``, where you can see the list of default channels and
+    the search path for environments.
+
+Outside the Controls Network
+----------------------------
+
+You can install these packages on your personal laptop outside the controls
+network. Install miniconda or Ananconda, and create user environment as
+described above. All of the packages are mirrored on anaconda.org, outside of
+the NSLS-II firewall, where you will be able to access them. The channels are
+called ``lightsource2-tag`` and ``lightsource2-dev`` instead of ``nsls2-tag``
+and ``nsls2-dev`` respectively.
