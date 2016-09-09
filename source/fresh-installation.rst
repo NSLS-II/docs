@@ -245,11 +245,11 @@ Add the following to the user's ``~/.bashrc`` file.
     export no_proxy=cs.nsls2.local
     export PATH=/opt/conda/bin:$PATH
 
-   The first three lines are local NSLS-II controls network configuration.
+The first three lines are local NSLS-II controls network configuration.
 
-   Conda has already been installed on all NSLS-II workstations (ws) and
-   servers (srv) in a shared location. The last line adds conda to the user's
-   PATH so that it overrides any system-installed Python, IPython, etc.
+Conda has already been installed on all NSLS-II workstations (ws) and servers
+(srv) in a shared location. The last line adds conda to the user's PATH so that
+it overrides any system-installed Python, IPython, etc.
 
 Custom User Environments
 ++++++++++++++++++++++++
@@ -298,8 +298,8 @@ create custom environments as desired.
     ``/opt/conda/.condarc``, where you can see the list of default channels and
     the search path for environments.
 
-Outside the Controls Network
-----------------------------
+Installing on a Personal Computer
+---------------------------------
 
 You can install these packages on your personal laptop outside the controls
 network. Install miniconda or Ananconda, and create user environment as
