@@ -73,6 +73,7 @@ documentation, linked below.
 * Data Access Packages
     * High-level Data Access
         * `databroker <http://nsls-ii.github.io/databroker>`_ -- a simple interface that pulls together data from all sources
+        * `amostra <https://nsls-ii.github.io/amostra>`_ -- for managing metadata related to experiment samples
     * Low-Level Data Storage and Access
         * metadataclient (preferred), metadatastore (deprecated)
         * filestore
@@ -112,6 +113,7 @@ documentation, linked below.
    :caption: Data Access
 
    databroker <https://nsls-ii.github.io/databroker>
+   amostra <https://nsls-ii.github.io/amostra>
 
 .. toctree::
    :hidden:
