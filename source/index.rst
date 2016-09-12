@@ -93,6 +93,7 @@ documentation, linked below.
    :maxdepth: 2
 
    architecture-overview
+   tutorials
    collection-quick-start
    analysis-quick-start
    examples/index
