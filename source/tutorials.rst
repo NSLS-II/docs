@@ -124,6 +124,7 @@ Goals
 Resources
 +++++++++
 
+* `tutorial materials <https://github.com/NSLS-II/broker-tutorial>`_
 * `databroker documentation <https://nsls-ii.github.io/databroker>`_
 
 .. _daq1:
