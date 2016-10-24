@@ -7,15 +7,19 @@ About
 Before You Go
 +++++++++++++
 
-* Bring a laptop.
-* In most tutorails, we use conda, a package manager designed for scientific
-  Python. It's OK if you haven't heard of it or used it before, but please
-  `download and install it <http://conda.pydata.org/miniconda.html>`_ in
-  advance.
-* Sign up for an account on `GitHub <https://github.com>`.
+Bring a laptop. These tutorials are interactive.
 
+If you want to try the software on your personal laptop (which we encourage!)
+follow the instructions on `this page <https://github.com/NSLS-II/tutorial>`_.
 If you have difficulty with the installation, email a member of the DAMA group
 or attend office hours (see below).
+
+Alternatively, you can use our "sandbox" environment at
+`https://try.nsls2.bnl.gov <https://try.nsls2.bnl.gov>`_ to experiment with
+the software without installing anything. (Be aware that all work you do this
+is emphemeral; it is automatically deleted after some period of inactivity.)
+(Formerly, this was only available inside the VPN. Now it is fully public to
+the outside world.)
 
 Schedule
 --------

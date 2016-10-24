@@ -1,8 +1,9 @@
 Sandbox
 *******
 
-If you are inside the Brookhaven National Lab firewall -- either via
-VPN or a wired connection -- you can run live data collection and analysis
-code in our "sandbox" environment.
+The "sandbox" is a test environment that you can access from your internet
+browser to experiment wit the data collection and analysis software.
 
 Try it: `https://try.nsls2.bnl.gov <https://try.nsls2.bnl.gov>`_.
+
+It is now fully public --- no need to be on the VPN.
