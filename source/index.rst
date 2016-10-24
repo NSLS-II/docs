@@ -6,7 +6,8 @@
 NSLS-II Software Documentation
 ******************************
 
-We are deploying an event-based data collection and analysis framework.
+The NSLS-II software toolchain is a set of cooperative software components
+which aim to meet the following goals.
 
 Design Goals
 ============
