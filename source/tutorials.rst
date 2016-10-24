@@ -12,10 +12,7 @@ Before You Go
   Python. It's OK if you haven't heard of it or used it before, but please
   `download and install it <http://conda.pydata.org/miniconda.html>`_ in
   advance.
-* In most tutorials, we use git to distribute example scripts. It's OK if you
-  haven't heard of it or used it before, but please
-  `download and install it <https://help.github.com/articles/set-up-git/>`_ in
-  advance.
+* Sign up for an account on `GitHub <https://github.com>`.
 
 If you have difficulty with the installation, email a member of the DAMA group
 or attend office hours (see below).
@@ -34,11 +31,12 @@ Upcoming Sessions
 Tutorials are normally presented twice: first on a Wednesday, and then a repeat
 the following Tuesday.
 
-* 9/14 and 9/20: :ref:`broker`
-* 9/21 and 9/27: :ref:`daq1`
-* 9/28 and 10/4: :ref:`amostra`
-* 10/5 and 10/11: :ref:`daq2`
-* 10/12 and 10/18: :ref:`daq3`
+* 10/26 and 11/1: :ref:`conda-ipython`
+* 11/2 and 11/8: :ref:`broker`
+* 11/9 and 11/15: :ref:`daq1`
+* 11/16 and 11/22: :ref:`daq2`
+* 11/23 and 11/29: :ref:`daq3`
+* 11/30 and 12/6: :ref:`daq4`
 
 Past Sessions
 +++++++++++++
@@ -48,6 +46,13 @@ Past Sessions
 * 8/17 and 8/23: Bluesky Plans (This material has been reworked and expanded into
   Data Acquition I and II.)
 * 8/16 :ref:`conda-ipython`
+* 9/14 and 9/20: :ref:`broker`
+* 9/21 and 9/27: :ref:`daq1`
+* 9/28 and 10/4: :ref:`amostra`
+* 10/5 and 10/11: :ref:`daq2`
+* 10/12 and 10/18: :ref:`daq3`
+* 10/19 and 10/25: :ref:`daq4`
+
 
 .. _conda-ipython:
 
@@ -164,15 +169,18 @@ Resources
 
 .. _daq2:
 
-Data Acquisition II: Survey of "Plans" and Basic Customization
---------------------------------------------------------------
+Data Acquisition II: Survey of "Plans"
+--------------------------------------
+
+This tutorials starts with the
+`*Plans* section bluesky documentation <https://nsls-ii.github.io/bluesky/plans.html>`_,
+focusing on the first section ("Pre-assmebled Plans").
 
 Goals
 +++++
 
 * Survey bluesky's built-in plans for simple scans, multi-motor coordination,
   and more.
-* Learn intermediate techniques for writing custom plans and scripts.
 
 Resources
 +++++++++
@@ -181,8 +189,26 @@ Resources
 
 .. _daq3:
 
-Data Acquisition III: Advanced Custom "Plans"
----------------------------------------------
+Data Acquisition III: Basic Custom "Plans"
+------------------------------------------
+
+This tutorial continues where II left off, walking through the
+`*Plans* section bluesky documentation <https://nsls-ii.github.io/bluesky/plans.html>`_,
+focusing on "Stub Plans" and the examples following them.
+
+Goals
++++++
+
+* Learn intermediate techniques for writing custom plans and scripts.
+
+.. _daq4:
+
+Data Acquisition IV: Advanced Custom "Plans"
+--------------------------------------------
+
+This tutorial continues where III left off, walking through the
+`*Plans* section bluesky documentation <https://nsls-ii.github.io/bluesky/plans.html>`_,
+focusing on "Plan Preprocessors" and the examples following them.
 
 Goals
 +++++
@@ -192,4 +218,4 @@ Goals
 Resources
 +++++++++
 
-* `bluesky documentation <https://nsls-ii.github.io/bluesky>`_
+* `bluesky documentation <https://nsls-ii.github.io/bluesky/plans.html>`_
