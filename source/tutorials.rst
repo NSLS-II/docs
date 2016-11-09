@@ -29,15 +29,15 @@ Office Hours
 
 Office hours are every Friday 1-3 in Room 156 of Building 741. 
 
-Upcoming Sessions
-+++++++++++++++++
+Current Sessions
+++++++++++++++++
 
 Tutorials are normally presented twice: first on a Wednesday, and then a repeat
 the following Tuesday.
 
 * 10/26 and 11/1: :ref:`conda-ipython`
-* 11/2 and 11/8: :ref:`broker`
-* 11/9 and 11/15: :ref:`daq1`
+* 11/2 and 11/8: :ref:`daq1`
+* 11/9 and 11/15: :ref:`broker`
 * 11/16 and 11/22: :ref:`daq2`
 * 11/23 and 11/29: :ref:`daq3`
 * 11/30 and 12/6: :ref:`daq4`
