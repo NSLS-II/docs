@@ -284,7 +284,9 @@ htmlhelp_basename = '{0}-Docs'.format(repo_name)
 
 
 # Example configuration for intersphinx: refer to the Python standard library.
-intersphinx_mapping = {'http://docs.python.org/': None}
+intersphinx_mapping = {'python': ('http://docs.python.org/3.4', None),
+                       'bluesky': ('http://nsls-ii.github.io/bluesky', None),
+                       'databroker': ('http://nsls-ii.github.io/databroker', None)}
 
 # Enable showing todos
 
