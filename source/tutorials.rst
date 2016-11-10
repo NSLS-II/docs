@@ -1,18 +1,15 @@
 Tutorials
 =========
 
-About
------
-
 Before You Go
-+++++++++++++
+-------------
 
 Bring a laptop. These tutorials are interactive.
 
-Option 1: Install the software
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Option 1: Install the software (recommended)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If you want to try the software on your personal laptop (which we encourage!)
+If you want to try the software on your personal laptop,
 follow the instructions on `this page <https://github.com/NSLS-II/tutorial>`_.
 If you have difficulty with the installation, email a member of the DAMA group
 or attend office hours (see below).
@@ -26,6 +23,7 @@ the software without installing anything. Be aware that all work you do this
 is emphemeral; it is automatically deleted after some period of inactivity.
 
 Updates:
+
 * Formerly, this was only available inside the VPN. Now it is fully public to
 the outside world.
 * For a couple weeks in October and November, 2016, this was not functioning
