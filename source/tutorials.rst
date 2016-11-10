@@ -24,10 +24,10 @@ is emphemeral; it is automatically deleted after some period of inactivity.
 
 Updates:
 
-* Formerly, this was only available inside the VPN. Now it is fully public to
-the outside world.
-* For a couple weeks in October and November, 2016, this was not functioning
-  properly. As of 10 November 2016, it is back in working order.
+* Formerly, the sandbox was only available inside the VPN. Now it is fully
+  public to the outside world.
+* For a couple weeks in October and November, 2016, the sanbdbox was not
+  functioning properly. As of 10 November 2016, it is back in working order.
 
 Schedule
 --------
