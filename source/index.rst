@@ -14,29 +14,32 @@ publication-quality plots.
 Design Goals
 ============
 
-* Provide an integrated toolchain for data collection and analysis.
-* Support **streaming** data analysis, variously called "in-line" or "live".
-* Support **prompt** data analysis: immediate, semi-automated data analysis
-  that can inform decisions made during an experiment.
-* Capture **metadata** to record a detailed snapshot of the hardware and --- as
-  much as possible --- represent the user intention, the meaning of the
-  measurements.
-* Make datasets **searchable** with rich queries on metadata and data.
-* Use **existing, open-source technologies and languages**; avoid inventing a
-  domain-specific language.
-* Leverage tools from the **open scientific software** community and in
-  particular the **scientific Python** community, a mature and widely-used
-  ecosystem of scientific code used in trusted, critical applications in
-  research and beyond.
-* Establish **clear, consistent interfaces** (meaning inputs and outputs,
-  APIs) that allow project components to be used independently, extended, and
-  interfaced with other, outside projects.
-* Adhere to good software practices, especially code review and
-  automated testing, with the goal of enabling **large-scale collaboration**
-  while maintaining **stability and robustness**.
+* Integrated, end-to-end solution for data collection and analysis.
+* Rich Metadata is automatically captured and organized for rich search
+  and reproducibility.
+* Live, Streaming Data: Available for inline visualization and
+  processing;
+* Pluggable I/O: Export data (live) into any desired format or
+  database; standardized in-memory format for retrieval.
+* Experiment Generality: Seamlessly reuse a procedure on completely
+  different hardware.
+* Use same tools for prompt and offline analysis
+* Capture provenance and result of intermediate computation.
+* Use existing, open-source technologies and languages
+
 
 .. image:: _static/collection-overview.gif
    :align: center
+
+
+
+Bluesky is agnostic to the underlying control system and has been
+co-developed with Ophyd, a hardware abstraction library.  Ophyd
+currently interfaces with EPICS, but is designed to be generalized to
+support other control systems.
+
+
+
 
 Project Status & Roadmap
 ========================
@@ -121,22 +124,17 @@ documentation, linked below.
 
 .. toctree::
    :hidden:
-   :caption: Data Access
+   :caption: Data Access and Management
 
    databroker <https://nsls-ii.github.io/databroker>
    amostra <https://nsls-ii.github.io/amostra>
-
-.. toctree::
-   :hidden:
-   :caption: Data Munging
-
    datamuxer <https://nsls-ii.github.io/datamuxer>
-
-.. toctree::
-   :hidden:
-   :caption: Data Export
-
    suitcase <https://nsls-ii.github.io/suitcase>
+
+.. toctree:: Data Analysis
+
+   scikit-beam <http://scikit-beam.github.io/scikit-beam>
+
 
 .. toctree::
    :hidden:
