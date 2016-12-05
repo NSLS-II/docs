@@ -7,15 +7,17 @@ NSLS-II Software Documentation
 ******************************
 
 The NSLS-II software toolchain is a set of cooperative software components
-which aim to meet the following goals.
+for scientific data acquisition, management, and analysis. It aims to address
+the entire process, from experiment specification to the composition of
+publication-quality plots.
 
 Design Goals
 ============
 
-* Provide an integrated, **end-to-end solution** for data collection and analysis.
+* Provide an integrated toolchain for data collection and analysis.
 * Support **streaming** data analysis, variously called "in-line" or "live".
-* Support **prompt** data analysis: immediate, semi-automated data analysis that
-  can inform decisions made during an experiment
+* Support **prompt** data analysis: immediate, semi-automated data analysis
+  that can inform decisions made during an experiment.
 * Capture **metadata** to record a detailed snapshot of the hardware and --- as
   much as possible --- represent the user intention, the meaning of the
   measurements.
@@ -36,25 +38,31 @@ Design Goals
 .. image:: _static/collection-overview.gif
    :align: center
 
-Project Roadmap
-===============
+Project Status & Roadmap
+========================
 
-Early work has been focused on identifying common tasks and key
-abstractions to guide the development of a general-purpose framework.
-Interacting with real hardware and real users, the framework has undergone
-several iterations of re-design.
+The software is supporting data acquisition at ten beamlines at NSLS-II, and it
+has been successfully tested at other facilities.
 
-Now, approaching the Summer 2016 operating cycle at NSLS-II , the framework
-is stabilizing. New and unforeseen applications are fitting well into the
-framework, validating its assumptions and optimizations. At the same time,
-software bugs are being discovered less often and being fixed more quickly. 
+The acquisition software stack (ophyd, bluesky) has stabilized. During two
+years of testing with real hardware and real users, the software underwent
+several iterations of re-design. Now, new and unforeseen applications are
+fitting well into the framework, validating its assumptions and optimizations.
+Recent development effort has gone primarily into documentation and
+community-building.  The
+`bluesky documentation <https://nsls-ii.github.io/bluesky>`_ in particular has
+become polished and comprehensive. There are
+some early examples of feeding prompt analysis back into the experiment control
+logic.
 
-Looking forward, software targeted to more specific tasks will need to be
-built.  For example, a user who only does about five different kinds of
-experiment does not need the full power of the framework and can benefit from a
-simpler (if more limited) toolkit. The volume of such toolkits will be large,
-but it is hoped that the effort required can be greatly diminished by resting
-on this framework --- and reaching outside of it when necessary.
+Going into the Spring 2017 cycle, the focus is shifting to data access. This
+includes streamlining the user interface to saved data (databroker) and
+optimizing the data storage backend with performance and portability in mind.
+Additionally, work is ongoing to capture intermediate analysis results with
+associated provenance.
+
+Building on top of this data retrieval software, we will write cross-beamline
+multimodal analysis tools.
 
 Detailed plans for each project are managed and discussed in the open on
 `GitHub <https://github.com/NSLS-II/>`_, where the user community is invited to
@@ -84,6 +92,7 @@ documentation, linked below.
     * `suitcase <http://nsls-ii.github.io/suitcase>`_ -- a simple proof-of-concept, exporting experiment data and metadata from a database to a stand-alone file
 * Scientific Data Processing Packages
     * the built-in subscriptions in `bluesky <http://nsls-ii.github.io/bluesky>`_
+    * `scikit-beam <scikit-beam.github.io/scikit-beam>`_
     * Beamline-specific \*tools repositories:
         * `csxtools <https://nsls-ii-csx.github.io/csxtools/>`_
         * `chxtools <https://github.com/NSLS-II-CHX/chxtools>`_ (undocumented)
