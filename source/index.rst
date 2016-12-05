@@ -44,26 +44,26 @@ support other control systems.
 Project Status & Roadmap
 ========================
 
-The software is supporting data acquisition at twelve beamlines at
-NSLS-II and has been successfully tested at other facilities.
+The acquisition software (ophyd & bluesky) have stabilized and used in
+production at twelve NSLS-II beamlines.  We have been able to handle
+all of the expected use cases and several unforeseen applications,
+validating the architecture of ophyd/bluesky and the document model.
+Recently, most of the development effort has been going into
+documentation and community-building (the `bluesky documentation
+<https://nsls-ii.github.io/bluesky>`_ is particularly polished and
+comprehensive).  In addition, the software has been installed at
+several other facilities for testing and evaluation.
 
-The acquisition software (ophyd & bluesky) have stabilized.  They have
-been in production at NSLS-II for almost two years.
-Now, new and unforeseen
-applications are fitting well into the framework, validating its
-assumptions and optimizations.
-
-Recent development effort has gone primarily into
-documentation and community-building.  The `bluesky documentation
-<https://nsls-ii.github.io/bluesky>`_ in particular has become
-polished and comprehensive. There are some early examples of feeding
+Trivial prompt analysis, in the from of plots and data tables, is
+widely used at NSLS-II.  There has been adoption of event-based behavior at some
+beam lines and there are some early examples of feeding
 prompt analysis back into the experiment control logic.
 
-Going into the Spring 2017 cycle, the focus is shifting to data access. This
-includes streamlining the user interface to saved data (databroker) and
-optimizing the data storage backend with performance and portability in mind.
-Additionally, work is ongoing to capture intermediate analysis results with
-associated provenance.
+Going into the Spring 2017 cycle, the focus will shift to data access
+and analysis. This includes streamlining the user interface to saved
+data (databroker) and optimizing the data storage backends with
+performance and portability in mind.  Additionally, work is ongoing to
+capture intermediate analysis results with associated provenance.
 
 Building on top of this data retrieval software, we will write cross-beamline
 multimodal analysis tools.
