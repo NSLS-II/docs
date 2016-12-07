@@ -40,7 +40,8 @@ visualization or processing. These documents can then be accessed later via the
 (in any format). Records for locating and interpreting these files are also
 stored in the database.
 
-.. image:: _static/collection-overview.gif
+.. image:: _static/collection-overview.svg
+   :width: 100%
    :align: center
 
 Bluesky is agnostic to the underlying control system and has been co-developed
