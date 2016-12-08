@@ -21,7 +21,8 @@ NSLS-II Jupyter Notebook Servers
 ---------------------------------
 
 #. Use a VPN client and your BNL domain account to get onto the BNL network.
-   (Use ``vpngateway.bnl.gov``.) Or, if on site, use the wired network.
+   (Use ``vpngateway.bnl.gov``.) Or, if on site, you may use the wired network.
+   From the on-site wireless network, "Corus," you still need to use the VPN.
 
 #. Go to `https://notebook.nsls2.bnl.gov <https://notebook.nsls2.bnl.gov>`_.
    Remember, if you are not connected to the campus network, that link will not
