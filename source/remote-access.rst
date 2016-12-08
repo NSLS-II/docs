@@ -4,10 +4,10 @@ Remote Access
 *************
 
 You can perform data analysis remotely using Jupyter, an interactive computing
-environemnt based in your Internet browser.
+environment in your Internet browser.
 
-Prerequisites
--------------
+Acounts
+-------
 
 You need access to the BNL campus network, via a wired connection or VPN. This
 requires a BNL "domain account," typically associated with BNL email address,
@@ -16,6 +16,9 @@ which you can `obtain from the ITD <https://www.bnl.gov/accounts/>`_.
 You also need a "controls account" --- a separate account specifically for the
 NSLS-II Controls Network. This is not the same as BNL "domain account," though
 it typically reuses the same username and a different password.
+
+NSLS-II Jupyter Notebook Servers
+---------------------------------
 
 #. Use a VPN client and your BNL domain account to get onto the BNL network.
    (Use ``vpngateway.bnl.gov``.) Or, if on site, use the wired network.
@@ -41,7 +44,7 @@ it typically reuses the same username and a different password.
 This will open a new notebook. Enter code and press shift+enter to execute it.
 Python libraries for accessing and analyzing data are already installed. Your
 code will be executed on machines physically close to where the beamline's data
-is stored, given optimal performance.
+is stored, giving optimal performance.
 
    .. image:: _static/jupyterhub-blank-nb.png
       :align: center
