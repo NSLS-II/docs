@@ -116,10 +116,9 @@ The following projects are in use but in a less mature stage of development.
    :maxdepth: 2
 
    architecture-overview
-   tutorials
-   collection-quick-start
-   analysis-quick-start
    examples/index
+   tutorials
+   remote-access
    sandbox
    fresh-installation
    resources
