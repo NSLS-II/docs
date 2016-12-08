@@ -9,13 +9,22 @@ environment in your Internet browser.
 Accounts
 --------
 
+.. note::
+
+    In the future, it is hoped that all users will automatically receive
+    accounts with their beam time. At the present, it is up to the beamline
+    staff to ensure that visiting users receive the requisite accounts on an
+    individual basis.
+
 You need access to the BNL campus network, via a wired connection or VPN. This
 requires a BNL "domain account," typically associated with BNL email address,
 which you can `obtain from the ITD <https://www.bnl.gov/accounts/>`_.
 
 You also need a "controls account" --- a separate account specifically for the
 NSLS-II Controls Network. This is not the same as BNL "domain account," though
-it typically reuses the same username and a different password.
+it typically reuses the same username and a different password. Obtain this by
+asking the beamline scientist, who will contact the NSLS-II system
+administrators.
 
 NSLS-II Jupyter Notebook Servers
 ---------------------------------
