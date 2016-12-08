@@ -6,8 +6,8 @@ Remote Access
 You can perform data analysis remotely using Jupyter, an interactive computing
 environment in your Internet browser.
 
-Acounts
--------
+Accounts
+--------
 
 You need access to the BNL campus network, via a wired connection or VPN. This
 requires a BNL "domain account," typically associated with BNL email address,
