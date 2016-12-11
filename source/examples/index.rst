@@ -20,3 +20,5 @@ Examples
     flyer-progress-bar
     archiver-appliance-integration
     msg-hook
+    scan_gaussian
+    grid_in_grid
