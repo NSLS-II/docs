@@ -10,10 +10,11 @@ Data Model
 
 * The event-based document model is the core of the project. It is not tied to
   any specific language or storage technology.
-* Nothing is the schema will be specific to NSLS-II or synchrotron science. It
+* Nothing in the schema will be specific to NSLS-II or synchrotron science. It
   will be kept general to experimental science.
 * A facility or a beamline can impose extra required fields in the schema at
-  configuration time (e.g. requiring SAF number of proposal ID).
+  configuration time (e.g. requiring username, SAF number, proposal ID, or some
+  beamline-specific metadata).
 * At NSLS-II, there is yet no facility-wide standard for collecting information
   identifying the owner of a data set. We await guidance from the user task
   force on this issue. Ultimately, we expect that a set of required fields will
@@ -21,7 +22,7 @@ Data Model
   authenticate the user and validate their inputs.
 * At NSLS-II, there is no facility-wide standard for collecting sample
   information. We expect that sample metadata fields will *never* be required at the
-  facility level (beyond the general SAF number) because some beamline would
+  facility level (beyond the general SAF number) because some beamlines would
   find such a requirement onerous and unhelpful. But a suggested set of prompts
   and names should be made available for user groups or beamlines that wish to
   opt in to imposing requirements.
@@ -86,6 +87,6 @@ Python Software APIs
   will provide general-purpose "plans" and the tools to assemble more
   beamline- and experiment-specific plans.
 * Databroker will provide a user-friendly programmatic interface for retrieval
-  documents and deferencing data from files index by filestore.
+  documents and deferencing data from files indexed by filestore.
 * The documents emmited by bluesky and the documents returned by databroker
   should be compatible (i.e., equal).
