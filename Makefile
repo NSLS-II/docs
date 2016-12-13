@@ -2,13 +2,13 @@
 #
 
 # You can set these variables from the command line.
-SPHINXOPTS    =
+SPHINXOPTS    = "-W"
 SPHINXBUILD   = sphinx-build
 PAPER         =
 BUILDDIR      = build
 
 # For auto gh-pages
-GH_PAGES_SOURCES = Makefile source 
+GH_PAGES_SOURCES = Makefile source
 UNAME := $(shell uname)
 ifeq ($(UNAME), Darwin)
 	GH_DIR := $(shell mktemp -d)
