@@ -61,7 +61,7 @@ Python Software Dependencies
   change to user code.
 * Data analysis software will support both Python 2.7 and Python 3.4+ for now.
   Following the lead of the
-  `scientific Python community at large <http://www.python3statement.org/>`,
+  `scientific Python community at large <http://www.python3statement.org/>`_,
   support for 2.7 will be dropped before 2020, when Python 2.7 itself will stop
   receiving security patches.
 * Users often interact with the software using IPython, but no core
