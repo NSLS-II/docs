@@ -118,12 +118,13 @@ The following projects are in use but in a less mature stage of development.
    :maxdepth: 2
 
    architecture-overview
-   examples/index
    tutorials
    remote-access
    sandbox
    fresh-installation
    resources
+   auto_examples/index
+   examples/index
    internal_index
 
 .. toctree::
