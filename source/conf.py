@@ -48,10 +48,12 @@ extensions = [
     'sphinx.ext.extlinks',
     'sphinxcontrib.napoleon',
     'sphinxext.jsonschema_diff',
+    'numpydoc',
     'sphinxext.xfig',
     'IPython.sphinxext.ipython_directive',
     'IPython.sphinxext.ipython_console_highlighting',
     'matplotlib.sphinxext.plot_directive',
+    'sphinx_gallery.gen_gallery'
 ]
 
 # Configuration options for plot_directive. See:
@@ -62,6 +64,11 @@ plot_pre_code = ("from matplotlib import pyplot as plt\n"
                  "from bluesky import RunEngine\n"
                  "RE = RunEngine({})")
 
+sphinx_gallery_conf = {
+    # path to your examples script
+    'examples_dirs' : 'cookbook',
+    # path where to save gallery generated examples
+    'gallery_dirs'  : 'auto_examples'}
 
 extlinks = {'issue':
             ('https://github.com/NSLS-II/{0}/issues/%s'.format(repo_name),
@@ -294,9 +301,11 @@ htmlhelp_basename = '{0}-Docs'.format(repo_name)
 
 
 # Example configuration for intersphinx: refer to the Python standard library.
-intersphinx_mapping = {'python': ('http://docs.python.org/3.4', None),
+intersphinx_mapping = {'python': ('https://docs.python.org/3.5', None),
                        'bluesky': ('http://nsls-ii.github.io/bluesky', None),
-                       'databroker': ('http://nsls-ii.github.io/databroker', None)}
+                       'databroker': ('http://nsls-ii.github.io/databroker',
+                                      None),
+                       'ophyd': ('http://nsls-ii.github.io/ophyd', None)}
 
 # Enable showing todos
 
