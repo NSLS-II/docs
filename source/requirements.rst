@@ -52,6 +52,12 @@ Data Storage and Access
   for long-term archival. However, this will not be implemented until all runs
   are clearly identified with an owner, which relies on guidance from the user
   task force, as outlined previously.
+* Suitcase will provide tools for exporting from the databroker to various file
+  formats (SPEC files and HDF5 are currently support). We are not advocating
+  these formats as standards in any way: they are merely conveniences for users
+  who rely on a file-based workflow and are not prepared to write their own
+  custom export code. In general they are lossy and do not capture the full
+  information or structure of the original documents.
 
 Python Software Dependencies
 ============================
@@ -68,7 +74,7 @@ Python Software Dependencies
 * Users often interact with the software using IPython, but no core
   functionality should rely on IPython. Though IPython integration such as
   "magics" may be created for convenience and packaged with the software, all
-  important functions should be running from a plain Python script and should
+  important functions should be runnable from a plain Python script and should
   not assume IPython is installed.
 * In general, if an acceptable implementation of some functionality exists in a
   widely-used and actively-supported library, we prefer reusing that
@@ -90,3 +96,16 @@ Python Software APIs
   documents and deferencing data from files indexed by filestore.
 * The documents emmited by bluesky and the documents returned by databroker
   should be compatible (i.e., equal).
+* Amostra will provide separate document collection, outside the core document
+  schema, intended to store sample information. Its main technical feature is
+  that it provides a way to *deference* sample information rather than store a
+  separate copy of the information in every run.
+* Datamuxer will provide tooling for de-multiplexing asynchronous event
+  streams. (The project has not been actively developed since early 2015 and
+  will need to be revisited, maybe rewritten, in light of subsequent
+  developments in the document model and bluesky.)
+* Scikit-beam is the name of a github organization and a Python project
+  providing "core" code for projects in that organization. Any analysis code
+  written at or for the beamlines that can be of general use should be refined,
+  documented, and moved into scikit-beam (or some other external scipy project,
+  such as scikit-image, if it is sufficiently general).
