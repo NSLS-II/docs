@@ -1,5 +1,3 @@
-.. curentmodule:: bluesky.plans
-
 Scan a grid around each sample in a grid
 ****************************************
 
