@@ -2,6 +2,10 @@
 Installation
 ************
 
+.. warning
+
+   This page is out of date, see :ref:`bl_installation` instead.
+
 .. highlight:: bash
 
 We distribute binary packages from an internal server using the *conda*
@@ -15,7 +19,8 @@ source.
 Installation Procedure
 ----------------------
 
-#. The following configuration files are touched by this procedure.
+#. The following configuration files in the home directory are touched
+   by this procedure ::
 
      .pyOlog.conf
      .condarc

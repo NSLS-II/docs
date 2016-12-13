@@ -102,7 +102,7 @@ The following projects are in use but in a less mature stage of development.
   `amostra <https://nsls-ii.github.io/amostra>`_.
 * Align ("de-multiplex") asynchronously collected data streams, based on time
   stamps, using `datamuxer <http://nsls-ii.github.io/datamuxer>`_.
-* Export data from the databroker to common formats using 
+* Export data from the databroker to common formats using
   `suitcase <http://nsls-ii.github.io/suitcase>`_.
 * Write analysis code using `scikit-beam <scikit-beam.github.io/scikit-beam>`_,
   in conjunction with
@@ -110,6 +110,8 @@ The following projects are in use but in a less mature stage of development.
 * Utilize beamline-specific libraries in the Github organizations maintained
   by individual NSLS-II beamlines at ``github.com/NSLS-II-XXX`` where XXX
   is the three-letter beamline acronym (e.g., HXN, ISS, CHX, etc.).
+
+
 
 .. toctree::
    :hidden:
@@ -122,6 +124,7 @@ The following projects are in use but in a less mature stage of development.
    sandbox
    fresh-installation
    resources
+   internal_index
 
 .. toctree::
    :hidden:

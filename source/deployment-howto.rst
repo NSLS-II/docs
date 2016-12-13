@@ -1,5 +1,6 @@
 .. highlight:: bash
 
+
 Releases and Deployment
 ***********************
 
@@ -30,8 +31,7 @@ versions bumping the ``Major`` version can make backwards incompatible
 API changes, versions bumping ``Minor`` can add backwards-compatible
 new features and versions bumping ``Patch`` can make
 backwards-compatible bug fixes.  Bumping a version component re-sets
-everything to the right to 0.  So long as the ``Major`` version is 0, the
-rules do not apply.
+everything to the right to 0.
 
 PEP440 defines a way of adding qualifiers to a version string to
 ensure proper sorting of development releases.  The rules are quite
@@ -134,7 +134,7 @@ dependencies if they have changed between versions.
 Build and upload new binaries
 -----------------------------
 
-Use either the :ref:`binstar build server <binstar_build>` or by using
+Use either the `binstar build server <binstar_build>` or by using
 ``conda build`` on one of the beamline computers to build the conda
 package off of your newly created recipe.  ::
 
@@ -149,7 +149,7 @@ is working correctly, upload it to the internal binstar ::
 
 where ``USER`` is the user or organization you want to upload the
 binary to.  To upload to more than one beamline either simply run
-the above command more than once, or use :prog:`binstar` to move
+the above command more than once, or use ``binstar`` to move
 the files between organizations ::
 
   binstar copy --to-owner USER2 USER1/project/vX.Y.Z

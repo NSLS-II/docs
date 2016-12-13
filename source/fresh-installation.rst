@@ -1,3 +1,5 @@
+.. _bl_installation:
+
 Installation at a Beamline
 ==========================
 
@@ -115,7 +117,7 @@ Create a Beamling GitHub Organization
     git init
     git add startup/
     git commmit -m "initial commit"
-    
+
 
 3. Upload the ``profile_collection`` git repository to GitHub. Be sure to edit
    the command below to replace NSLS-II-XXX with the name of your organization.
@@ -157,7 +159,7 @@ Back in an IPython profile startup file, add::
     from pyOlog import SimpleOlogClient
     from bluesky.callbacks.olog import logbook_cb_factory
 
-    # Set up the logbook. This configures bluesky's summaries of 
+    # Set up the logbook. This configures bluesky's summaries of
     # data acquisition (scan type, ID, etc.).
 
     LOGBOOKS = ['Data Acquisition']  # list of logbook names to publish to
@@ -174,7 +176,7 @@ Integration with Ophyd
 Ophyd has as ``log_pos`` method that writes the current position of all
 positioners into the log. To enable this, add the following to an IPython
 profile startup file, add::
-    
+
     # This is for ophyd.commands.get_logbook, which simply looks for
     # a variable called 'logbook' in the global IPython namespace.
     logbook = simple_olog_client
@@ -191,7 +193,7 @@ begin with %. There are two IPython magics for conveniently writing to
 the Olog.
 
 * Type ``%logit`` to quickly type a text log entry.
-* Type ``%grabit``, select an area of the screen to capture, and type in a 
+* Type ``%grabit``, select an area of the screen to capture, and type in a
   text caption.
 
 These require their own special configuration. In the profile directory, such

@@ -16,8 +16,7 @@ which shows exactly how we deploy and configure conda.
 Internal Anaconda Server
 ========================
 
-We run an internal anaconda server at https://conda.nsls2.bnl.gov. The name
-of the host running that server is ``alexandria``.
+We run an internal anaconda server at https://conda.nsls2.bnl.gov.
 
 Channels
 ========
@@ -46,7 +45,7 @@ Activating the root environments
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Every beamline workstation has at least two conda environments that are
-"locked down", requiring root privileges to change. They are named 
+"locked down", requiring root privileges to change. They are named
 ``analysis`` and ``collection``. The exact contents of these environments will
 vary from beamline to beamline based on their software needs, but the names
 are consistent so that at any beamline, this should work:
