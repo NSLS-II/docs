@@ -3,4 +3,4 @@ build
 *.swp
 # pycharm
 .idea/
-source/auto_examples
+source/cookbook

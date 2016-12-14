@@ -8,6 +8,7 @@ Out of date
    :maxdepth: 2
 
    install
+   deployment-howto
 
 Internal
 --------
@@ -15,5 +16,3 @@ Internal
 .. toctree::
 
    conda
-   jupyter_notebooks/publish_to_nbviewer
-   deployment-howto
