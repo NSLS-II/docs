@@ -4,13 +4,25 @@
 A Minimal CSV writer for data collection
 ========================================
 
-Some long notes
+Problem
+-------
+
+Write (a subset of) the data to a CSV file during data collection.
+
+Approach
+--------
+
+Write a callback function that integrates Python's built-in csv module with
+bluesky.
+
+Example Solution
+----------------
+
 """
 
 
 ###############################################################################
-# Boiler plate imports, configure if being used interactively and create
-# a test RunEngine
+# Boiler plate imports and configuration
 
 
 import path
@@ -21,15 +33,17 @@ import bluesky.callbacks as bc
 import csv
 from bluesky.examples import motor, det
 
-import matplotlib
 import matplotlib.pyplot as plt
 
 
-if matplotlib.get_backend().lower() != 'agg':
-    from bluesky.utils import install_qt_kicker
+# Do this if running the example interactively;
+# skip it when building the documentation.
+import os
+if 'BUILDING_DOCS' not in os.environ:
+    from bluesky.utils import install_qt_kicker  # for notebooks, qt -> nb
     install_qt_kicker()
-    det.exposure_time = .1
     plt.ion()
+    det.exposure_time = .1  # simulate detector exposure time
 
 RE = bs.RunEngine({})
 

@@ -1,8 +1,32 @@
-from collections import ChainMap
+"""
+Scan a grid around each sample in a grid
+****************************************
+
+Problem
+=======
+
+Examples are arranged on a substrate. There are two motors, x and y, for moving
+a detector over the subtrate. Scan a grid of readings around the center
+position of each sample.
+
+Approach
+========
+
+Specify the samples and their arrangement as a mapping of sample names to
+(x, y) positions, like ``{'A': (1, 1), 'B': (1, 2)}``. Write a custom plan that
+loops through the samples. For each sample, move to sample's center position
+and perform a :func:`bluesky.plans.relative_outer_product_scan` (i.e., grid
+scan) around that position. For each sample, one run will be saved. Include the
+sample name in the metadata.
+
+Example Solution
+================
+"""
 from bluesky.plans import (abs_set, relative_outer_product_scan, wait,
                            run_decorator, stage_decorator, subs_decorator)
 from bluesky.callbacks import LiveTable, LivePlot
 from bluesky.examples import det4, motor1, motor2
+from bluesky import RunEngine
 
 
 def grid_in_grid(samples):
@@ -46,6 +70,8 @@ def grid_in_grid(samples):
 
 
 # Example usage:
+
+RE = RunEngine({})
 
 samples = {'A': (1, 1),
            'B': (1, 2),
