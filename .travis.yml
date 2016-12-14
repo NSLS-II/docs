@@ -8,12 +8,13 @@ env:
     DOCS_SUBDIR: .
     TARGET_DEV_SUBDIR: .
     HTML_SUBDIR: build/html
-    DOCS_CONDA_DEPS: "bluesky ophyd xray-vision pyolog metadatastore"
-    DOCS_PIP_DEPS: "tqdm sphinx-gallery"
+    DOCS_CONDA_DEPS: 'bluesky'
+    DOCS_PIP_DEPS: ''
 
 before_install:
   - git clone https://github.com/NSLS-II/nsls2-ci --branch master --single-branch ~/ci_scripts
   - source ~/ci_scripts/install-miniconda.sh
+  - pip install sphinx-gallery path.py
 
 script:
   - |

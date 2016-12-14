@@ -14,6 +14,7 @@
 
 import sys
 import os
+import re
 # import sphinx_bootstrap_theme
 import sphinx_rtd_theme
 import six
@@ -66,9 +67,10 @@ plot_pre_code = ("from matplotlib import pyplot as plt\n"
 
 sphinx_gallery_conf = {
     # path to your examples script
-    'examples_dirs' : 'cookbook',
+    'examples_dirs' : '_cookbook',
     # path where to save gallery generated examples
-    'gallery_dirs'  : 'auto_examples'}
+    'gallery_dirs'  : 'cookbook',
+    'filename_pattern': re.escape(os.sep) + '*.py'}
 
 extlinks = {'issue':
             ('https://github.com/NSLS-II/{0}/issues/%s'.format(repo_name),
