@@ -9,6 +9,7 @@ Out of date
 
    install
    deployment-howto
+   requirements
 
 Internal
 --------
