@@ -4,6 +4,7 @@ doctr
 event-model  # remove this once bluesky setup.py is fixed
 ipython
 jsonschema
+lmfit  # for gallery example
 matplotlib
 numpy  # for gallery example
 numpydoc
