@@ -6,9 +6,6 @@ env:
   global:
     - secure: "Y6tBB5CwAxaHPxLzwyyoQKXEwLK68ni8GqzoaYCYbrjLhSFqEDCk6Si7UPmMoED8t7hyxFZofPfEpmOLBoronWUQycnB/K/oxYFfKyEXxNxGpY/iaQk/XCC6rkJ3g863QKdAsgobBgJIClDczZ7leY3RlN+mHfH0wohCBLFAh0E="
 
-before_install:
-  - pip install -r requirements.txt
-
 script:
   - set -e
   - make html
