@@ -1,5 +1,6 @@
 bluesky  # for gallery example
 doctr
+event-model
 ipython
 jsonschema
 matplotlib
