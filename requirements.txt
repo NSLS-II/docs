@@ -1,12 +1,14 @@
 bluesky  # for gallery example
+boltons  # remove this once bluesky setup.py is fixed
 doctr
-event-model
+event-model  # remove this once bluesky setup.py is fixed
 ipython
 jsonschema
 matplotlib
 numpy  # for gallery example
 numpydoc
 path.py
+pillow  # required by sphinx-gallery
 sphinx
 sphinx-gallery
 sphinx_rtd_theme
