@@ -1,7 +1,9 @@
+bluesky  # for gallery example
 doctr
 ipython
 jsonschema
 matplotlib
+numpy  # for gallery example
 numpydoc
 path.py
 sphinx
