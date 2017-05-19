@@ -2,11 +2,11 @@
 History of Changes
 ==================
 
-This document presents a union of the release notes for NSLS-II software
-(bluesky, databroker, ophyd, and friends) as a convenience one-stop reference.
-See the individual projects for traditional release notes, where changes are
-grouped by tagged releases. This document groups notes by each operating cycle
-at NSLS-II.
+This document presents a summary of the release notes for NSLS-II software
+(bluesky, databroker, ophyd, and friends) as a convenient reference. See the
+individual projects for traditional release notes, where changes are grouped by
+tagged releases and documented in greater detail. This document groups notes by
+each operating cycle at NSLS-II.
 
 Cycle Beginning 2017-05
 -----------------------
@@ -16,7 +16,10 @@ New functionality
 
 * The new databroker-browser provides a GUI for searching runs and viewing text
   summaries, metadata, and figures. It requires some beamline-specific
-  customization which DAMA can assist with during the operating cycle
+  customization which DAMA can assist with during the operating cycle. An
+  example
+  `configuration file <https://github.com/NSLS-II/databroker-browser/blob/master/example.py>`_
+  is available. (This is experimental and likely to change in the future.)
 * The databroker Headers have methods for more convenience data retrieval. You
   can still do this:
 
