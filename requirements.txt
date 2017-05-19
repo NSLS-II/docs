@@ -1,4 +1,10 @@
-sphinx
-sphinx_rtd_theme
-sphinx-gallery
+doctr
+ipython
+jsonschema
+matplotlib
+numpydoc
 path.py
+sphinx
+sphinx-gallery
+sphinx_rtd_theme
+sphinxcontrib-napoleon
