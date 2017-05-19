@@ -1,4 +1,16 @@
-sphinx
-sphinx_rtd_theme
-sphinx-gallery
+bluesky  # for gallery example
+boltons  # remove this once bluesky setup.py is fixed
+doctr
+event-model  # remove this once bluesky setup.py is fixed
+ipython
+jsonschema
+lmfit  # for gallery example
+matplotlib
+numpy  # for gallery example
+numpydoc
 path.py
+pillow  # required by sphinx-gallery
+sphinx
+sphinx-gallery
+sphinx_rtd_theme
+sphinxcontrib-napoleon
