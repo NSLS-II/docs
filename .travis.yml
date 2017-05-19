@@ -14,9 +14,10 @@ env:
 before_install:
   - git clone https://github.com/NSLS-II/nsls2-ci --branch master --single-branch ~/ci_scripts
   - source ~/ci_scripts/install-miniconda.sh
-  - pip install sphinx-gallery path.py
+  - pip install -r requirements.txt
 
 script:
+  - set -e
   - |
     if [ $BUILD_DOCS == true ]; then
       source ~/ci_scripts/make-docs.sh
