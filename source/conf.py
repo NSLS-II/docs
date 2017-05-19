@@ -70,7 +70,8 @@ sphinx_gallery_conf = {
     'examples_dirs' : '_cookbook',
     # path where to save gallery generated examples
     'gallery_dirs'  : 'cookbook',
-    'filename_pattern': re.escape(os.sep) + '*.py'}
+    'filename_pattern': re.escape(os.sep) + '*.py',
+    'backreferences_dir': False}
 
 extlinks = {'issue':
             ('https://github.com/NSLS-II/{0}/issues/%s'.format(repo_name),
