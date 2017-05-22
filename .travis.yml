@@ -10,5 +10,5 @@ script:
   - set -e
   - make html
   - pip uninstall -y doctr
-  - pip install git+https://github.com/danielballan/doctr@21562697da0830c3c4ae1eff10bd7051b0d81dd8
+  - pip install git+https://github.com/danielballan/doctr@7860714e9aa7e1b7fca33aa220260acd54ef5531
   - doctr deploy --deploy-repo NSLS-II/NSLS-II.github.io --deploy-branch-name master .
