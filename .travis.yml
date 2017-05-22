@@ -9,6 +9,6 @@ env:
 script:
   - set -e
   - make html
-  - pip uninstall doctr
+  - pip uninstall -y doctr
   - pip install git+https://github.com/danielballan/doctr@76f28b87a104010c0b085e7328aab84131b2b4a1
   - doctr deploy --deploy-repo NSLS-II/NSLS-II.github.io --deploy-branch-name master .

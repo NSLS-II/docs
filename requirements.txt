@@ -1,7 +1,5 @@
 bluesky  # for gallery example
-boltons  # remove this once bluesky setup.py is fixed
 doctr
-event-model  # remove this once bluesky setup.py is fixed
 ipython
 jsonschema
 lmfit  # for gallery example
