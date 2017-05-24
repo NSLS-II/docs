@@ -110,7 +110,7 @@ server where the mongo daemon is running.
     # Subscribe metadatastore to documents.
     # If this is removed, data is not saved to metadatastore.
     from bluesky.global_state import gs
-    gs.RE.subscribe('all', mds.insert)
+    gs.RE.subscribe('all', db.insert)
 
     # Import matplotlib and put it in interactive mode.
     import matplotlib.pyplot as plt
