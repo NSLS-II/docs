@@ -22,9 +22,9 @@ Create Conda Environments
 
 A puppet class should install conda into ``/opt/conda`` on machines designated
 ``*-srv*`` ("server") or ``*-ws*`` ("workstation") as soon as they are on the
-NSLS-II network and working with puppet. It should also create an empty
-directory, ``/opt/conda_envs`` for root-controlled conda environments. The
-configuration in ``/opt/conda/.condarc`` designates this location as the second
+NSLS-II network and have a puppet client configured and running. It should also 
+create an empty directory, ``/opt/conda_envs`` for root-controlled conda environments. 
+The configuration in ``/opt/conda/.condarc`` designates this location as the second
 place conda should look for environments, after ``~/conda_envs``.
 
 Environments for data collection and data anlysis should be installed into
