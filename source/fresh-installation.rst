@@ -103,7 +103,7 @@ server where the mongo daemon is running.
                  'port': 27017,
                  'database': 'filestore-production-v1',
     mds = MDS(mds_config)
-    mds_readonly = MDS(mds_config)
+    mds_readonly = MDSRO(mds_config)
     fs_readonly = FileStoreRO(fs_config)
     db = Broker(mds_readonly, fs_readonly)
 
