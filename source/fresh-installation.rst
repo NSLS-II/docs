@@ -254,7 +254,8 @@ New Workstation for Data Collection or Analysis
    puppet.
 
 2. Create configuration files for metadatastore and filestore. As root user,
-   compose two new files:
+   compose two new files. The ``hostname`` should be the host where the mongo
+   service running (conventionally, the ``*-ca1`` machine, as noted above).
 
 .. code-block:: bash
 
@@ -284,11 +285,17 @@ Add the following to the user's ``~/.bashrc`` file.
     export no_proxy=cs.nsls2.local
     export PATH=/opt/conda/bin:$PATH
 
-The first three lines are local NSLS-II controls network configuration.
+The first three lines are local NSLS-II controls network configuration. They
+should already be set at the system level but in practice they are often not.
 
 Conda has already been installed on all NSLS-II workstations (ws) and servers
 (srv) in a shared location. The last line adds conda to the user's PATH so that
 it overrides any system-installed Python, IPython, etc.
+
+Convenience Script ``bsui``
++++++++++++++++++++++++++++
+
+The script ``bsui``
 
 Custom User Environments
 ++++++++++++++++++++++++
@@ -297,39 +304,33 @@ Any user can create a conda environment, a set of binaries and Python packages
 completely under their control. User conda environments are stored under
 ``~/conda_envs/<environment-name>``.
 
-This command creates a new environment called ``collection`` with the latest
-"tagged" (i.e., stable) versions of ophyd, bluesky, pyolog, and xray_vision.
+This command creates a new environment called ``my-env`` with all the versions
+of the collection software used for the second operating cycle of 2017.
 
 .. code-block:: bash
 
-    conda create -c nsls2-tag -n collection ophyd bluesky pyolog xray_vision
+    conda create -c nsls2-tag -n my-env collection-17Q2
 
 To test the new environment, activate it:
 
 .. code-block:: bash
 
-    source activate collection
+    source activate my-env
 
-Check that ``which ipython`` point to a path with the word ``collection`` it
-in (not ``/usr/bin/python``, as a counterexample). To troubleshoot, you
-might need to refresh bash with the command ``hash -r``.
+Troubleshooting: Check that ``which ipython`` point to a path with the word
+``my-env`` it in (not ``/usr/bin/python``, as a counterexample). To
+troubleshoot, you might need to refresh bash with the command ``hash -r``.
 
 To get "development" versions that are maybe less stable but contain the latest
 bug fixes and features, use the ``nsls2-dev`` channel in place of
 ``nsls2-tag``.
 
-
-Create or Updating Shared (Root) Environments
-+++++++++++++++++++++++++++++++++++++++++++++
+Creating or Updating Shared (Root) Environments
++++++++++++++++++++++++++++++++++++++++++++++++
 
 Administrators with sudo access can create or update conda environments that
 users can use ("activate") but only administrators can edit. These environments
-are located in ``/opt/conda_envs``. All beamlines that use JupyterHub
-(notebook.nsls2.bnl.gov) have an environment at ``/opt/conda_envs/analysis``.
-Some beamlines also have a shared collection environment at
-``/opt/conda_envs/collection``. Others prefer to install the collection
-software individually per user. In either case, it always possible for users to
-create custom environments as desired.
+are located in ``/opt/conda_envs``.
 
 .. note::
 
