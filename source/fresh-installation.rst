@@ -317,7 +317,7 @@ To test the new environment, activate it:
 
     source activate my-env
 
-Troubleshooting: Check that ``which ipython`` point to a path with the word
+Troubleshooting: Check that ``which ipython`` points to a path with the word
 ``my-env`` it in (not ``/usr/bin/python``, as a counterexample). To
 troubleshoot, you might need to refresh bash with the command ``hash -r``.
 
