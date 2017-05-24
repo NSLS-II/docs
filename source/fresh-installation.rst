@@ -161,8 +161,8 @@ Create a Beamline GitHub Organization
 
 .. code-block:: bash
 
-    git remote add https://github.com/NSLS-II-XXX/profile_collection.git
-    git push -u origin master
+    git remote add upstream https://github.com/NSLS-II-XXX/profile_collection.git
+    git push -u upstream master
 
 
 Configure the Olog
