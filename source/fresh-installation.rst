@@ -17,6 +17,43 @@ one at least one machine, skip to the next section.
    class that installs mongo 3.x some dedicated server and start the mongo
    daemon.
 
+Create Conda Environments
++++++++++++++++++++++++++
+
+A puppet class should install conda into ``/opt/conda`` on machines designated
+``*-srv*`` ("server") or ``*-ws*`` ("workstation") as soon as they are on the
+NSLS-II network and working with puppet. It should also create an empty
+directory, ``/opt/conda_envs`` for root-controlled conda environments. The
+configuration in ``/opt/conda/.condarc`` designates this location as the second
+place conda should look for environments, after ``~/conda_envs``.
+
+Environments for data collection and data anlysis should be installed into
+``/opt/conda_envs``. In the second operating cycle of 2017, the commands to do
+this were:
+
+.. code-block:: bash
+
+    sudo conda create -p /opt/conda_envs/collection-17Q2.0 -c nsls2-tag -y collection
+    sudo conda create -p /opt/conda_envs/analysis-17Q2.0 -c nsls2-tag -y analysis
+    fix_conda_privileges.sh
+
+where ``collection-17Q2.0`` and ``analysis-17Q2.0`` are the names of conda
+metapackages and the names of the environments (under ``/opt/conda_envs``)
+where these metapackages are installed.
+
+Install Scripts
++++++++++++++++
+
+Two convenience scripts, ``fix_conda_privileges.sh`` and ``bsui`` should be
+installed in ``/usr/local/bin``, also by puppet.
+
+* ``fix_conda_privileges.sh`` works around a bug in conda wherein users cannot
+  properly access root-installed conda packages. It should be run after
+  creating or updating and conda environments in ``/opt/conda_envs``, as shown
+  above.
+* ``bsui`` is a shortcut script that activates a conda environment and starts
+  IPython with the 'collection' profile.
+
 Create New IPython Profile
 ++++++++++++++++++++++++++
 
