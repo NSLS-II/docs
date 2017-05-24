@@ -138,7 +138,7 @@ server where the mongo daemon is running.
     # ophyd.logger.setLevel(logging.DEBUG)
     # logging.basicConfig(level=logging.DEBUG)
 
-Create a Beamling GitHub Organization
+Create a Beamline GitHub Organization
 +++++++++++++++++++++++++++++++++++++
 
 1. Create a username on github.com if you don't have one. Create a new
