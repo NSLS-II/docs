@@ -17,6 +17,45 @@ one at least one machine, skip to the next section.
    class that installs mongo 3.x some dedicated server and start the mongo
    daemon.
 
+Create Conda Environments
++++++++++++++++++++++++++
+
+A puppet class should install conda into ``/opt/conda`` on machines designated
+``*-srv*`` ("server") or ``*-ws*`` ("workstation") as soon as they are on the
+NSLS-II network and have a puppet client configured and running. It should also be 
+noted that there are some special cases where other 'classes' of machine also receive
+the installation (i.e. on some ``-ca*`` and ``-gpu*`` machines).  Puppet should also 
+create an empty directory, ``/opt/conda_envs`` for root-controlled conda environments. 
+The configuration in ``/opt/conda/.condarc`` designates this location as the second
+place conda should look for environments, after ``~/conda_envs``.
+
+Environments for data collection and data anlysis should be installed into
+``/opt/conda_envs``. In the second operating cycle of 2017, the commands to do
+this were:
+
+.. code-block:: bash
+
+    sudo conda create -p /opt/conda_envs/collection-17Q2.0 -c nsls2-tag -y collection
+    sudo conda create -p /opt/conda_envs/analysis-17Q2.0 -c nsls2-tag -y analysis
+    fix_conda_privileges.sh
+
+where ``collection-17Q2.0`` and ``analysis-17Q2.0`` are the names of conda
+metapackages and the names of the environments (under ``/opt/conda_envs``)
+where these metapackages are installed.
+
+Install Scripts
++++++++++++++++
+
+Two convenience scripts, ``fix_conda_privileges.sh`` and ``bsui`` should be
+installed in ``/usr/local/bin``, also by puppet.
+
+* ``fix_conda_privileges.sh`` works around a bug in conda wherein users cannot
+  properly access root-installed conda packages. It should be run after
+  creating or updating and conda environments in ``/opt/conda_envs``, as shown
+  above.
+* ``bsui`` is a shortcut script that activates a conda environment and starts
+  IPython with the 'collection' profile.
+
 Create New IPython Profile
 ++++++++++++++++++++++++++
 
@@ -66,14 +105,14 @@ server where the mongo daemon is running.
                  'port': 27017,
                  'database': 'filestore-production-v1',
     mds = MDS(mds_config)
-    mds_readonly = MDS(mds_config)
+    mds_readonly = MDSRO(mds_config)
     fs_readonly = FileStoreRO(fs_config)
     db = Broker(mds_readonly, fs_readonly)
 
     # Subscribe metadatastore to documents.
     # If this is removed, data is not saved to metadatastore.
     from bluesky.global_state import gs
-    gs.RE.subscribe('all', mds.insert)
+    gs.RE.subscribe('all', db.insert)
 
     # Import matplotlib and put it in interactive mode.
     import matplotlib.pyplot as plt
@@ -101,7 +140,7 @@ server where the mongo daemon is running.
     # ophyd.logger.setLevel(logging.DEBUG)
     # logging.basicConfig(level=logging.DEBUG)
 
-Create a Beamling GitHub Organization
+Create a Beamline GitHub Organization
 +++++++++++++++++++++++++++++++++++++
 
 1. Create a username on github.com if you don't have one. Create a new
@@ -124,8 +163,8 @@ Create a Beamling GitHub Organization
 
 .. code-block:: bash
 
-    git remote add https://github.com/NSLS-II-XXX/profile_collection.git
-    git push -u origin master
+    git remote add upstream https://github.com/NSLS-II-XXX/profile_collection.git
+    git push -u upstream master
 
 
 Configure the Olog
@@ -217,7 +256,8 @@ New Workstation for Data Collection or Analysis
    puppet.
 
 2. Create configuration files for metadatastore and filestore. As root user,
-   compose two new files:
+   compose two new files. The ``hostname`` should be the host where the mongo
+   service running (conventionally, the ``*-ca1`` machine, as noted above).
 
 .. code-block:: bash
 
@@ -247,11 +287,17 @@ Add the following to the user's ``~/.bashrc`` file.
     export no_proxy=cs.nsls2.local
     export PATH=/opt/conda/bin:$PATH
 
-The first three lines are local NSLS-II controls network configuration.
+The first three lines are local NSLS-II controls network configuration. They
+should already be set at the system level but in practice they are often not.
 
 Conda has already been installed on all NSLS-II workstations (ws) and servers
 (srv) in a shared location. The last line adds conda to the user's PATH so that
 it overrides any system-installed Python, IPython, etc.
+
+Convenience Script ``bsui``
++++++++++++++++++++++++++++
+
+The script ``bsui``
 
 Custom User Environments
 ++++++++++++++++++++++++
@@ -260,39 +306,33 @@ Any user can create a conda environment, a set of binaries and Python packages
 completely under their control. User conda environments are stored under
 ``~/conda_envs/<environment-name>``.
 
-This command creates a new environment called ``collection`` with the latest
-"tagged" (i.e., stable) versions of ophyd, bluesky, pyolog, and xray_vision.
+This command creates a new environment called ``my-env`` with all the versions
+of the collection software used for the second operating cycle of 2017.
 
 .. code-block:: bash
 
-    conda create -c nsls2-tag -n collection ophyd bluesky pyolog xray_vision
+    conda create -c nsls2-tag -n my-env collection-17Q2
 
 To test the new environment, activate it:
 
 .. code-block:: bash
 
-    source activate collection
+    source activate my-env
 
-Check that ``which ipython`` point to a path with the word ``collection`` it
-in (not ``/usr/bin/python``, as a counterexample). To troubleshoot, you
-might need to refresh bash with the command ``hash -r``.
+Troubleshooting: Check that ``which ipython`` points to a path with the word
+``my-env`` it in (not ``/usr/bin/python``, as a counterexample). To
+troubleshoot, you might need to refresh bash with the command ``hash -r``.
 
 To get "development" versions that are maybe less stable but contain the latest
 bug fixes and features, use the ``nsls2-dev`` channel in place of
 ``nsls2-tag``.
 
-
-Create or Updating Shared (Root) Environments
-+++++++++++++++++++++++++++++++++++++++++++++
+Creating or Updating Shared (Root) Environments
++++++++++++++++++++++++++++++++++++++++++++++++
 
 Administrators with sudo access can create or update conda environments that
 users can use ("activate") but only administrators can edit. These environments
-are located in ``/opt/conda_envs``. All beamlines that use JupyterHub
-(notebook.nsls2.bnl.gov) have an environment at ``/opt/conda_envs/analysis``.
-Some beamlines also have a shared collection environment at
-``/opt/conda_envs/collection``. Others prefer to install the collection
-software individually per user. In either case, it always possible for users to
-create custom environments as desired.
+are located in ``/opt/conda_envs``.
 
 .. note::
 
