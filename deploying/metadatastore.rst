@@ -1,3 +1,5 @@
+Warning: Some of the information below might be out of date - you have been warned.
+
 Deploying metadatastore
 -----------------------
 
