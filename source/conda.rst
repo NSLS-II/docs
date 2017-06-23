@@ -44,9 +44,6 @@ command
    $ conda list
    # packages in environment at /opt/conda_envs/analysis-17Q2.0:
    #
-   DEPRECATION: The default format will switch to columns in the future. You
-   can use --format=(legacy|columns) (or define a format=(legacy|columns) in
-   your pip.conf under the [list] section) to disable this warning.
    amostra                   0.2                      py36_0
    anaconda-client           1.6.2                    py36_0
    analysis                  17Q2.0                   py36_4
@@ -170,7 +167,11 @@ JupyterHub.
     Notice that we added a comma on the second-to-last line, after ``"python"``.
     There is no comma after the last entry. JSON files are strict about this.
     (This often trips up Python users, because Python tolerates trailing commas
-    is lists.)
+    in lists.)
+
+Now, when you create a new notebook in JupyterHub, your new kernel should
+appear in the menu. (You may need to refresh the browser, but you should not
+need to log out of JupyterHub or restart your server.)
 
 Internal Anaconda Server
 ========================
