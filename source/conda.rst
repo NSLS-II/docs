@@ -4,36 +4,10 @@ Software Deployment with Conda
 Intro
 =====
 
-See the `conda documentation <http://conda.pydata.org/docs/>`_.
-
-Conda is designed to let users install and use packages without administrative
-privileges, but it can also be deployed in a more controlled way. This
-is how we deploy it on the controls network at NSLS-II.
-After reading the summary below, you will be able to follow
-`this bash script <https://gist.github.com/danielballan/c02c17f92650e21488a3>`_
-which shows exactly how we deploy and configure conda.
-
-Internal Anaconda Server
-========================
-
-We run an internal anaconda server at https://conda.nsls2.bnl.gov.
-
-Channels
-========
-
-A channel is a hosted collection of conda packages.
-
-The ``anaconda`` channel contains the "official" packages distributed by
-Continuum Analytics, including widely-used packages like numpy. When
-Continuum releases new version of packages, we can vet them before we make
-them available to users on this channel. The ``defaults`` channel is not
-vetted by us; it should never be used internally.
-
-The ``nsls2-tag`` channel is where we put the latest tagged stable versions of
-every package not officially distributed by Continuum. This includes in-house
-packages like ophyd and bluesky and other dependencies that don't happen to be
-packaged by Continuum yet.  The ``nsls2-dev`` channel is where we put
-bleeding-edge development versions of these packages.
+Conda is an open source package management system and environment management
+system for installing multiple versions of software packages and their
+dependencies and switching easily between them. See the
+`conda documentation <http://conda.pydata.org/docs/>`_ for more.
 
 Environments
 ============
@@ -58,18 +32,31 @@ To use an environment, active it.
 
 .. code-block:: bash
 
-   source activate collection-17Q2.0
+   $ source activate analysis-17Q2.0
+   discarding /opt/conda/bin from PATH
+   prepending /opt/conda_envs/analysis-17Q2.0/bin to PATH
 
 You can inspect the packages installed in the current environment using the
 command
 
 .. code-block:: bash
 
-   conda list
+   $ conda list
+   # packages in environment at /opt/conda_envs/analysis-17Q2.0:
+   #
+   DEPRECATION: The default format will switch to columns in the future. You
+   can use --format=(legacy|columns) (or define a format=(legacy|columns) in
+   your pip.conf under the [list] section) to disable this warning.
+   amostra                   0.2                      py36_0
+   anaconda-client           1.6.2                    py36_0
+   analysis                  17Q2.0                   py36_4
+   attrs                     16.3.0                   py36_1
+   bleach                    1.5.0                    py36_0
+   bluesky                   0.9.0                    py36_0
+   <snip>
 
-Creating customizable user environments
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
+Creating custom user environments
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If the standard system conda environments are missing some packges that you
 want to use, you can create your own. 
@@ -184,3 +171,21 @@ JupyterHub.
     There is no comma after the last entry. JSON files are strict about this.
     (This often trips up Python users, because Python tolerates trailing commas
     is lists.)
+
+Internal Anaconda Server
+========================
+
+We run an internal anaconda server at https://conda.nsls2.bnl.gov.
+
+The ``anaconda`` channel contains the "official" packages distributed by
+Continuum Analytics, including widely-used packages like numpy. When
+Continuum releases new version of packages, we can vet them before we make
+them available to users on this channel. The ``defaults`` channel is not
+vetted by us; it should never be used internally.
+
+The ``nsls2-tag`` channel is where we put the latest tagged stable versions of
+every package not officially distributed by Continuum. This includes in-house
+packages like ophyd and bluesky and other dependencies that don't happen to be
+packaged by Continuum yet.  The ``nsls2-dev`` channel is where we put
+bleeding-edge development versions of these packages.
+
