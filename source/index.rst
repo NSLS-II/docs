@@ -123,6 +123,7 @@ The following projects are in use but in a less mature stage of development.
    remote-access
    sandbox
    history
+   conda
    fresh-installation
    resources
    internal_index

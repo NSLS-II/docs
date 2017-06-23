@@ -4,39 +4,10 @@ Software Deployment with Conda
 Intro
 =====
 
-See the `conda documentation <http://conda.pydata.org/docs/>`_.
-
-Conda is designed to let users install and use packages without administrative
-privileges, but it can also be deployed in a more controlled way. This
-is how we deploy it on the controls network at NSLS-II.
-After reading the summary below, you will be able to follow
-`this bash script <https://gist.github.com/danielballan/c02c17f92650e21488a3>`_
-which shows exactly how we deploy and configure conda.
-
-Internal Anaconda Server
-========================
-
-We run an internal anaconda server at https://conda.nsls2.bnl.gov.
-
-Channels
-========
-
-A channel is a hosted collection of conda packages.
-
-The ``anaconda`` channel contains the "official" packages distributed by
-Continuum Analytics, including widely-used packages like numpy. When
-Continuum releases new version of packages, we can vet them before we make
-them available to users on this channel. The ``defaults`` channel is not
-vetted by us; it should never be used internally.
-
-The ``latest`` channel is where we put the latest tagged stable versions of
-every package not officially distributed by Continuum. This includes in-house
-packages like ophyd and bluesky and other dependencies that don't happen to be
-packaged by Continuum yet.
-
-Each beamline has its own channel, e.g. ``CHX`` or ``XPD``. These are not
-actively used, but in the future they might be used to individually control
-which beamlines can and cannot access certain packages.
+Conda is an open source package management system and environment management
+system for installing multiple versions of software packages and their
+dependencies and switching easily between them. See the
+`conda documentation <http://conda.pydata.org/docs/>`_ for more.
 
 Environments
 ============
@@ -44,116 +15,177 @@ Environments
 Activating the root environments
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Every beamline workstation has at least two conda environments that are
-"locked down", requiring root privileges to change. They are named
-``analysis`` and ``collection``. The exact contents of these environments will
-vary from beamline to beamline based on their software needs, but the names
-are consistent so that at any beamline, this should work:
+Every beamline workstation has some standard conda environments. All users can
+access them, but they can only be installed or updated with root privileges.
+You can list the names and locations of the available environments like so:
 
 .. code-block:: bash
 
-   source activate collection
+    $ conda env list
+    # conda environments:
+    #
+    analysis-17Q2.0          /opt/conda_envs/analysis-17Q2.0
+    collection-17Q2.0        /opt/conda_envs/collection-17Q2.0
+    root                  *  /opt/conda
 
-The above command assumes that (1) ``/opt/conda/bin/`` is on the PATH and
-(2) conda is configured correctly such that ``/opt/conda_envs/`` is on the
-search path for conda environments. Here's how to troubleshoot if that is
-not the case.
+To use an environment, active it.
 
 .. code-block:: bash
 
-   source /opt/conda/bin/activate /opt/conda_envs/collection
+   $ source activate analysis-17Q2.0
+   discarding /opt/conda/bin from PATH
+   prepending /opt/conda_envs/analysis-17Q2.0/bin to PATH
 
 You can inspect the packages installed in the current environment using the
 command
 
 .. code-block:: bash
 
-   conda list
+   $ conda list
+   # packages in environment at /opt/conda_envs/analysis-17Q2.0:
+   #
+   DEPRECATION: The default format will switch to columns in the future. You
+   can use --format=(legacy|columns) (or define a format=(legacy|columns) in
+   your pip.conf under the [list] section) to disable this warning.
+   amostra                   0.2                      py36_0
+   anaconda-client           1.6.2                    py36_0
+   analysis                  17Q2.0                   py36_4
+   attrs                     16.3.0                   py36_1
+   bleach                    1.5.0                    py36_0
+   bluesky                   0.9.0                    py36_0
+   <snip>
 
-Modifying the root environments
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Creating custom user environments
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-For example, to update to a new version of bluesky in the collection
-environment, do this as root:
+If the standard system conda environments are missing some packges that you
+want to use, you can create your own. 
 
-.. code-block:: bash
-
-   conda update -p /opt/conda_envs/collection bluesky
-
-To downgrade, install a specific version.
-
-.. code-block:: bash
-
-   conda install -p /opt/conda_envs/collection bluesky==v0.3.0
-
-Packages are inconsistent about whether they use a 'v' in their version string
-so be advised that they may or may not be required.
-
-There are couple of handy options to know about. Sometimes conda will overeagerly
-update dependencies that we don't need to or want to update. To suppress this,
-use the ``--no-deps`` option.
-
-Creating customizable user environments
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-In addition to the standardized root-controlled environments, users can
-create their own. For example:
+You can copy one of the standard system environments and add some packages.
 
 .. code-block:: bash
 
-   conda create -n my_analysis xpd_configuration
+    $ conda create -n myenv --clone analysis some_package another_package
 
-The above creates a new environment called ``my_analysis``. It will not
-be stored in ``/opt/conda_envs``; as a non-root user I cannot write to that
-directory. Instead, it will be written to ``~/conda_envs``.
+Or, you can create a new environment from scratch. (If you plan to use the
+environment with Jupyter, you must include the ``ipykernel`` package along with
+any others you want.)
 
-In that environment, conda installs some packages. The first one, ``analysis``
-is a "metapackage", a convenient way to install many packages at once.
-The second one, ``xpd_configuration`` is a special package that creates
-configuration files in ``~/conda_envs/my_analysis/etc/`` that will be used by
-metadatastore and filestore.
+.. code-block:: bash
 
-From here, users can add or remove packages at will using conda and pip.
+    $ conda create -n myenv ipykernel some_package another_package
+
+Activate the environment.
+
+.. code-block:: bash
+
+    $ source activate myenv
+
+If the package is available from pip but not conda, you can use pip. Make
+sure you have activated the environment first, as we did just above. 
+
+.. code-block:: bash
+
+    $ pip install some_other_package
 
 Access custom user environments in NSLS-II's JupyterHub
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The NSLS-II JupyterHub provides easy-to-use access to different host machines
-and conda environments. For example, choosing CHX from the drop-down menu
-connects to the CHX beamline's analysis server (xf11id-srv1),
-activates the ``/opt/conda_envs/analysis`` conda environment, and starts
-a Python process in that environment.
+Users can connect to their own user-created conda environments through
+JupyterHub.
 
-   .. image:: _static/jupyterhub-kernel-menu.png
-      :align: center
+1. Activate your custom environment.
 
-Jupyter calls the entries in this menu "kernels." You can read the gory
-details in `the IPython documentation <https://ipython.org/ipython-doc/3/development/kernels.html>`_.
-Users can also connect to their own user-created conda environments through
-JupyterHub. We provide a utility called ``kernelize`` to streamline the
-process.
+    .. code-block:: bash
 
-#. Log in to the host where the conda environment should be run. This is
-   how JupyterHub will know which host to open the Python process on.
-#. Install the ``kernelize`` conda package into environment of interest:
+        $ source activate myenv
 
-   .. code-block:: bash
 
-      conda install -n YOUR_ENV_NAME_HERE kernelize
+2. Create a new Jupyter kernel for the environment.
 
-This adds create a new file (or overwrites any existing file) at
-``~/conda_envs/ENV_NAME/share/jupyter/kernels/env_ENV_NAME/kernel.json``
-that will be automatically discovered by JupyterHub. For example, installing
-``kernelize`` into a conda environment called ``test5`` while logged into the
-host ``xf23id1-srv1`` adds this entry to JupyterHub's drop-down menu. To
-update the menu, simply refresh the browser.
+    .. code-block:: bash
 
-   .. image:: _static/jupyterhub-customized-kernel-menu.png
-      :align: center
+        $ python -m ipykernel install --user --name myenv --display-name "Python (myenv)"
+        Installed kernelspec myenv in /home/dallan/.local/share/jupyter/kernels/myenv
 
-Thus, installing the ``kernelize`` package captures two pieces of information:
-the path to the conda environment and the name of the host where JupyterHub
-will run that kernel.
+    The ``--name`` value is used by Jupyter internally. These commands will
+    overwrite any existing kernel with the same name. ``--display-name`` is
+    what you see in the notebook menus. For details see
+    `this section of the IPython documentation <https://ipython.readthedocs.io/en/latest/install/kernel_install.html#kernels-for-different-environments>`_
 
-These user-customized environments only appear to the individual user who adds
-them; they do not affect all users.
+3. Specify a host in the kernel file.
+
+    The kernel requires one simple customization to work on NSLS-II's
+    JupyterHub deployment. We need to specify which host to run the kernel on.
+
+    You can check the hostname of the current machine like so:
+
+    .. code-block:: bash
+
+        $ hostname
+        xf23id1-srv1
+
+    Open the kernel file that we generated above. You can get its location from
+    the output displayed by our kernel creation command in the previous step.
+    In our example, recall you that it showed
+
+    .. code-block:: bash
+
+        Installed kernelspec myenv in /home/dallan/.local/share/jupyter/kernels/myenv
+
+    so we will open the file ``kernel.json`` in that directory.
+
+    .. code-block:: json
+
+        {
+         "argv": [
+         "/home/dallan/conda_envs/myenv/bin/python",
+         "-m",
+         "ipykernel_launcher",
+         "-f",
+         "{connection_file}"
+         ],
+         "display_name": "Python (myenv)",
+         "language": "python"
+        }
+
+    Add a new item, ``"host"`` mapped to the hostname of the machine to run
+    this kernel on.
+
+    .. code-block:: json
+
+        {
+         "argv": [
+         "/home/dallan/conda_envs/myenv/bin/python",
+         "-m",
+         "ipykernel_launcher",
+         "-f",
+         "{connection_file}"
+         ],
+         "display_name": "Python (myenv)",
+         "language": "python",
+         "host": "xf23id1-srv1"
+        }
+
+    Notice that we added a comma on the second-to-last line, after ``"python"``.
+    There is no comma after the last entry. JSON files are strict about this.
+    (This often trips up Python users, because Python tolerates trailing commas
+    is lists.)
+
+Internal Anaconda Server
+========================
+
+We run an internal anaconda server at https://conda.nsls2.bnl.gov.
+
+The ``anaconda`` channel contains the "official" packages distributed by
+Continuum Analytics, including widely-used packages like numpy. When
+Continuum releases new version of packages, we can vet them before we make
+them available to users on this channel. The ``defaults`` channel is not
+vetted by us; it should never be used internally.
+
+The ``nsls2-tag`` channel is where we put the latest tagged stable versions of
+every package not officially distributed by Continuum. This includes in-house
+packages like ophyd and bluesky and other dependencies that don't happen to be
+packaged by Continuum yet.  The ``nsls2-dev`` channel is where we put
+bleeding-edge development versions of these packages.
+
