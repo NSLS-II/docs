@@ -47,7 +47,7 @@ NSLS-II Jupyter Notebook Servers
 #. You will shown a list of beamlines that you have access to. Choose one.
 
 #. To start a new notebook, select a "kernel" from the menu at the top-right. A
-   typical example is named like "CHX (stable)".
+   typical example is named like "CHX (current)".
 
    .. image:: _static/jupyterhub-kernel-menu.png
       :align: center
@@ -62,3 +62,33 @@ is stored, giving optimal performance.
 
 See the examples and the project documentation, linked from the
 `main page </>`_ and the menu on the left, for more.
+
+Troubleshooting
+===============
+
+Problem: User generated too much output in a notebook (lots and lots of
+printed text or figures) so that the file size grew to 120 MB (!). It was so
+slow to load that the notebook became effectively impossible to open.
+
+Solution:
+
+It is possible to clear the output cells from a notebook, which will reduce the
+filesize to a manageable one. The inputs (your code) are retained.
+
+Choose "New -> Terminal" from the menu where you normally go to open a new
+notebook. This should open a new tab with a black terminal screen.
+
+Get into the directory where your notebook is located using ``cd``.
+
+Run this special command to make a copy of your notebook with the output
+scrubbed out:
+
+.. code-block:: bash
+
+    jupyter-nbconvert YOUR_NOTEBOOK_HERE.ipynb \
+    --Exporter.preprocessors="['nbexamples.strip_output.StripOutput']" \
+    --to notebook --output recovered.ipynb
+
+You should now find a new notebook, ``recovered.ipynb``, in that directory.
+
+Dan
