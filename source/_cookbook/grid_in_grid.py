@@ -27,7 +27,7 @@ from bluesky.plan_stubs import abs_set, wait
 from bluesky.preprocessors import (run_decorator, stage_decorator,
                                    subs_decorator)
 from bluesky.callbacks import LiveTable, LivePlot
-from bluesky.examples import det4, motor1, motor2
+from ophyd.sim import det4, motor1, motor2
 from bluesky import RunEngine
 
 
