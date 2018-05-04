@@ -125,7 +125,7 @@ Material Covered
 ----------------
 
 * :doc:`bluesky:metadata`
-* :doc:`databroker:headers`
+* :ref:`databroker:the-header-object`
 * :ref:`databroker:searching`
 
 .. _daq2:
