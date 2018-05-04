@@ -106,7 +106,7 @@ Goals
 Material Covered
 ~~~~~~~~~~~~~~~~
 
-* :doc:`bluesky:plans_intro`
+* :doc:`bluesky:tutorial`
 * :doc:`bluesky:documents`
 
 .. _broker:
@@ -126,7 +126,7 @@ Material Covered
 
 * :doc:`bluesky:metadata`
 * :doc:`databroker:headers`
-* :doc:`databroker:searching`
+* :ref:`databroker:searching`
 
 .. _daq2:
 
