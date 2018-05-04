@@ -1,7 +1,6 @@
 bluesky  # for gallery example
 doctr
 ipython
-jsonschema
 lmfit  # for gallery example
 matplotlib
 numpy  # for gallery example
