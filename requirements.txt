@@ -8,6 +8,7 @@ numpydoc
 ophyd
 path.py
 pillow  # required by sphinx-gallery
+pyepics
 sphinx
 sphinx-gallery
 sphinx_rtd_theme
