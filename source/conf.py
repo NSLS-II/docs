@@ -334,7 +334,7 @@ class MyMock(object):
             return MyMock()
 
 
-MOCK_MODULES = ['epics', 'epics.pv', 'epics.ca', 'pcaspy']
+MOCK_MODULES = ['pcaspy']
 for mod_name in MOCK_MODULES:
     sys.modules[mod_name] = MyMock()
 

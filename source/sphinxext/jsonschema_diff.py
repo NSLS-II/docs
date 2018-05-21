@@ -37,7 +37,7 @@ import json
 import os
 from docutils import nodes
 from docutils import statemachine
-from sphinx.util.compat import Directive
+from docutils.parsers.rst import Directive
 from sphinx.util.nodes import set_source_info
 import difflib
 import jsonschema

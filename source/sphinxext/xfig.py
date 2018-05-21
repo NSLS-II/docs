@@ -27,8 +27,7 @@ from docutils.statemachine import ViewList
 import sphinx
 from sphinx.locale import _
 from sphinx.util.osutil import ensuredir, ENOENT, EPIPE, EINVAL
-from sphinx.util.compat import Directive
-
+from docutils.parsers.rst import Directive
 
 mapname_re = re.compile(r'<map id="(.*?)"')
 

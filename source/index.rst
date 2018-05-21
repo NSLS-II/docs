@@ -119,7 +119,6 @@ The following projects are in use but in a less mature stage of development.
 
    architecture-overview
    cookbook/index
-   tutorials
    remote-access
    sandbox
    history
