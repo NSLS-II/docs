@@ -134,6 +134,7 @@ The following projects are in use but in a less mature stage of development.
 
    bluesky <https://nsls-ii.github.io/bluesky>
    ophyd <https://nsls-ii.github.io/ophyd>
+   caproto <https://nsls-ii.github.io/caproto>
 
 .. toctree::
    :hidden:
