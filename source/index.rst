@@ -141,8 +141,6 @@ The following projects are in use but in a less mature stage of development.
    :caption: Data Access and Management
 
    databroker <https://nsls-ii.github.io/databroker>
-   amostra <https://nsls-ii.github.io/amostra>
-   datamuxer <https://nsls-ii.github.io/datamuxer>
    suitcase <https://nsls-ii.github.io/suitcase>
 
 .. toctree::
