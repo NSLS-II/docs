@@ -30,16 +30,16 @@ The configuration in ``/opt/conda/.condarc`` designates this location as the sec
 place conda should look for environments, after ``~/conda_envs``.
 
 Environments for data collection and data anlysis should be installed into
-``/opt/conda_envs``. In the second operating cycle of 2017, the commands to do
+``/opt/conda_envs``. In the second operating cycle of 2018, the commands to do
 this were:
 
 .. code-block:: bash
 
-    sudo conda create -p /opt/conda_envs/collection-17Q2.0 -c nsls2-tag -y collection
-    sudo conda create -p /opt/conda_envs/analysis-17Q2.0 -c nsls2-tag -y analysis
+    sudo conda create -p /opt/conda_envs/collection-2018-2.1 -c nsls2-tag -y collection
+    sudo conda create -p /opt/conda_envs/analysis-2018-2.1 -c nsls2-tag -y analysis
     fix_conda_privileges.sh
 
-where ``collection-17Q2.0`` and ``analysis-17Q2.0`` are the names of conda
+where ``collection-2018-2.1`` and ``analysis-2018-2.1`` are the names of conda
 metapackages and the names of the environments (under ``/opt/conda_envs``)
 where these metapackages are installed.
 
@@ -344,8 +344,30 @@ Installing on a Personal Computer
 ---------------------------------
 
 You can install these packages on your personal laptop outside the controls
-network. Install miniconda or Ananconda, and create user environment as
+network. Install miniconda or Anaconda, and create user environments as
 described above. All of the packages are mirrored on anaconda.org, outside of
 the NSLS-II firewall, where you will be able to access them. The channels are
 called ``lightsource2-tag`` and ``lightsource2-dev`` instead of ``nsls2-tag``
-and ``nsls2-dev`` respectively.
+and ``nsls2-dev`` respectively. The following serves as a step by step guide:
+
+1.  Follow the instructions in the link below to install minconda or anaconda.
+        https://conda.io/docs/user-guide/install/index.html
+
+2.  Open a terminal and run the following commands to install the enviroments. 
+
+.. code-block:: bash
+
+    sudo conda create -p /opt/conda_envs/collection-2018-2.1 -c lightsource2-tag -y collection
+    sudo conda create -p /opt/conda_envs/analysis-2018-2.1 -c lightsource2-tag -y analysis
+.. note::
+    1.  If you get the error 'The remote server could not find the noarch directory for the 
+        requested channel with url: https://conda.anaconda.org/nsls2-tag' then you are not on
+        the controls network, replace 'nsls2-tag' with 'lightsource2.tag' in the command.
+    2.  The 'collection-2018-2.1' or 'analysis-2018-2.1' part of these commands relates to the
+        released versions from the second cycle of 2018, to find the latest release versions 
+        visit 
+
+3. check this worked by running the command below:
+.. code-block:: bash
+    conda env list
+   you should see collection-2018-2.1 listed (or whichever version you installed)
