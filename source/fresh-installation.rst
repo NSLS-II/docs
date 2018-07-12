@@ -362,10 +362,11 @@ and ``nsls2-dev`` respectively. The following serves as a step by step guide:
 .. note::
     1.  If you get the error 'The remote server could not find the noarch directory for the 
         requested channel with url: https://conda.anaconda.org/nsls2-tag' then you are not on
-        the controls network, replace 'nsls2-tag' with 'lightsource2.tag' in the command.
+        the controls network, replace 'nsls2-tag' with 'lightsource2-tag' in the command.
+        - ATTENTION: there is an existing 'lightsource' package but it is out of date, check that you
+                are using the 'lightsource2-tag' package instead.
     2.  The 'collection-2018-2.1' or 'analysis-2018-2.1' part of these commands relates to the
-        released versions from the second cycle of 2018, to find the latest release versions 
-        visit 
+        released versions from the second cycle of 2018, you can use any version here. 
 
 3. check this worked by running the command below:
 .. code-block:: bash
