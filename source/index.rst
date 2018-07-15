@@ -141,6 +141,7 @@ The following projects are in use but in a less mature stage of development.
    :caption: Data Access and Management
 
    databroker <https://nsls-ii.github.io/databroker>
+   event-model <https://nsls-ii.github.io/event-model>
    suitcase <https://nsls-ii.github.io/suitcase>
 
 .. toctree::
