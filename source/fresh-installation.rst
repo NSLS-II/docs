@@ -42,6 +42,10 @@ this were:
 where ``collection-2018-2.1`` and ``analysis-2018-2.1`` are the names of conda
 metapackages and the names of the environments (under ``/opt/conda_envs``)
 where these metapackages are installed.
+.. note::
+    FYI: The structure of the enviroment name version numbering is:
+        'year'-'version'-'mini version'
+    For example 2018-2.1 is version 2, mini-version 1 in 2018.  
 
 Install Scripts
 +++++++++++++++
@@ -350,25 +354,25 @@ the NSLS-II firewall, where you will be able to access them. The channels are
 called ``lightsource2-tag`` and ``lightsource2-dev`` instead of ``nsls2-tag``
 and ``nsls2-dev`` respectively. The following serves as a step by step guide:
 
-1.  Follow the instructions in the link below to install minconda or anaconda.
+#.  Follow the instructions in the link below to install minconda or anaconda.
         https://conda.io/docs/user-guide/install/index.html
 
-2.  Open a terminal and run the following commands to install the enviroments. 
+#.  Open a terminal and run the following commands to install the enviroments. 
 
-.. code-block:: bash
+    .. code-block:: bash
 
-    sudo conda create -p /opt/conda_envs/collection-2018-2.1 -c lightsource2-tag -y collection
-    sudo conda create -p /opt/conda_envs/analysis-2018-2.1 -c lightsource2-tag -y analysis
-.. note::
-    1.  If you get the error 'The remote server could not find the noarch directory for the 
-        requested channel with url: https://conda.anaconda.org/nsls2-tag' then you are not on
-        the controls network, replace 'nsls2-tag' with 'lightsource2-tag' in the command.
-        - ATTENTION: there is an existing 'lightsource' package but it is out of date, check that you
+        sudo conda create -p /opt/conda_envs/collection-2018-2.1 -c lightsource2-tag collection
+        sudo conda create -p /opt/conda_envs/analysis-2018-2.1 -c lightsource2-tag analysis
+    .. note::
+        1.  If you get the error 'The remote server could not find the noarch directory for the 
+            requested channel with url: https://conda.anaconda.org/nsls2-tag' then you are not on
+            the controls network, replace 'nsls2-tag' with 'lightsource2-tag' in the command.
+            - ATTENTION: there is an existing 'lightsource' package but it is out of date, check that you
                 are using the 'lightsource2-tag' package instead.
-    2.  The 'collection-2018-2.1' or 'analysis-2018-2.1' part of these commands relates to the
-        released versions from the second cycle of 2018, you can use any version here. 
+        2.  The 'collection-2018-2.1' or 'analysis-2018-2.1' part of these commands relates to the
+            released versions from the second cycle of 2018, you can use any version here. 
 
-3. check this worked by running the command below:
-.. code-block:: bash
-    conda env list
-   you should see collection-2018-2.1 listed (or whichever version you installed)
+#.  Check this worked by running the command below:
+    .. code-block:: bash
+        conda env list
+    You should see collection-2018-2.1 listed (or whichever version you installed).
