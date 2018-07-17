@@ -35,8 +35,8 @@ this were:
 
 .. code-block:: bash
 
-    sudo conda create -p collection-2018-2.1 -c nsls2-tag -y collection
-    sudo conda create -p analysis-2018-2.1 -c nsls2-tag -y analysis
+    sudo conda create -p /opt/conda_envs/collection-2018-2.1 -c nsls2-tag -y collection
+    sudo conda create -p /opt/conda_envs/analysis-2018-2.1 -c nsls2-tag -y analysis
     fix_conda_privileges.sh
 
 where ``collection-2018-2.1`` and ``analysis-2018-2.1`` are the names of conda
@@ -364,8 +364,8 @@ and ``nsls2-dev`` respectively. The following serves as a step by step guide:
 
     .. code-block:: bash
 
-        conda create -n /opt/conda_envs/collection-2018-2.1 -c lightsource2-tag collection
-        conda create -n /opt/conda_envs/analysis-2018-2.1 -c lightsource2-tag analysis
+        conda create -n collection-2018-2.1 -c lightsource2-tag collection
+        conda create -n analysis-2018-2.1 -c lightsource2-tag analysis
 
     .. note::
 
