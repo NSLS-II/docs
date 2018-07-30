@@ -390,5 +390,6 @@ and ``nsls2-dev`` respectively. The following serves as a step by step guide:
 
 #.  Check this worked by running the command below:
     .. code-block:: bash
+
         conda env list
     You should see collection-2018-2.1 listed (or whichever version you installed).
