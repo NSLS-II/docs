@@ -2,29 +2,18 @@
 Updating Metapackages and Building Environments
 ***********************************************
 
-Background
-==========
+See :doc:`../conda` for background on the function and location of the
+components.
 
-A `metapackage <https://conda.io/docs/glossary.html#metapackage>`_
-is a conda package that contains only a list of dependencies but not functional
-code itself.
+Overview
+========
 
-We maintain several metapackages:
+1. Update the dependencies in the metapackages.
+2. Publish the metapackages.
+3. Create an environment file from the metapackage.
 
-* ``analysis``, which depends on libraries for data analysis (e.g.
-  scikit-beam), data acess (e.g. databroker) and simulation (e.g. bluesky)
-* ``collection``, which depends on ``analysis``, so it includes a superset of
-  those dependencies, adding some additional ones only needed for data
-  acquisition (e.g. nslsii)
-* several beamline-specific packages, with names like ``11-id-chx-analysis`` or
-  ``11-id-chx-collection`` that depend on the general ``analysis`` or
-  ``collection`` package and add some beamline-specific requirements
-
-They are located in the ``recipes-tag`` directory of
-`NSLS-II/lightsource2-recipes <https://github.com/NSLS-II/lightsource2-recipes>`_.
-
-Publishing a New Metapackage
-============================
+Metapackages
+============
 
 Select packages are pinned to ensure that conda resolves the right version.
 Update these pins, and add any new dependencies.
@@ -69,10 +58,5 @@ we deleted the external/public copy first.
 Publishing a New Environment File
 =================================
 
-An environment is similar to a metapacakge, but more strictly specified. It
-contains the recursive set of every dependency, along with the exact version
-and build and which channel the package was obtained from. This is what we use
-to deploy at beamlines.
-
-Log into any server inside the Controls network that has conda installed
-(e.g. xf23id1-srv1).
+Log in to any server on the Controls network that has conda installed (e.g
+xf23id1-srv1)

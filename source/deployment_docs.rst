@@ -6,6 +6,13 @@ associated configuration at NSLS-II. It is maintained as both an internal
 reference and a public guide for collaborators or potential collaborators who
 may be interested in our process.
 
+Components
+==========
+
+.. toctree::
+
+   components/conda
+
 .. toctree::
 
    deployment/releasing-software
