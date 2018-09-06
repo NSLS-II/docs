@@ -10,3 +10,4 @@ may be interested in our process.
 
    deployment/releasing-software
    deployment/resyncing-conda
+   deployment/updating-metapackages
