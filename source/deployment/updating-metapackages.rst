@@ -52,13 +52,13 @@ the same version.
    https://anaconda.org/lightsource2-tag/analysis/files and/or
    https://anaconda.org/lightsource2-tag/collection/files. Log in. Delete the
    offending files.
-#. Delete the package from the internal conda channel. On any server inside
-   the Controls network that has conda installed (e.g. xf23id1-srv1) run:
+#. Delete the package from the internal conda channel: ssh to ``alexandria``
+   (which is inside the Controls network) and run:
 
    .. code-block:: bash
 
-      /opt/conda/bin/anaconda remove nsls2-tag/collection=XXX
-      /opt/conda/bin/anaconda remove nsls2-tag/collection=XXX
+      sudo rm -f /www/conda/nsls2-tag/linux-64/analysis-XXX-0.tar.bz2
+      sudo rm -f /www/conda/nsls2-tag/linux-64/collection-XXX-0.tar.bz2
 
    where ``XXX`` is a version like ``2018C3.0``.
 
