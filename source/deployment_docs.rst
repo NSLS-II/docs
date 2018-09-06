@@ -9,3 +9,4 @@ may be interested in our process.
 .. toctree::
 
    deployment/releasing-software
+   deployment/resyncing-conda
