@@ -13,9 +13,20 @@ Components
 
    components/conda
 
+Deployment Procedures
+=====================
+
 .. toctree::
 
    deployment/releasing-software
    deployment/resyncing-conda
    deployment/updating-metapackages
    deployment/upgrading-beamlines
+
+Incident Reports
+================
+
+.. toctree::
+   :maxdepth: 1
+
+   incident-reports/2018-09-07-incompatible-qt-binaries.rst
