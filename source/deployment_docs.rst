@@ -18,3 +18,4 @@ Components
    deployment/releasing-software
    deployment/resyncing-conda
    deployment/updating-metapackages
+   deployment/upgrading-beamlines
