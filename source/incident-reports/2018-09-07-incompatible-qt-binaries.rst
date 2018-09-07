@@ -9,14 +9,25 @@ In a the first trial deployment of a new environment at LIX,
 conda-forge in the ``nsls2-tag`` channel. It is binary incompatible with the
 pyqt from the ``anaconda`` channel. Having picked that version of qt pinned a
 bunch of other compiled dependencies, we can not install any other version of
-qt. The offending files have been removed (we think from both) alexandria and
-pergamon, as well as some other files that were copied from CF. We
-re-generated the enviroment yml files (but not the metapackages) and redeployed
-to LIX and TES, the only two beamlines we deployed to.
-
+qt.
 
 Timeline
 ========
+
+The offending files were removed from the conda servers. We
+re-generated the enviroment yml files (using the same metapackages).
+
+The broken environments were removed from the two beamlines where they had been
+deployed:
+
+.. code-block:: bash
+
+   ansible -i production beamlines -a "rm -rf /opt/conda_envs/collection-2018-3.0" --limit=16-ID -kKb
+   ansible -i production beamlines -a "rm -rf /opt/conda_envs/analysis-2018-3.0" --limit=16-ID -kKb
+   ansible -i production beamlines -a "rm -rf /opt/conda_envs/analysis-2018-3.0" --limit=08-BM -kKb
+   ansible -i production beamlines -a "rm -rf /opt/conda_envs/collection-2018-3.0" --limit=08-BM -kKb
+
+The new environments were pushed out in the standard way.
 
 Lessons Learned
 ===============
