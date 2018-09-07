@@ -26,11 +26,21 @@ environment a given beamline is using remains accurate.
 
 In the ``production`` inventory file, located in the root directory of the
 NSLS-II/playbooks repository, find the beamline of interest and update its
-``curent_env_tag`` variable.
+``curent_env_tag`` variable. Here is an excerpt:
 
-Use ``--limit=XXX`` to target the playbook to the servers on one beamline,
-where ``XXX`` may be for example ``02-ID``.
+.. code-block:: ini
+
+   ### SIX ###
+
+   [02-ID-1:vars]
+   current_env_tag="2018-3.0"
+
+Now deploy the change using the ``update_default_vars.yml`` playbook.
+Use ``--limit=XXX`` to target the playbook to the servers on the beamline of
+interest. This is important!
 
 .. code-block:: bash
 
    ansible-playbook -i production update_default_vars.yml --limit=XXX -bkK
+
+where ``XXX`` may be for example ``02-ID-1``.
