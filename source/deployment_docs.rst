@@ -12,6 +12,7 @@ Components
 .. toctree::
 
    components/conda
+   components/ansible
 
 Deployment Procedures
 =====================
