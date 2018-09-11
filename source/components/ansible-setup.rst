@@ -1,3 +1,4 @@
+******************************
 NSLS-II DAMA Ansible Playbooks
 ******************************
 
@@ -183,6 +184,7 @@ Fresh installation
 Add keys
 
 .. code-block:: bash
+
    ssh-copy-id xf18id-ws1
    ssh-copy-id xf18id-ws2
 
