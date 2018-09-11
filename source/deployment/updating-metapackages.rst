@@ -149,7 +149,7 @@ Deploying the Environments
 
    .. code-block:: bash
 
-      ansible-playbook -i production beamlines.yml -bkK --limit=02-ID
+      ansible-playbook -i production beamlines.yml -bkK
 
    Keep a record of any failures.  The most common failure mode is a server
    being temporarily offline or inaccessible on the network. When that happens,
