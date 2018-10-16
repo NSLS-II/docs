@@ -29,19 +29,32 @@ Example Solution
 ----------------
 """
 import matplotlib.pyplot as plt
+import numpy as np
+
+import tomopy
+
+import bluesky.plans as bp
 from bluesky import RunEngine
-from bluesky.examples import Reader, Mover
-from bluesky.plans import scan
 from bluesky.callbacks import LiveTable, CallbackBase
 from bluesky.utils import install_qt_kicker
-import tomopy
-import numpy as np
+from ophyd import Device, Signal, Component as Cpt
+from ophyd.sim import SynAxis, NullStatus
 
 L = 64
 obj = tomopy.cameraman(L)
+# obj = tomopy.checkerboard(L)
+# obj = tomopy.baboon(L)
+# obj = tomopy.lena(L)
 
-det = Reader('det', {'image': lambda: tomopy.project(obj, angle.read()['angle']['value'])})
-angle = Mover('angle', {'angle': lambda x: x}, {'x': 0})
+class TomoDet(Device):
+    image = Cpt(Signal)
+    def trigger(self):
+        super().trigger()
+        self.image.put(tomopy.project(obj, angle.read()['angle']['value']))
+        return NullStatus()
+
+det = TomoDet(name='det')
+angle = SynAxis(name='angle')
 
 RE = RunEngine({})
 
@@ -112,7 +125,7 @@ class LiveSinogram(CallbackBase):
 
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 6))
 t = LiveTable([angle])
-p = LiveSinogram('image', 94, ax=ax1)
-r = LiveRecon('image', L, L, algorithm='art', ax=ax2)
+p = LiveSinogram(f'{det.name}_image', 94, ax=ax1)
+r = LiveRecon(f'{det.name}_image', L, L, algorithm='art', ax=ax2)
 
-RE(scan([det], angle, 0, np.pi, 100), [t, p, r])
+RE(bp.scan([det], angle, 0, np.pi, 100), [t, p, r])
