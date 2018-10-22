@@ -5,6 +5,7 @@ ipython
 jsonschema
 lmfit  # for gallery example
 matplotlib
+mkl
 mkl-devel # for gallery example
 numexpr  # for gallery example
 numpy  # for gallery example
