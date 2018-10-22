@@ -6,7 +6,6 @@ ipython
 jsonschema
 lmfit  # for gallery example
 matplotlib
-mkl==2018.0.3
 mkl-devel # for gallery example
 numexpr  # for gallery example
 numpy  # for gallery example
