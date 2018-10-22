@@ -1,16 +1,22 @@
 bluesky  # for gallery example
 doctr
+h5py     # for gallery example
 ipython
 jsonschema
 lmfit  # for gallery example
 matplotlib
+mkl-devel # for gallery example
+numexpr  # for gallery example
 numpy  # for gallery example
 numpydoc
 ophyd
 path.py
 pillow  # required by sphinx-gallery
 pyepics
+pyqt5    # for gallery example
+scikit-image # for gallery example
 sphinx
 sphinx-gallery
 sphinx_rtd_theme
 sphinxcontrib-napoleon
+tifffile # for gallery example
