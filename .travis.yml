@@ -8,6 +8,8 @@ env:
 
 install:
   - pip install -q -r requirements.txt
+  - pip uninstall mkl -y
+  - pip install mkl
   - git clone https://github.com/tomopy/tomopy --branch master --single-branch ~/tomopy
   - pushd ~/tomopy
   - python build.py
