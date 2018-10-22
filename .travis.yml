@@ -7,12 +7,11 @@ env:
     - secure: "Y6tBB5CwAxaHPxLzwyyoQKXEwLK68ni8GqzoaYCYbrjLhSFqEDCk6Si7UPmMoED8t7hyxFZofPfEpmOLBoronWUQycnB/K/oxYFfKyEXxNxGpY/iaQk/XCC6rkJ3g863QKdAsgobBgJIClDczZ7leY3RlN+mHfH0wohCBLFAh0E="
 
 before_install:
-  - pip install h5py mkl-devel numexpr pyqt5 scikit-image tifffile
-  - pip install git+https://github.com/data-exchange/dxchange
   - git clone https://github.com/tomopy/tomopy --branch master --single-branch ~/tomopy
-  - cd ~/tomopy
+  - pushd ~/tomopy
   - python build.py
   - pip install -v .
+  - popd
 
 script:
   - set -e

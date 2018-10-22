@@ -20,3 +20,4 @@ sphinx-gallery
 sphinx_rtd_theme
 sphinxcontrib-napoleon
 tifffile # for gallery example
+git+https://github.com/data-exchange/dxchange
