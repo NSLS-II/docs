@@ -15,6 +15,7 @@ pillow  # required by sphinx-gallery
 pyepics
 pyqt5    # for gallery example
 scikit-image # for gallery example
+scipy
 sphinx
 sphinx-gallery
 sphinx_rtd_theme
