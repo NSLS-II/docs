@@ -28,6 +28,8 @@ sinogram).
 Example Solution
 ----------------
 """
+import glob
+import imageio
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -65,7 +67,7 @@ if 'BUILDING_DOCS' not in os.environ:
     from bluesky.utils import install_qt_kicker  # for notebooks, qt -> nb
     install_qt_kicker()
     plt.ion()
-    angle._fake_sleep = 0.01  # simulate slow motor movement
+    angle._fake_sleep = 0.001  # simulate slow motor movement
 
 
 class LiveRecon(CallbackBase):
@@ -73,7 +75,6 @@ class LiveRecon(CallbackBase):
 
     def __init__(self, name, x, y, ax=None, **recon_kwargs):
         if ax is None:
-            import matplotlib.pyplot as plt
             ax = plt.gca()
         ax.set_title('Reconstruction using Tomopy')
         ax.set_xlabel('x')
@@ -97,11 +98,9 @@ class LiveRecon(CallbackBase):
         self.im.set_clim((np.min(self._partial), np.max(self._partial)))
         self.im.figure.canvas.draw_idle()
 
-
 class LiveSinogram(CallbackBase):
     def __init__(self, name, width, ax=None):
         if ax is None:
-            import matplotlib.pyplot as plt
             ax = plt.gca()
         ax.set_title('Sinogram')
         ax.set_xlabel('sequence number')
@@ -123,9 +122,26 @@ class LiveSinogram(CallbackBase):
         self.im.figure.canvas.draw_idle()
 
 
-fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 6))
-t = LiveTable([angle])
-p = LiveSinogram(f'{det.name}_image', 94, ax=ax1)
-r = LiveRecon(f'{det.name}_image', L, L, algorithm='art', ax=ax2)
+class LiveSaving(CallbackBase):
+    def __init__(self, fig=None):
+        self._fig = fig
 
-RE(bp.scan([det], angle, 0, np.pi, 100), [t, p, r])
+    def event(self, doc):
+        angle = doc['data']['angle']
+        if self._fig:
+            self._fig.savefig(f'recon_{angle:3.3f}.png')
+
+
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 6))
+
+lt = LiveTable([angle])
+ls = LiveSinogram(f'{det.name}_image', 94, ax=ax1)
+lr = LiveRecon(f'{det.name}_image', L, L, algorithm='art', ax=ax2)
+lsv = LiveSaving(fig=fig)
+
+RE(bp.scan([det], angle, 0, np.pi, 100), [lt, ls, lr, lsv])
+
+with imageio.get_writer('recon.gif', mode='I') as writer:
+    for fn in sorted(glob.glob('recon_*.png')):
+        image = imageio.imread(fn)
+        writer.append_data(image)

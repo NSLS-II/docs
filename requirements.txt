@@ -1,6 +1,7 @@
 bluesky  # for gallery example
 doctr
 h5py     # for gallery example
+imageio  # for gallery example
 ipython
 jsonschema
 lmfit  # for gallery example
