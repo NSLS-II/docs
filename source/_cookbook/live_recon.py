@@ -8,7 +8,7 @@ Problem
 Reconstruct a 2D cross-section of a sample from projections, as if it were
 rotated in place in front of a strip detector.
 
-This example uses the library `tomopy <tomopy.readthedocs.io>`_.
+This example uses the library `tomopy <https://tomopy.readthedocs.io>`_.
 
 Approach
 --------
@@ -22,8 +22,7 @@ Now, use tomopy to reconstruct the sample "density" from these projections.
 To give tomopy live access to the data, wrap it in a class that acts as a
 bluesky callback, an interface between tomopy and bluesky's document model.
 
-Also make a callback for visualizing the projections side by side (a
-sinogram).
+Also make a callback for visualizing the projections side by side (a sinogram).
 
 Example Solution
 ----------------
