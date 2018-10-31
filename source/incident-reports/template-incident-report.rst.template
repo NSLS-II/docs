@@ -1,0 +1,63 @@
+{{ Incident Date: YYYY-MM-DD }} {{ Incident Name }}
+***************************************************
+
+Summary
+=======
+
+Quick summary of what user impact was and how we fixed it.
+
+Timeline
+========
+
+Lessons Learned
+===============
+
+What went well
+--------------
+
+List of things that went well. For example,
+
+1. Recent backups were available to minimize data loss.
+2. A problem was indentified in testing at one beamline before it spread to all
+   beamlines.
+
+What went wrong
+---------------
+
+Things that could have gone better. Ideally these should result in concrete
+action items that have GitHub issues created for them and linked to under
+Action items.
+
+
+Where we got lucky
+------------------
+
+These are good things that happened to us but not because we had planned for
+them. For example,
+
+1. We noticed the problem before it interfered with users only because we
+   happened to be working on something adjacent.
+
+Action items
+============
+
+These are only sample subheadings. Every action item should have a GitHub issue
+(even a small skeleton of one) attached to it, so these do not get forgotten.
+
+Process improvements
+--------------------
+
+1. {{ summary }} [link to github issue]
+2. {{ summary }} [link to github issue]
+
+Documentation improvements
+--------------------------
+
+1. {{ summary }} [link to github issue]
+2. {{ summary }} [link to github issue]
+
+Technical improvements
+----------------------
+
+1. {{ summary }} [link to github issue]
+2. {{ summary }} [link to github issue]
