@@ -10,7 +10,6 @@ install:
   - pip install -q -r requirements.txt
   - git clone https://github.com/tomopy/tomopy --branch master --single-branch ~/tomopy
   - pushd ~/tomopy
-  - python build.py
   - pip install -v .
   - popd
   - ls -alF /home/travis/virtualenv/python3.6.3/lib/
