@@ -97,7 +97,7 @@ The JupyterHub playbook configures a machine to run the JupyterHub process
 and single-user notebook server processes.
 
 Deploy it to the staging inventory first, which updates
-https://notedev.nsls2.bnl.gov.
+https://notebook-dev.nsls2.bnl.gov.
 
 .. code-block:: bash
 
@@ -164,6 +164,12 @@ New databroker configuration
 
 Add a file to ``roles/databroker_config/files/`` and deploy the beamline
 playbook.
+
+.. note::
+
+    BE CAREFUL: This will also update the databroker configuration file for ALL
+    conda enviroments, it may render the older enviroments unusable.
+
 
 New Environments
 ----------------
