@@ -10,19 +10,18 @@ mid-cycle due to some unintended upgrade.
 Before the start of each cycle, we re-synchronize our internal collection of
 packages with the latest packages available from Anaconda.
 
-The internal Anaconda server runs on the ``pergamon`` host, inside the Controls
-netowork, and it runs as a service account user ``anacodna-server``.
+The internal Anaconda server runs on the ``alexandria`` host, inside the Controls
+network, and it runs as a service account user ``anaconda-server``.
 
 .. code-block:: bash
 
-ssh pegramon
-sudo su anaconda-server
-cd
-export https_proxy=http://proxy:8888
-export HTTPS_PROXY=http://proxy:8888
+    ssh alexandria
+    sudo su anaconda-server cd export
+    https_proxy=http://proxy:8888 export
+    HTTPS_PROXY=http://proxy:8888
 
 The configuration file ``~/anaconda.yaml`` controls which packages are synced.
-Edit it to, for example, update which version(s) of Python we want packages for
+Edit it, for example, to update which version(s) of Python we want packages for
 this cycle.
 
 Finally, the command to sync is:
