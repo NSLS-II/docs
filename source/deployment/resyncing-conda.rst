@@ -16,9 +16,10 @@ network, and it runs as a service account user ``anaconda-server``.
 .. code-block:: bash
 
     ssh alexandria
-    sudo su anaconda-server cd export
-    https_proxy=http://proxy:8888 export
-    HTTPS_PROXY=http://proxy:8888
+    sudo su anaconda-server
+    cd
+    export https_proxy=http://proxy:8888
+    export HTTPS_PROXY=http://proxy:8888
 
 The configuration file ``~/anaconda.yaml`` controls which packages are synced.
 Edit it, for example, to update which version(s) of Python we want packages for
