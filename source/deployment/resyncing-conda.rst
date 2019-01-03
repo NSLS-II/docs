@@ -8,7 +8,7 @@ operating cycle, to help isolate users from changes that might break things
 mid-cycle due to some unintended upgrade.
 
 Before the start of each cycle, we re-synchronize our internal collection of
-packages with the latest packages available from Anaconda (defaults channel).
+packages with the latest packages available from Anaconda (``defaults`` channel).
 
 The internal Anaconda server runs on the ``alexandria`` host, inside the Controls
 network, and it runs as root.
@@ -20,12 +20,12 @@ network, and it runs as root.
     bash /opt/builds/bootstrap-mirror-nsls2anaconda-local-folder
     bash /opt/builds/run_conda_index
 
-bootstrap-mirror-nsls2anaconda-local-folder script can be easily written
-based on https://github.com/NSLS-II/lightsource2-recipes/blob/master/scripts/bootstrapping/bootstrap-tag-build and
-https://github.com/NSLS-II/lightsource2-recipes/blob/master/scripts/nsls2-tag-build-local.sh .
-Token needs to be provided in the script. conda_index needs to run every time
-new package is added. Information about conda index can also be found
-https://conda.io/docs/user-guide/tasks/create-custom-channels.html .
+``bootstrap-mirror-nsls2anaconda-local-folder`` script can be easily written
+based on `bootstrap-tag-build <https://github.com/NSLS-II/lightsource2-recipes/blob/master/scripts/bootstrapping/bootstrap-tag-build>` and
+`nsls2-tag-build-local <https://github.com/NSLS-II/lightsource2-recipes/blob/master/scripts/nsls2-tag-build-local.sh>`_.
+Token needs to be provided in the script. ``conda index`` needs to run every time
+new package is added. Information about ``conda index`` can also be found at
+`create-custom-channels <https://conda.io/docs/user-guide/tasks/create-custom-channels.html>`_.
 
 Moreover, sync of ``lightsouce2-tag`` to ``nsls2-tag`` is similar:
 
@@ -39,4 +39,4 @@ Download that file using ``scp`` and share it (e.g. in a Basecamp post)
 in case something goes wrong and we need to investigate later.
 
 This mirroring job for ``nsls2-tag`` is running at ``alexandria`` as a cronjob
-every 5 mins. conda_index is also included in cronjob for every 6 mins.
+every 5 mins. ``conda index`` is also included in cronjob for every 6 mins.
