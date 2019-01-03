@@ -165,10 +165,10 @@ New databroker configuration
 Add a file to ``roles/databroker_config/files/`` and deploy the beamline
 playbook.
 
-.. note::
+.. warning::
 
-    BE CAREFUL: This will also update the databroker configuration file for ALL
-    conda enviroments, it may render the older enviroments unusable.
+    This will also update the databroker configuration file for ALL conda
+    enviroments, it may render the older enviroments unusable.
 
 
 New Environments
