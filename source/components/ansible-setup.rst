@@ -59,6 +59,19 @@ Allan have access to it. Stash the password in file named
 You will also need sudo access on the hosts you want to change if that change
 requires privilege escalation.
 
+.. note::
+    The ``ansible-conda`` submodule should be copied locally using the
+    following command:
+
+    .. code-block:: bash
+        git submodule update --init --recursive
+.. note::
+    You should have a few files in the ``security`` directory, which
+    can be found on the jupyterhub server:
+    - ``cookie_secret``
+    - ``ssl.crt``
+    - ``ssl.key``
+
 Organization
 ============
 Inventories
