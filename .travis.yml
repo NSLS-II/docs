@@ -8,10 +8,7 @@ env:
 
 install:
   - pip install -q -r requirements.txt
-  - git clone https://github.com/tomopy/tomopy --branch master --single-branch ~/tomopy
-  - pushd ~/tomopy
-  - pip install -v .
-  - popd
+  - pip install git+https://github.com/tomopy/tomopy
   - ls -alF /home/travis/virtualenv/python3.6.3/lib/
   - export LD_LIBRARY_PATH="/home/travis/virtualenv/python3.6.3/lib/":$LD_LIBRARY_PATH
 
