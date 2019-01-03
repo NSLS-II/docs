@@ -8,29 +8,35 @@ operating cycle, to help isolate users from changes that might break things
 mid-cycle due to some unintended upgrade.
 
 Before the start of each cycle, we re-synchronize our internal collection of
-packages with the latest packages available from Anaconda.
+packages with the latest packages available from Anaconda (defaults channel).
 
 The internal Anaconda server runs on the ``alexandria`` host, inside the Controls
-network, and it runs as a service account user ``anaconda-server``.
+network, and it runs as root.
 
 .. code-block:: bash
 
     ssh alexandria
-    sudo su anaconda-server
-    cd
-    export https_proxy=http://proxy:8888
-    export HTTPS_PROXY=http://proxy:8888
+    sudo su
+    bash /opt/builds/bootstrap-mirror-nsls2anaconda-local-folder
+    bash /opt/builds/run_conda_index
 
-The configuration file ``~/anaconda.yaml`` controls which packages are synced.
-Edit it, for example, to update which version(s) of Python we want packages for
-this cycle.
+bootstrap-mirror-nsls2anaconda-local-folder script can be easily written
+based on https://github.com/NSLS-II/lightsource2-recipes/blob/master/scripts/bootstrapping/bootstrap-tag-build and
+https://github.com/NSLS-II/lightsource2-recipes/blob/master/scripts/nsls2-tag-build-local.sh .
+Token needs to be provided in the script. conda_index needs to run every time
+new package is added. Information about conda index can also be found
+https://conda.io/docs/user-guide/tasks/create-custom-channels.html .
 
-Finally, the command to sync is:
+Moreover, sync of ``lightsouce2-tag`` to ``nsls2-tag`` is similar:
 
 .. code-block:: bash
 
-    /opt/continuum/anaconda_server/bin/anaconda-server-sync-conda --mirror-config anaconda.yaml | tee /tmp/update.txt
+    bash /opt/builds/bootstrap-mirror-nsls2tag-local-folder
 
-We have teed the log file into ``/tmp/update.txt``. Download that file using
-``scp`` and share it (e.g. in a Basecamp post) in case something goes wrong and
-we need to investigate later.
+We have teed the log file into, ``/root/tmp/mirror-logs/``,
+i.e, ``/root/tmp/mirror-logs/2019/01/03/14.25-mirror-nsls2-tag``.
+Download that file using ``scp`` and share it (e.g. in a Basecamp post)
+in case something goes wrong and we need to investigate later.
+
+This mirroring job for ``nsls2-tag`` is running at ``alexandria`` as a cronjob
+every 5 mins. conda_index is also included in cronjob for every 6 mins.
