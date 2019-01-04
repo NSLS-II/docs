@@ -93,7 +93,7 @@ Defining Environments
 
    .. code-block:: bash
 
-      conda env export -p /tmp/analysis-YYYY-X.V -f ~/analysis-YYYY-X.V.yml
+      conda env export -p /tmp/analysis-YYYY-X.V -f ~/analysis-YYYY-X.V.yml --override-channels -c http://alexandria/conda/defaults -c http://alexandria/conda/nsls2-tag
 
 #. Repeat the above, substituting ``collection`` for ``analysis``.
 
