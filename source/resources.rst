@@ -29,6 +29,6 @@ Scientific Python Packages We Use
 Good Scientific Software Habits
 -------------------------------
 
-* `Git Cheat Sheet <http://nsls-ii.github.io/resources.html>`_
+* `Git Cheat Sheet <https://education.github.com/git-cheat-sheet-education.pdf>`_
 * `Novice-level introduction to Git from Software Carpentry <http://swcarpentry.github.io/git-novice>`_
 * `Intermediate-Level explanation of the git workflow we use <https://guides.github.com/introduction/flow/>`_
