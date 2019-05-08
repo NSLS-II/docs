@@ -27,15 +27,16 @@ T - 4 Weeks
 T - 3 Weeks
 ===========
 
+* The deployment/release manager gathers requirements about beamline-specific packages.
 * All of the packages, including beamline-specific ones, have been built.
-* The open GitHub issues on lightsource-recipes have been addressed or
+* The open GitHub issues and PRs on `lightsource2-recipes <https://github.com/NSLS-II/lightsource2-recipes>`_ have been addressed or
   intentionally deferred.
 
 T - 2 Weeks
 ===========
 
 * Environments have been built and reproducible environments exported.
-* The playbooks repo has been updated to include new environments and archive
+* The `playbooks <https://github.com/NSLS-II/playbooks>`_ repo has been updated to include new environments and archive
   old ones.
 
 T - 1 Week
