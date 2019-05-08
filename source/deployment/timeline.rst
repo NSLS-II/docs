@@ -1,6 +1,9 @@
 Deployment Timeline
 *******************
 
+T=0 is defined as the first day that contains a shutdown shift, per the
+`NSLS-II Operating Schedule <https://www.bnl.gov/ps/nsls2/opschedule.php>`_.
+
 T - 6 Weeks
 ===========
 
